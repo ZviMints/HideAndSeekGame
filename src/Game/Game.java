@@ -25,23 +25,23 @@ public class Game{
 		CSVToMatrix cr = new CSVToMatrix(path);
 		for(int i=1; i < cr.getRowsSize(); i++)
 		{
-			if(cr.getRowAtIndexI(i).get(0).equals("F")) // Its Fruit! Whooho!
+			if(cr.getRowAtIndexI(i).get(0).equals("F")) // Its Fruit!
 			{
 				String id = cr.getRowAtIndexI(i).get(1);
 				Geom_element geo = new Point3D(Double.parseDouble(cr.getRowAtIndexI(i).get(2)) // Latitude
-						,Double.parseDouble(cr.getRowAtIndexI(i).get(3)) // Longitude
-						,Double.parseDouble(cr.getRowAtIndexI(i).get(4))); // Altitude
+						                      ,Double.parseDouble(cr.getRowAtIndexI(i).get(3)) // Longitude
+						                      ,Double.parseDouble(cr.getRowAtIndexI(i).get(4))); // Altitude
 				Fruit fruit = new Fruit(id,geo);
 				Fruit_Set.add(fruit);
 			}
-			else // Its Pacman, Booz!
+			else // Its Pacman!
 			{
 				String id = cr.getRowAtIndexI(i).get(1);
 				String speed = cr.getRowAtIndexI(i).get(5);
 				String radius = cr.getRowAtIndexI(i).get(6);
 				Geom_element geo = new Point3D(Double.parseDouble(cr.getRowAtIndexI(i).get(2)) // Latitude
-						,Double.parseDouble(cr.getRowAtIndexI(i).get(3)) // Longitude
-						,Double.parseDouble(cr.getRowAtIndexI(i).get(4))); // Altitude
+						                       ,Double.parseDouble(cr.getRowAtIndexI(i).get(3)) // Longitude
+					                           ,Double.parseDouble(cr.getRowAtIndexI(i).get(4))); // Altitude
 				Pacman pacman = new Pacman(id,speed, radius, geo);
 				Pacman_Set.add(pacman);	
 			}

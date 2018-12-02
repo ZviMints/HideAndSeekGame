@@ -14,8 +14,6 @@ public class MyCoords implements coords_converter {
 	/** This Constant represent Math.PI ~ 3.14 **/
 	private static final double PI = Math.PI;
 
-	/* * * * * * * * * * * * * * * Point 2 Meters * * * * * * * * * * * * * * * */
-	public Point3D PointInMeters(Point3D p) { return new Point3D(DTM_x(p.x()),DTM_y(p.y(), p.x()),p.z()); }
 	/* * * * * * * * * * * * * * * * * * Override * * * * * * * * * * * * * * * */
 	@Override
 	public Point3D add(Point3D gps, Point3D local_vector_in_meter) {
