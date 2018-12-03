@@ -4,17 +4,22 @@
  * @author Tzvi Mints and Or Abuhazira
  */
 package Pacman;
+
+import java.awt.Color;
+
 public class PacmanData implements Meta_data {
 	/* * * * * * * * * * * * * *  Private Strings * * * * * * * * * * * * * * * */
 	private String id;
 	private String speed;
 	private String radius;
+	public Color color;
 
 	/* * * * * * * * * * * * * *  Constructor * * * * * * * * * * * * * * * */
-	public PacmanData(String id, String speed, String radius) {
+	public PacmanData(String id, String speed, String radius, Color color) {
 		this.id = id; 
 		this.speed = speed; 
 		this.radius = radius; 
+		this.color = color;
 		}
 
 	/* * * * * * * * * * * * * * * * * * Override * * * * * * * * * * * * * * * */

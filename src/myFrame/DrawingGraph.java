@@ -28,24 +28,24 @@ public class DrawingGraph extends Canvas {
 		listener = new Listener();
 		this.addMouseListener(listener);
 	}
-	
+
 	/* * * * * * * * * * * * * * * * * * paint * * * * * * * * * * * * * * * */
 	public void paint(Graphics g) {
-		g.setColor(Color.RED);
 		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
+			g.setColor(pacman.getInfo().color);
 			Point3D p = (Point3D) pacman.getGeom();
 			int x = (int) p.x();
 			int y = (int) p.y();
 			g.fillOval(x, y, 15, 15);
 		}
-		
+
 		for (Path path : lines) {
 			g.setColor(path.color);
 			g.drawLine(path.x0, path.y0, path.x1, path.y1);
 		}
 
-		
+
 		g.setColor(Color.GREEN);
 		for(Fruit fruit : MyFrame.game.getFruitList())
 		{
@@ -57,27 +57,29 @@ public class DrawingGraph extends Canvas {
 	}
 
 
-	
+
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	private class Listener implements MouseListener 
 	{
 		@Override
 		public void mousePressed(MouseEvent e) {
-			Point3D p = new Point3D(e.getX(),e.getY(),0);
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			Fruit fruit = new Fruit(timeStamp, p);
-			if(MyFrame.game.Has(fruit)) 
+			if(e.getButton() == MouseEvent.BUTTON1) // Left Click
 			{
-				MyFrame.game.getFruitList().add(fruit);
-				System.out.println("New " + fruit);
+				Point3D p = new Point3D(e.getX(),e.getY(),0);
+				String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+				Fruit fruit = new Fruit(timeStamp, p);
+				if(!MyFrame.game.Has(fruit)) 
+				{
+					MyFrame.game.getFruitList().add(fruit);
+				}
+				MyFrame.algo = new Algo(MyFrame.game);
+				MyFrame.UpdateTime();
+				lines = MyFrame.algo.getSolution();
+				repaint();
 			}
-			MyFrame.algo = new Algo(MyFrame.game);
-			lines = MyFrame.algo.getSolution();
-			repaint();
-
 		}
 		/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
-		@Override public void mouseClicked(MouseEvent arg0) { }
+		@Override public void mouseClicked(MouseEvent e) { }
 		@Override public void mouseEntered(MouseEvent arg0) { }
 		@Override public void mouseExited(MouseEvent arg0) { }
 		@Override public void mouseReleased(MouseEvent arg0) { }

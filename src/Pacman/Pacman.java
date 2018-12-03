@@ -5,6 +5,9 @@
  * @author Tzvi Mints and Or Abuhazira
  */
 package Pacman;
+import java.awt.Color;
+import java.util.Random;
+
 import Coords.MyCoords;
 import Geom.Geom_element;
 import Geom.Point3D;
@@ -21,7 +24,13 @@ public class Pacman implements GIS_Pacman{
 		// ************ initialize Geom_element ************ //
 		this.geo = geo;
 		// ************ initialize Pacman Data ************ //
-		PacmanData = new PacmanData(id,speed,radius);
+		
+		Random rand = new Random();
+		float r = rand.nextFloat();
+		float g = rand.nextFloat();
+		float b = rand.nextFloat();
+		Color randomColor = new Color(r, g, b);
+		PacmanData = new PacmanData(id,speed,radius,randomColor);
 	}
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()

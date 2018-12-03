@@ -53,9 +53,9 @@ public class Game{
 		{
 			Point3D current_point = (Point3D)current.getGeom();
 			Point3D f_point = (Point3D)f.getGeom();
-			if(f_point.equals(current_point)) return false;
+			if(f_point.equals(current_point)) return true;
 		}
-		return true;	
+		return false;	
 	}
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()

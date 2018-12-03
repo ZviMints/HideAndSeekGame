@@ -111,9 +111,9 @@ public class MyCoords implements coords_converter {
 	/** This Method convert Radian to Meter for Lon **/
 	private double RTM_y (double y , double Lon_Norm) { return  Math.sin(y)*radius*Lon_Norm; }
 	/** This Method convert Degree to Meter for Lat **/
-	private double DTM_x(double x) { return RTM_x(DTR(x)); }
+	public double DTM_x(double x) { return RTM_x(DTR(x)); }
 	/** This Method convert Degree to Meter for Lon **/
-	private double DTM_y(double y, double x) { return RTM_y(DTR(y),getLon_Norm(x)); } 
+	public double DTM_y(double y, double x) { return RTM_y(DTR(y),getLon_Norm(x)); } 
 	/** This Method convert Radian to Degrees **/
 	private double RTD (double x) { return x* 180/PI; }
 	/** This Method convert Meter to Radian for Lat **/
