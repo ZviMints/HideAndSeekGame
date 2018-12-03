@@ -1,18 +1,23 @@
 package myFrame;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.geom.Line2D;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JFrame;
+
 import javax.swing.JPanel;
+
 import Fruit.Fruit;
 import Game.Game;
 import Geom.Point3D;
-import Map.Map;
 import Pacman.Pacman;
 import ShortestPathAlgo.Algo;
 
@@ -22,6 +27,10 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private List<Pacman> PacmansList = new ArrayList<Pacman>();;
 	private Game game;
 	private Algo algo;
+	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
+	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
+	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
+
 
 	public DotsAndLines (String path, Game game)
 	{	
@@ -32,21 +41,28 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		addMouseListener(this); // Mouse Clicks
 		setFocusable(true);
 	}
+	/* * * * * * * * * * * * * * * * * *   getAlgoTime * * * * * * * * * * * * * * * */
+	public double getAlgoTime() { return this.algo.getTime(); }
+	
 	/* * * * * * * * * * * * * * * * * *  paintComponent * * * * * * * * * * * * * * * */
 	public void paintComponent(Graphics g)
-	{
+	{        
 		super.paintComponent(g); // Reprint
+        g.drawImage(bgImage , 0, 0, this);
+
 		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
-			g.setColor(pacman.getInfo().color);
 			Point3D p = (Point3D) pacman.getGeom();
 			int x = (int) p.x();
 			int y = (int) p.y();
-			g.fillOval(x, y, 15, 15);
+			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
 		for (Path path : lines) {
 			g.setColor(path.color);
-			g.drawLine(path.x0, path.y0, path.x1, path.y1);
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setStroke(new BasicStroke(7));
+            g2.draw(new Line2D.Float(path.x0, path.y0, path.x1, path.y1));
+            
 		}
 		g.setColor(Color.GREEN);
 		for(Fruit fruit : MyFrame.game.getFruitList())
@@ -54,7 +70,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			Point3D p = (Point3D) fruit.getGeom();
 			int x = (int) p.x();
 			int y = (int) p.y();
-			g.fillOval(x, y, 15, 15);
+			g.drawImage(FruitImage, x-25, y-25, this);
 		}
 	}
 	/* * * * * * * * * * * * * * * * * *  Update * * * * * * * * * * * * * * * */
@@ -66,7 +82,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1) // Left Click
+		if(e.getButton() == MouseEvent.BUTTON1 && this.algo == null) // Left Click
 		{
 			Point3D p = new Point3D(e.getX(),e.getY(),0);
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
