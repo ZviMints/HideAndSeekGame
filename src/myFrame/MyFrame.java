@@ -1,22 +1,24 @@
 package myFrame;
+
 import java.awt.Canvas;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-
 import Game.Game;
 import Map.Map;
+import ShortestPathAlgo.Algo;
 
 public class MyFrame{	
 	public static Map map;
 	public static  JFrame frame;
 	public static Game game;
+	public static Canvas canvas;
+	public static Algo algo;
 //	private static ImageIcon image_pacman = new ImageIcon("./img/Pacman.jpg");
 
 	public MyFrame (String path)
 	{
 		frame = new JFrame();
 		game = new Game(path);
+		algo = new Algo(game);
 		initialize();
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
@@ -26,7 +28,7 @@ public class MyFrame{
 //		JLabel img = new JLabel(new ImageIcon(map.getBackground()));
 //		frame.setContentPane(img);
 		
-        Canvas canvas = new DrawingGraph();
+        canvas = new DrawingGraph();
         frame.add(canvas);
 
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title

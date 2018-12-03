@@ -7,17 +7,20 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.sound.sampled.Line;
+
 import Fruit.Fruit;
-import Fruit.GIS_Fruit;
 import Geom.Point3D;
-import Pacman.GIS_Pacman;
+import Pacman.Pacman;
+import ShortestPathAlgo.Algo;
 public class DrawingGraph extends Canvas {
 
 	/* * * * * * * * * * * * * * * * * * Private Constants * * * * * * * * * * * * * * * */
 	private Listener listener;
-	private Set<GIS_Fruit> FruitSet = MyFrame.game.getFruitSet();
+	private List<Path> lines = MyFrame.algo.getSolution();
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public DrawingGraph()
@@ -25,30 +28,36 @@ public class DrawingGraph extends Canvas {
 		listener = new Listener();
 		this.addMouseListener(listener);
 	}
-
+	
 	/* * * * * * * * * * * * * * * * * * paint * * * * * * * * * * * * * * * */
 	public void paint(Graphics g) {
-		Iterator<GIS_Pacman> it_P = MyFrame.game.getPacmanSet().iterator();
 		g.setColor(Color.RED);
-		while(it_P.hasNext())
+		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
-			Point3D p = (Point3D) it_P.next().getGeom();
+			Point3D p = (Point3D) pacman.getGeom();
 			int x = (int) p.x();
 			int y = (int) p.y();
 			g.fillOval(x, y, 15, 15);
 		}
+		
+		for (Path path : lines) {
+			g.setColor(path.color);
+			g.drawLine(path.x0, path.y0, path.x1, path.y1);
+		}
 
-		Iterator<GIS_Fruit> it_F = FruitSet.iterator();
+		
 		g.setColor(Color.GREEN);
-		while(it_F.hasNext())
+		for(Fruit fruit : MyFrame.game.getFruitList())
 		{
-			Point3D p = (Point3D) it_F.next().getGeom();
+			Point3D p = (Point3D) fruit.getGeom();
 			int x = (int) p.x();
 			int y = (int) p.y();
-			g.fillOval(x - 7, y - 7, 15, 15);
+			g.fillOval(x, y, 15, 15);
 		}
 	}
 
+
+	
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	private class Listener implements MouseListener 
 	{
@@ -59,10 +68,13 @@ public class DrawingGraph extends Canvas {
 			Fruit fruit = new Fruit(timeStamp, p);
 			if(MyFrame.game.Has(fruit)) 
 			{
-				FruitSet.add(fruit);
+				MyFrame.game.getFruitList().add(fruit);
 				System.out.println("New " + fruit);
-				repaint();
 			}
+			MyFrame.algo = new Algo(MyFrame.game);
+			lines = MyFrame.algo.getSolution();
+			repaint();
+
 		}
 		/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
 		@Override public void mouseClicked(MouseEvent arg0) { }

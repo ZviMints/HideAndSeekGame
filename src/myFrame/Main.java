@@ -1,6 +1,7 @@
 package myFrame;
 
 import Game.Game;
+import ShortestPathAlgo.Algo;
 
 public class Main {
 
