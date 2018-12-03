@@ -13,7 +13,6 @@ public class MyFrame{
 	public static Game game;
 //	private static ImageIcon image_pacman = new ImageIcon("./img/Pacman.jpg");
 
-	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public MyFrame (String path)
 	{
 		frame = new JFrame();
@@ -27,7 +26,7 @@ public class MyFrame{
 //		JLabel img = new JLabel(new ImageIcon(map.getBackground()));
 //		frame.setContentPane(img);
 		
-        Canvas canvas = new Drawing();
+        Canvas canvas = new DrawingGraph();
         frame.add(canvas);
 
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title

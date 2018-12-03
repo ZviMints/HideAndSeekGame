@@ -13,7 +13,7 @@ public class Game{
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public Set<GIS_Pacman> getPacmanSet() { return Pacman_Set; }
 	public Set<GIS_Fruit> getFruitSet() { return Fruit_Set; }
-
+	
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public Game(String path)
 	{
@@ -46,6 +46,19 @@ public class Game{
 				Pacman_Set.add(pacman);	
 			}
 		}
+	}
+	/* * * * * * * * * * * * * * * * * * Has Fruit * * * * * * * * * * * * * * * */
+	public boolean Has(Fruit f)
+	{
+		Iterator<GIS_Fruit> it_F = Fruit_Set.iterator();
+		while(it_F.hasNext())
+		{
+			Fruit current = (Fruit) it_F.next();
+			Point3D current_point = (Point3D)current.getGeom();
+			Point3D f_point = (Point3D)f.getGeom();
+			if(f_point.equals(current_point)) return false;
+		}
+		return true;	
 	}
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()

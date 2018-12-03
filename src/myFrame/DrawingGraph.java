@@ -13,19 +13,19 @@ import Fruit.Fruit;
 import Fruit.GIS_Fruit;
 import Geom.Point3D;
 import Pacman.GIS_Pacman;
-public class Drawing extends Canvas {
-	
+public class DrawingGraph extends Canvas {
+
 	/* * * * * * * * * * * * * * * * * * Private Constants * * * * * * * * * * * * * * * */
 	private Listener listener;
 	private Set<GIS_Fruit> FruitSet = MyFrame.game.getFruitSet();
-	
+
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
-	public Drawing()
+	public DrawingGraph()
 	{
 		listener = new Listener();
 		this.addMouseListener(listener);
 	}
-	
+
 	/* * * * * * * * * * * * * * * * * * paint * * * * * * * * * * * * * * * */
 	public void paint(Graphics g) {
 		Iterator<GIS_Pacman> it_P = MyFrame.game.getPacmanSet().iterator();
@@ -48,19 +48,21 @@ public class Drawing extends Canvas {
 			g.fillOval(x - 7, y - 7, 15, 15);
 		}
 	}
-	
+
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	private class Listener implements MouseListener 
 	{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			Point3D p = new Point3D(e.getX(),e.getY(),0);
-			
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			Fruit fruit = new Fruit(timeStamp, p);
-			FruitSet.add(fruit);
-			System.out.println(fruit);
-			repaint();
+			if(MyFrame.game.Has(fruit)) 
+			{
+				FruitSet.add(fruit);
+				System.out.println("New " + fruit);
+				repaint();
+			}
 		}
 		/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
 		@Override public void mouseClicked(MouseEvent arg0) { }
