@@ -1,5 +1,4 @@
 package myFrame;
-
 import java.awt.Color;
 
 public class Path {
