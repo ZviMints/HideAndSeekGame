@@ -87,7 +87,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1 && this.algo == null) // Left Click
+		if(e.getButton() == MouseEvent.BUTTON1 && this.lines.isEmpty()) // Left Click
 		{
 			Point3D p = new Point3D(e.getX(),e.getY(),0);
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
