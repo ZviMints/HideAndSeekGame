@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
@@ -30,7 +31,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
 	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
-
 
 	public DotsAndLines (String path, Game game)
 	{	

@@ -35,8 +35,9 @@ public class MyFrame{
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
 	private static void initialize() {
-		map = new Map(frame.getWidth(),frame.getHeight());   
 		JFrame frame = new JFrame();	
+		frame.setSize(1650, 642); // Set Size to JFrame
+		map = new Map(frame.getWidth(),frame.getHeight());   
 		panel = new DotsAndLines("./data/game_chk.csv", game);
 		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().setLayout(null);
@@ -121,7 +122,6 @@ public class MyFrame{
 		
 		frame.getContentPane().add(panel);
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
-		frame.setSize(1650, 642); // Set Size to JFrame
 		frame.setLocationRelativeTo(null); // Puts on the center of the Screen		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Will Close the JFame on [X]
 		frame.setVisible(true); // Set visibility to True

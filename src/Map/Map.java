@@ -1,6 +1,9 @@
 package Map;
+import java.util.Collection;
+
 import Coords.MyCoords;
 import Geom.Point3D;
+import Pacman.Pacman;
 
 public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
@@ -44,7 +47,7 @@ public class Map {
 
 		double x = Math.abs((meter_x/width)*this.width);
 		double y = Math.abs((meter_y/height)*this.height);
-		Point3D ans = new Point3D(y,x,0);
+		Point3D ans = new Point3D(x,y,0);
 		return ans;
 	}
 }
