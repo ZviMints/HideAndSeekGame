@@ -23,8 +23,8 @@ import ShortestPathAlgo.Algo;
 
 public class DotsAndLines extends JPanel implements MouseListener{
 	private List<Path> lines;
-	private List<Fruit> FruitsList = new ArrayList<Fruit>();;
-	private List<Pacman> PacmansList = new ArrayList<Pacman>();;
+	private List<Fruit> FruitsList = new ArrayList<Fruit>();
+	private List<Pacman> PacmansList = new ArrayList<Pacman>();
 	private Game game;
 	private Algo algo;
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
@@ -77,6 +77,11 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void update() {
 		algo = new Algo(this.game);
 		lines = algo.getSolution();
+		repaint();
+	}
+	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
+	public void clear() {
+		lines = new ArrayList<Path>();
 		repaint();
 	}
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */

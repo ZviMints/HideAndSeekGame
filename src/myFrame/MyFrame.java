@@ -60,6 +60,12 @@ public class MyFrame{
 		Load.setVisible(true);
 		frame.getContentPane().add(Load);
 		Load.setBounds(1433, 20 + 20 + 56 + 56 + 20, 188, 56);
+		
+		//Clear JButton
+		JLabel Clear = new JLabel(new ImageIcon("./img/Clear.png"));
+		Clear.setVisible(true);
+		frame.getContentPane().add(Clear);
+		Clear.setBounds(1433, 20 + 20 + 56 + 56 +56 + 20 + 20, 188, 56);
 
 		//Score TextField
 		final ImageIcon Score_Image = new ImageIcon("./img/Time.png");
@@ -75,7 +81,7 @@ public class MyFrame{
 		};	
 		ScoreTextField.setBorder(null);
 		ScoreTextField.setVisible(true);
-		ScoreTextField.setText(" 0");
+		ScoreTextField.setText(" 0.0");
 		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 40));
 		ScoreTextField.setForeground(Color.WHITE);
 		ScoreTextField.setBounds(1433 + 8, 642 - 133 , 188, 56);
@@ -96,7 +102,23 @@ public class MyFrame{
 				UpdateTime(panel.getAlgoTime());
 			}});
 
+		// On Click "Clear":
+		Clear.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						Solve.setVisible(true);
+						panel.clear();
+						UpdateTime(0);
+					}});
 
+		
+		
+		
 		frame.getContentPane().add(panel);
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
 		frame.setSize(1650, 642); // Set Size to JFrame
