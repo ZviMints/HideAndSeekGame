@@ -121,7 +121,7 @@ public class MyCoords implements coords_converter {
 	/** This Method convert Meter to Radian for Lon **/
 	private double MTR_y (double y , double Lon_Norm) { return  Math.asin(y/(radius*Lon_Norm)); }
 	/** This Method convert Meter to Degrees for Lat **/
-	private double MTD_x(double x) { return (RTD(MTR_x(x))); }
+	public double MTD_x(double x) { return (RTD(MTR_x(x))); }
 	/** This Method convert Meter to Degrees for Lon **/
-	private double MTD_y(double y, double x) {return RTD(MTR_y(y,getLon_Norm(x)));}
+	public double MTD_y(double y, double x) {return RTD(MTR_y(y,getLon_Norm(x)));}
 }

@@ -24,7 +24,6 @@ public class Pacman implements GIS_Pacman{
 		// ************ initialize Geom_element ************ //
 		this.geo = geo;
 		// ************ initialize Pacman Data ************ //
-		
 		Random rand = new Random();
 		float r = rand.nextFloat();
 		float g = rand.nextFloat();

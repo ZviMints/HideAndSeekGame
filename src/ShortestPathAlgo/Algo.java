@@ -6,22 +6,27 @@ import Coords.MyCoords;
 import Fruit.Fruit;
 import Game.Game;
 import Geom.Point3D;
+import Map.Map;
 import Pacman.Pacman;
-import myFrame.Path;
+import Path.Path;
+import myFrame.DotsAndLines;
+import myFrame.MyFrame;
 
 public class Algo {
 	/* * * * * * * * * * *   Private Constants * * * * * * * * * * * * * * * */
 	private List<Path> solution;
 	private double time = 0;
-	private  List<Fruit> FruitsList = new ArrayList<Fruit>();;
-	private  List<Pacman> PacmansList = new ArrayList<Pacman>();;
+	private  List<Fruit> FruitsList = new ArrayList<Fruit>();
+	private  List<Pacman> PacmansList = new ArrayList<Pacman>();
+	private DotsAndLines panel;
 
 	/* * * * * * * * * * * * * *  Getters and Setters * * * * * * * * * * * * * * * */
 	public List<Path> getSolution() { return solution; }
 
 	/* * * * * * * * * * * * * *  Algo * * * * * * * * * * * * * * * */
-	public Algo(Game game)
+	public Algo(Game game, DotsAndLines panel)
 	{
+		this.panel = panel;
 		solution = new ArrayList<Path>();
 		FruitsList.addAll(game.getFruitList());
 		PacmansList.addAll(game.getPacmanList());
@@ -37,18 +42,21 @@ public class Algo {
 			Fruit Closest = findClosest2Pac(pac_point);
 			Point3D Closest_point = (Point3D)Closest.getGeom();
 			
-			double distance2ClosestPoint = (pac_point).distance3D(Closest_point);
+			double distance2ClosestPoint = coords.distance3d(pac_point, Closest_point);
 			double speed = Double.parseDouble(pac.getInfo().getSpeed());
-			setTime(getTime() + distance2ClosestPoint / speed);
-			
-			Path path = new Path((int)(pac_point).x(),
-					(int)(pac_point).y(),
-					(int)((Point3D)Closest.getGeom()).x(),
-					(int) ((Point3D)Closest.getGeom()).y(),
-					pac.getInfo().color);
+			double radius = Double.parseDouble(pac.getInfo().getRadius());
 
-//			Point3D vec = new Point3D(coords.vector3D(Closest_point, pac_point));
-//			pac.translate(vec);	
+			setTime(getTime() + ( distance2ClosestPoint - radius ) / speed);
+			
+			Path path = new Path(pac,
+					(pac_point).x(),
+					(pac_point).y(),
+					Closest_point.x(),
+					Closest_point.y(),
+					pac.getInfo().color);
+			
+			Point3D vec = new Point3D(coords.vector3D(pac_point,Closest_point));
+			pac.translate(vec);	
 			solution.add(path);
 			FruitsList.remove(Closest);
 		}
@@ -92,6 +100,6 @@ public class Algo {
 		return ans;
 	}
 
-	public double getTime() { 	return time; }
+	public double getTime() { return time; }
 	public void setTime(double time) { this.time = time; }
 }

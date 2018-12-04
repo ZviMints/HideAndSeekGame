@@ -10,18 +10,15 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Game.Game;
 import Map.Map;
-import ShortestPathAlgo.Algo;
 
 public class MyFrame{	
 	static Map map;
 	static  JFrame frame;
 	static Game game;
-	static Algo algo;
 	static JTextField ScoreTextField;
 	static DotsAndLines panel;
 
@@ -29,13 +26,13 @@ public class MyFrame{
 	{
 		frame = new JFrame();
 		game = new Game(path);
-		algo = new Algo(game);
 		initialize();
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
-	private static void initialize() {
+	private void initialize() {
 		JFrame frame = new JFrame();	
 		frame.setSize(1650, 697); // Set Size to JFrame
+		
 		map = new Map(frame.getWidth(),frame.getHeight());   
 		frame.getContentPane().setLayout(null);
 
@@ -91,38 +88,25 @@ public class MyFrame{
 			}
 		};	
 		
-		
 		ScoreTextField.setBorder(null);
 		ScoreTextField.setVisible(true);
 		ScoreTextField.setText(" 0.0");
-		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 40));
+		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 15));
 		ScoreTextField.setForeground(Color.WHITE);
-		ScoreTextField.setBounds(1433 + 8, 697 - 120 , 188, 56);
+		ScoreTextField.setBounds(1433 + 8, 697 - 120 , 170, 56);
 		ScoreTextField.setEditable(false);
 		frame.getContentPane().add(ScoreTextField);
 
 		// On Click "Solve":
 		Solve.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				panel.update();
+				panel.Solve();
 				UpdateTime(panel.getAlgoTime());
 			}});
 
 		// On Click "ClearH":
 		ClearH.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
 						panel.clearH();
 						UpdateTime(0);
 					}});
@@ -130,21 +114,13 @@ public class MyFrame{
 		// On Click "Clear":
 		Clear.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						panel.clear();
+						panel.Clear();
 						UpdateTime(0);
 					}});
 		
-		panel = new DotsAndLines("./data/game_chk.csv", game);
+		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
 		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().add(panel);
-		
-		
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
 		frame.setLocationRelativeTo(null); // Puts on the center of the Screen		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Will Close the JFame on [X]
@@ -153,7 +129,7 @@ public class MyFrame{
 	/* * * * * * * * * * * * * * Solve * * * * * * * * * * * * * * * */
 	public static void Solve()
 	{
-		panel.update();
+		panel.Solve();
 	}
 	/* * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 

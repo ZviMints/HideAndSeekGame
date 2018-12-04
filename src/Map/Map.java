@@ -2,51 +2,75 @@ package Map;
 import java.util.Collection;
 
 import Coords.MyCoords;
+import Fruit.Fruit;
 import Geom.Point3D;
 import Pacman.Pacman;
 
 public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
-	private String img;
 	private int width;
 	private int height;
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public Map(int width, int height) {
-		this.img = "";
 		this.setWidth(width);
 		this.setHeight(height);
 	}
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
-	public String getBackground() { return img; }
 	public int getHeight() { return height;}
 	public void setHeight(int height) { this.height = height; }
 	public int getWidth() { return width; }
 	public void setWidth(int width) { this.width = width;}
 
 	/* * * * * * * * * * * * * * * * * * GetCord * * * * * * * * * * * * * * * */
-	public Point3D getPointFromPoint(Point3D input) // Output Point3D will return in Pixels;
+	public Point3D getPixelFromCord(Point3D input) // Output Point3D will return in Pixels;
 	{	
-		// p00(32.105812,35.202190) ******  p01(32.105848,35.212541) //
-		//                          ******                           //
-		//                          ******                           //
-		// p10(32.101942,35.202429) ******  p11(32.101951,35.212134) //
-		Point3D p00=new Point3D("32.105812,35.202190,0");
-		Point3D p01=new Point3D("32.105848,35.212541,0");
-		Point3D p10=new Point3D("32.101942,35.202429,0");
 		MyCoords coords = new MyCoords();
-		
-		double width = coords.distance3d(p00, p01);
-		double height = coords.distance3d(p00, p10);
+		// p00(32.105848,35.202429) ******  p01(32.105848,35.212541) //
+		//                          ******                           //
+		//                          ******                           //
+		// p10(32.101951,35.202429) ******  p11(32.101951,35.212541) //
+		Point3D p00=new Point3D("32.105848,35.202429,0");
+		Point3D p01=new Point3D("32.105848,35.212541,0");
+		Point3D p10=new Point3D("32.101951,35.202429,0");
 
-		double dx =  input.x() - p00.x();
-		double dy =  input.y() - p00.y() ;
+		double TotalXInMeters = coords.distance2d(p00, p01);
+		double TotalYInMeters = coords.distance2d(p00, p10);
 		
-		double meter_x = coords.DTM_x(dx);
-		double meter_y = coords.DTM_y(dy, p00.x());
+		
+		Point3D find_x = new Point3D(32.105848,input.y(),0);
+		double xInMeters = coords.distance2d(p00,find_x);
 
-		double x = Math.abs((meter_x/width)*this.width);
-		double y = Math.abs((meter_y/height)*this.height);
+		Point3D find_y = new Point3D(input.x(),35.202429,0);
+		double yInMeters = coords.distance2d(p00,find_y);
+				
+		double x = ( xInMeters / TotalXInMeters ) * getWidth();
+		double y = ( yInMeters / TotalYInMeters ) * getHeight();
+		
+		Point3D ans = new Point3D(x,y,0);
+		return ans;
+	}
+	public Point3D getCordFromPixel(Point3D input) {
+		MyCoords coords = new MyCoords();
+		// p00(32.105848,35.202429) ******  p01(32.105848,35.212541) //
+		//                          ******                           //
+		//                          ******                           //
+		// p10(32.101951,35.202429) ******  p11(32.101951,35.212541) //
+		Point3D p00=new Point3D("32.105848,35.202429,0");
+		Point3D p01=new Point3D("32.105848,35.212541,0");
+		Point3D p10=new Point3D("32.101951,35.202429,0");
+
+		double TotalXInMeters = coords.distance2d(p00, p01);
+		double TotalYInMeters = coords.distance2d(p00, p10);
+
+		
+		
+		double xInMeters = ( input.x() / getWidth()  ) * TotalXInMeters;
+		double yInMeters = ( input.y() / getHeight() ) * TotalYInMeters;
+		
+		double x = coords.MTD_x(xInMeters);
+		double y = coords.MTD_y(yInMeters, xInMeters);
+		
 		Point3D ans = new Point3D(x,y,0);
 		return ans;
 	}
