@@ -46,13 +46,25 @@ public class Game{
 		}
 	}
 	/* * * * * * * * * * * * * * * * * * Has Fruit * * * * * * * * * * * * * * * */
-	public boolean Has(Fruit f)
+	public boolean HasF(Fruit f)
 	{
 
 		for(Fruit current : Fruit_List)
 		{
 			Point3D current_point = (Point3D)current.getGeom();
 			Point3D f_point = (Point3D)f.getGeom();
+			if(f_point.equals(current_point)) return true;
+		}
+		return false;	
+	}
+	/* * * * * * * * * * * * * * * * * * Has Pacman * * * * * * * * * * * * * * * */
+	public boolean HasP(Pacman p)
+	{
+
+		for(Pacman current : Pacman_List)
+		{
+			Point3D current_point = (Point3D)current.getGeom();
+			Point3D f_point = (Point3D)p.getGeom();
 			if(f_point.equals(current_point)) return true;
 		}
 		return false;	

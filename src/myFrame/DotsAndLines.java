@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 
 import Fruit.Fruit;
 import Game.Game;
+import Geom.Geom_element;
 import Geom.Point3D;
 import Pacman.Pacman;
 import ShortestPathAlgo.Algo;
@@ -31,6 +32,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
 	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
+	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
+
 
 	public DotsAndLines (String path, Game game)
 	{	
@@ -49,6 +52,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	{        
 		super.paintComponent(g); // Reprint
         g.drawImage(bgImage , 0, 0, this);
+        g.drawImage(bgImageHover , 0, 0, this);
 
 		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
@@ -92,12 +96,28 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			Point3D p = new Point3D(e.getX(),e.getY(),0);
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			Fruit fruit = new Fruit(timeStamp, p);
-			if(!MyFrame.game.Has(fruit)) 
+			if(!MyFrame.game.HasF(fruit)) 
 			{
 				MyFrame.game.getFruitList().add(fruit);
 			}
-			repaint();
 		}
+		else if(e.getButton() == MouseEvent.BUTTON3 && this.lines.isEmpty()) // Right click
+		{
+			Point3D p = new Point3D(e.getX(),e.getY(),0);
+			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+			Pacman pacman = new Pacman(timeStamp, "1", "1", p);
+			if(!MyFrame.game.HasP(pacman)) 
+			{
+				MyFrame.game.getPacmanList().add(pacman);
+			}
+		}
+		repaint();
+
+	}
+	/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
+	public void clearH() {
+		MyFrame.game.getFruitList().clear();
+		clear();
 	}
 	/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
 	@Override public void mouseClicked(MouseEvent e) { }

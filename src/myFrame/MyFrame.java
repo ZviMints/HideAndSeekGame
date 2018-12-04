@@ -7,7 +7,6 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,9 +21,9 @@ public class MyFrame{
 	static Map map;
 	static  JFrame frame;
 	static Game game;
-	static DotsAndLines panel;
 	static Algo algo;
 	static JTextField ScoreTextField;
+	static DotsAndLines panel;
 
 	public MyFrame (String path)
 	{
@@ -36,10 +35,8 @@ public class MyFrame{
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
 	private static void initialize() {
 		JFrame frame = new JFrame();	
-		frame.setSize(1650, 642); // Set Size to JFrame
+		frame.setSize(1650, 697); // Set Size to JFrame
 		map = new Map(frame.getWidth(),frame.getHeight());   
-		panel = new DotsAndLines("./data/game_chk.csv", game);
-		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().setLayout(null);
 
 
@@ -67,6 +64,19 @@ public class MyFrame{
 		Clear.setVisible(true);
 		frame.getContentPane().add(Clear);
 		Clear.setBounds(1433, 20 + 20 + 56 + 56 +56 + 20 + 20, 188, 56);
+		
+		
+		//ClearH JButton
+		JLabel ClearH = new JLabel(new ImageIcon("./img/ClearH.png"));
+		ClearH.setVisible(true);
+		frame.getContentPane().add(ClearH);
+		ClearH.setBounds(1433, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
+		
+		//Mouse Info 
+		JLabel Info = new JLabel(new ImageIcon("./img/Info.png"));
+		Info.setVisible(true);
+		frame.getContentPane().add(Info);
+		Info.setBounds(1433, 20 + 20 + 56 + 56 + 20 + 56 +56 + 56 + 20 + 20 + 20, 245, 178);
 
 		//Score TextField
 		final ImageIcon Score_Image = new ImageIcon("./img/Time.png");
@@ -80,12 +90,14 @@ public class MyFrame{
 				super.paint(g);
 			}
 		};	
+		
+		
 		ScoreTextField.setBorder(null);
 		ScoreTextField.setVisible(true);
 		ScoreTextField.setText(" 0.0");
 		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 40));
 		ScoreTextField.setForeground(Color.WHITE);
-		ScoreTextField.setBounds(1433 + 8, 642 - 133 , 188, 56);
+		ScoreTextField.setBounds(1433 + 8, 697 - 120 , 188, 56);
 		ScoreTextField.setEditable(false);
 		frame.getContentPane().add(ScoreTextField);
 
@@ -98,11 +110,23 @@ public class MyFrame{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				Solve.setVisible(false);
 				panel.update();
 				UpdateTime(panel.getAlgoTime());
 			}});
 
+		// On Click "ClearH":
+		ClearH.addMouseListener(new MouseAdapter() {
+					public void mouseClicked(MouseEvent e) {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						panel.clearH();
+						UpdateTime(0);
+					}});
+		
 		// On Click "Clear":
 		Clear.addMouseListener(new MouseAdapter() {
 					public void mouseClicked(MouseEvent e) {
@@ -112,15 +136,15 @@ public class MyFrame{
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						Solve.setVisible(true);
 						panel.clear();
 						UpdateTime(0);
 					}});
-
 		
-		
-		
+		panel = new DotsAndLines("./data/game_chk.csv", game);
+		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().add(panel);
+		
+		
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
 		frame.setLocationRelativeTo(null); // Puts on the center of the Screen		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Will Close the JFame on [X]
