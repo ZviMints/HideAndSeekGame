@@ -25,9 +25,12 @@ import Path.Path;
 import ShortestPathAlgo.Algo;
 
 public class DotsAndLines extends JPanel implements MouseListener{
-	private Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
+	Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
 	private List<Fruit> FruitsList = new ArrayList<Fruit>();
 	private List<Pacman> PacmansList = new ArrayList<Pacman>();
+	volatile List<Boolean> finished = new ArrayList<Boolean>();
+
+
 	private List<PacmanThread> threads = new ArrayList<PacmanThread>();
 	private Game game;
 	private Algo algo;
@@ -90,6 +93,12 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int y = (int) p_pixels.y();
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
+		if(finished.size() == threads.size() && !threads.isEmpty())
+		{
+			MyFrame.VisableAllButtons();
+			threads.clear();
+			finished.clear();
+		}
 	}
 
 	/* * * * * * * * * * * * * * * * * *  Solve * * * * * * * * * * * * * * * */
@@ -107,7 +116,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	}
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
 	public void Clear() {
-		Solutions = new Vector<Path>();
+		Solutions.clear();
 		repaint();
 	}
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */

@@ -22,8 +22,10 @@ public class PacmanThread extends Thread{
 			Path path = lines.get(i);
 			if(path.ID.equals(pacman.getInfo().getID()))
 			{
+				if(path.time >= 0)
+				{
 				try {
-					Thread.sleep((long) (path.time * 100));
+					Thread.sleep((long) (path.time * 10));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -31,7 +33,9 @@ public class PacmanThread extends Thread{
 				canvas.AddSolution(path);
 				pacman.translate(path.vec);
 				canvas.repaint();
+				}
 			}
 		}
+		canvas.finished.add(true);
 	}
 }

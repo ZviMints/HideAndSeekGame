@@ -22,6 +22,13 @@ public class MyFrame{
 	static JTextField ScoreTextField;
 	static DotsAndLines panel;
 
+	static  JLabel Solve;
+	static  JLabel ClearH;
+	static  JLabel Clear;
+	static  JLabel Load;
+	static  JLabel Save;
+	static  JLabel Info;
+
 	public MyFrame (String path)
 	{
 		frame = new JFrame();
@@ -32,45 +39,45 @@ public class MyFrame{
 	private void initialize() {
 		JFrame frame = new JFrame();	
 		frame.setSize(1650, 697); // Set Size to JFrame
-		
+
 		map = new Map(frame.getWidth(),frame.getHeight());   
 		frame.getContentPane().setLayout(null);
 
 
 		//Solve JButton
-		JLabel Solve = new JLabel(new ImageIcon("./img/Solve.png"));
+		Solve = new JLabel(new ImageIcon("./img/Solve.png"));
 		Solve.setVisible(true);
 		frame.getContentPane().add(Solve);
 		Solve.setBounds(1433, 20, 188, 56);
 
 
 		//Save JButton
-		JLabel Save = new JLabel(new ImageIcon("./img/Save.png"));
+		Save = new JLabel(new ImageIcon("./img/Save.png"));
 		Save.setVisible(true);
 		frame.getContentPane().add(Save);
 		Save.setBounds(1433, 20 + 20 + 56, 188, 56);
 
 		//Load JButton
-		JLabel Load = new JLabel(new ImageIcon("./img/Load.png"));
+		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
 		frame.getContentPane().add(Load);
 		Load.setBounds(1433, 20 + 20 + 56 + 56 + 20, 188, 56);
-		
+
 		//Clear JButton
-		JLabel Clear = new JLabel(new ImageIcon("./img/Clear.png"));
+		Clear = new JLabel(new ImageIcon("./img/Clear.png"));
 		Clear.setVisible(true);
 		frame.getContentPane().add(Clear);
 		Clear.setBounds(1433, 20 + 20 + 56 + 56 +56 + 20 + 20, 188, 56);
-		
-		
+
+
 		//ClearH JButton
-		JLabel ClearH = new JLabel(new ImageIcon("./img/ClearH.png"));
+		ClearH = new JLabel(new ImageIcon("./img/ClearH.png"));
 		ClearH.setVisible(true);
 		frame.getContentPane().add(ClearH);
 		ClearH.setBounds(1433, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
-		
+
 		//Mouse Info 
-		JLabel Info = new JLabel(new ImageIcon("./img/Info.png"));
+		Info = new JLabel(new ImageIcon("./img/Info.png"));
 		Info.setVisible(true);
 		frame.getContentPane().add(Info);
 		Info.setBounds(1433, 20 + 20 + 56 + 56 + 20 + 56 +56 + 56 + 20 + 20 + 20, 245, 178);
@@ -87,9 +94,9 @@ public class MyFrame{
 				super.paint(g);
 			}
 		};	
-		
+
 		ScoreTextField.setBorder(null);
-		ScoreTextField.setVisible(true);
+		ScoreTextField.setVisible(false);
 		ScoreTextField.setText("0.0");
 		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 15));
 		ScoreTextField.setForeground(Color.WHITE);
@@ -100,23 +107,35 @@ public class MyFrame{
 		// On Click "Solve":
 		Solve.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				panel.Solve();
-			}});
+				if(game.getFruitList().size() > 1
+						&& panel.Solutions.isEmpty() )
+						
+				{
+					Solve.setVisible(false);
+					ScoreTextField.setVisible(true);
+					ClearH.setVisible(false);
+					Clear.setVisible(false);
+					Load.setVisible(false);
+					Save.setVisible(false);
+					Info.setVisible(true);
+					panel.Solve();
+				}
+				}});
 
 		// On Click "ClearH":
 		ClearH.addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						panel.clearH();
-						UpdateTime(0);
-					}});
-		
+			public void mouseClicked(MouseEvent e) {
+				panel.clearH();
+				UpdateTime(0);
+			}});
+
 		// On Click "Clear":
 		Clear.addMouseListener(new MouseAdapter() {
-					public void mouseClicked(MouseEvent e) {
-						panel.Clear();
-						UpdateTime(0);
-					}});
-		
+			public void mouseClicked(MouseEvent e) {
+				panel.Clear();
+				UpdateTime(0);
+			}});
+
 		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
 		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().add(panel);
@@ -136,4 +155,11 @@ public class MyFrame{
 	public static double getHeight() { return frame.getHeight(); }
 	public synchronized static void UpdateTime(double time) { ScoreTextField.setText(time + ""); }
 	public synchronized static double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
+	public static void VisableAllButtons() {
+		Solve.setVisible(true);
+		Clear.setVisible(true);
+		ClearH.setVisible(true);
+		Load.setVisible(true);
+		Save.setVisible(true);		
+	}
 }
