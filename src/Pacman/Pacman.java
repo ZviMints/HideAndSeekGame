@@ -31,6 +31,11 @@ public class Pacman implements GIS_Pacman{
 		Color randomColor = new Color(r, g, b);
 		PacmanData = new PacmanData(id,speed,radius,randomColor);
 	}
+	public Pacman(Pacman p) {
+		this.geo = p.geo;
+		this.PacmanData = p.PacmanData;
+	}
+
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()
 	{

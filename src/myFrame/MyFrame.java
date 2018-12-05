@@ -90,7 +90,7 @@ public class MyFrame{
 		
 		ScoreTextField.setBorder(null);
 		ScoreTextField.setVisible(true);
-		ScoreTextField.setText(" 0.0");
+		ScoreTextField.setText("0.0");
 		ScoreTextField.setFont(new Font("Courier New", Font.PLAIN, 15));
 		ScoreTextField.setForeground(Color.WHITE);
 		ScoreTextField.setBounds(1433 + 8, 697 - 120 , 170, 56);
@@ -101,7 +101,6 @@ public class MyFrame{
 		Solve.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				panel.Solve();
-				UpdateTime(panel.getAlgoTime());
 			}});
 
 		// On Click "ClearH":
@@ -135,5 +134,6 @@ public class MyFrame{
 
 	public static double getWidth() { return frame.getWidth(); }
 	public static double getHeight() { return frame.getHeight(); }
-	public static void UpdateTime(double time) { ScoreTextField.setText(" "+time); }
+	public synchronized static void UpdateTime(double time) { ScoreTextField.setText(time + ""); }
+	public synchronized static double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
 }

@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JPanel;
 
@@ -24,9 +25,10 @@ import Path.Path;
 import ShortestPathAlgo.Algo;
 
 public class DotsAndLines extends JPanel implements MouseListener{
-	private List<Path> lines;
+	private Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
 	private List<Fruit> FruitsList = new ArrayList<Fruit>();
 	private List<Pacman> PacmansList = new ArrayList<Pacman>();
+	private List<PacmanThread> threads = new ArrayList<PacmanThread>();
 	private Game game;
 	private Algo algo;
 	private Map map;
@@ -39,7 +41,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public DotsAndLines(String path, Game game, Map map)
 	{	
 		this.map = map;
-		lines = new ArrayList<Path>();
 		this.game = game;
 		FruitsList.addAll(this.game.getFruitList());
 		PacmansList.addAll(this.game.getPacmanList());
@@ -48,25 +49,19 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	}
 	/* * * * * * * * * * * * * * * * * *   getAlgoTime * * * * * * * * * * * * * * * */
 	public double getAlgoTime() { return this.algo.getTime(); }
-	
+
+	/* * * * * * * * * * * * * * * * * *   AddSolution * * * * * * * * * * * * * * * */
+	public void AddSolution(Path path)
+	{
+		Solutions.add(path);
+	}
 	/* * * * * * * * * * * * * * * * * *  paintComponent * * * * * * * * * * * * * * * */
 	public void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
-        g.drawImage(bgImage , 0, 0, this);
-        g.drawImage(bgImageHover , 0, 0, this);
+		g.drawImage(bgImage , 0, 0, this);
+		g.drawImage(bgImageHover , 0, 0, this);
 
-		for (Path path : lines) {
-			g.setColor(path.color);
-            Graphics2D g2 = (Graphics2D) g;
-            g2.setStroke(new BasicStroke(7));
-            Point3D path_point1_in_pixels = map.getPixelFromCord(new Point3D(path.x0,path.y0,0));
-            Point3D path_point2_in_pixels = map.getPixelFromCord(new Point3D(path.x1,path.y1,0));
-            g2.draw(new Line2D.Double(path_point1_in_pixels.x(), path_point1_in_pixels.y(),
-            		                  path_point2_in_pixels.x(), path_point2_in_pixels.y()));    
-		}
-		
-		g.setColor(Color.GREEN);
 		for(Fruit fruit : MyFrame.game.getFruitList())
 		{
 			Point3D p = (Point3D) fruit.getGeom();
@@ -75,7 +70,18 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int y = (int) p_pixels.y();
 			g.drawImage(FruitImage, x-25, y-25, this);
 		}
-		
+
+		for(Path path : Solutions)
+		{
+			g.setColor(path.color);
+			Graphics2D g2 = (Graphics2D) g;
+			g2.setStroke(new BasicStroke(7));
+			Point3D path_point1_in_pixels = map.getPixelFromCord(new Point3D(path.x0,path.y0,0));
+			Point3D path_point2_in_pixels = map.getPixelFromCord(new Point3D(path.x1,path.y1,0));
+			g2.draw(new Line2D.Double(path_point1_in_pixels.x(), path_point1_in_pixels.y(),
+					path_point2_in_pixels.x(), path_point2_in_pixels.y()));    
+		}
+
 		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
 			Point3D p = (Point3D) pacman.getGeom();
@@ -85,21 +91,29 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
 	}
+
 	/* * * * * * * * * * * * * * * * * *  Solve * * * * * * * * * * * * * * * */
 	public void Solve() {
-		algo = new Algo(this.game,this);
-		lines = algo.getSolution();
-		repaint();
+		algo = new Algo(this.game);
+		List<Path> lines = algo.getSolution();
+		for(Pacman pac : PacmansList)
+		{
+			threads.add(new PacmanThread(this,pac,lines));	
+		}
+		for(Thread thread : threads)
+		{
+			thread.start();
+		}
 	}
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
 	public void Clear() {
-		lines = new ArrayList<Path>();
+		Solutions = new Vector<Path>();
 		repaint();
 	}
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1 && this.lines.isEmpty()  && !game.getPacmanList().isEmpty()) // Left Click
+		if(e.getButton() == MouseEvent.BUTTON1 && this.Solutions.isEmpty()  && !game.getPacmanList().isEmpty()) // Left Click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));	
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -113,12 +127,12 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		{
 			MyFrame.game.getPacmanList().clear();
 			MyFrame.game.getFruitList().clear();
-			lines = new ArrayList<Path>();
+			Solutions = new Vector<Path>();
 			repaint();
 
 		}
-		
-		else if(e.getButton() == MouseEvent.BUTTON3 && this.lines.isEmpty()) // Right click
+
+		else if(e.getButton() == MouseEvent.BUTTON3 && this.Solutions.isEmpty()) // Right click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -131,7 +145,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		repaint();
 
 	}
-	
+
 	/* * * * * * * * * * * * * * * * * * Clear Fruits * * * * * * * * * * * * * * * */
 	public void clearH() {
 		MyFrame.game.getFruitList().clear();

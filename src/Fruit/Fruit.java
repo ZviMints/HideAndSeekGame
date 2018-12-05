@@ -23,6 +23,11 @@ public class Fruit implements GIS_Fruit{
 		// ************ initialize Fruit Data ************ //
 		FruitData = new FruitData(id);
 	}
+	public Fruit(Fruit f) {
+		this.geo = f.geo;
+		this.FruitData = f.FruitData;
+	}
+
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()
 	{

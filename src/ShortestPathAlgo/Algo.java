@@ -18,44 +18,48 @@ public class Algo {
 	private double time = 0;
 	private  List<Fruit> FruitsList = new ArrayList<Fruit>();
 	private  List<Pacman> PacmansList = new ArrayList<Pacman>();
-	private DotsAndLines panel;
 
 	/* * * * * * * * * * * * * *  Getters and Setters * * * * * * * * * * * * * * * */
 	public List<Path> getSolution() { return solution; }
 
 	/* * * * * * * * * * * * * *  Algo * * * * * * * * * * * * * * * */
-	public Algo(Game game, DotsAndLines panel)
+	public Algo(Game game)
 	{
-		this.panel = panel;
 		solution = new ArrayList<Path>();
-		FruitsList.addAll(game.getFruitList());
-		PacmansList.addAll(game.getPacmanList());
+		for(Fruit f : game.getFruitList())
+			FruitsList.add(new Fruit(f));
+		for(Pacman p : game.getPacmanList())
+			PacmansList.add(new Pacman(p));
+		
 		Calculate();
 	}
 
 	private void Calculate() {
 		MyCoords coords = new MyCoords();
+
 		while(!FruitsList.isEmpty())
 		{
 			Pacman pac = NextPacman();
 			Point3D pac_point = (Point3D)pac.getGeom();
 			Fruit Closest = findClosest2Pac(pac_point);
 			Point3D Closest_point = (Point3D)Closest.getGeom();
-			
+
 			double distance2ClosestPoint = coords.distance3d(pac_point, Closest_point);
 			double speed = Double.parseDouble(pac.getInfo().getSpeed());
 			double radius = Double.parseDouble(pac.getInfo().getRadius());
 
 			setTime(getTime() + ( distance2ClosestPoint - radius ) / speed);
-			
-			Path path = new Path(pac,
+			Point3D vec = new Point3D(coords.vector3D(pac_point,Closest_point));
+
+			Path path = new Path(pac.getInfo().getID(),
 					(pac_point).x(),
 					(pac_point).y(),
 					Closest_point.x(),
 					Closest_point.y(),
-					pac.getInfo().color);
-			
-			Point3D vec = new Point3D(coords.vector3D(pac_point,Closest_point));
+					pac.getInfo().color
+					,( distance2ClosestPoint - radius ) / speed
+					,vec);
+
 			pac.translate(vec);	
 			solution.add(path);
 			FruitsList.remove(Closest);
@@ -72,7 +76,7 @@ public class Algo {
 				Point3D fruit_point = (Point3D) fruit.getGeom(); 
 				Point3D pacman_point = (Point3D) pacman.getGeom();
 				double Pacman_time = fruit_point.distance3D(pacman_point) /
-						              Double.parseDouble(pacman.getInfo().getSpeed());
+						Double.parseDouble(pacman.getInfo().getSpeed());
 				if(Min_time > Pacman_time)
 				{
 					Min_time = Pacman_time;
@@ -82,8 +86,8 @@ public class Algo {
 		}
 		return ans;
 	}
-	
-	
+
+
 	private Fruit findClosest2Pac(Point3D pacman_point) {
 		double min = Double.MAX_VALUE;
 		Fruit ans = null;
