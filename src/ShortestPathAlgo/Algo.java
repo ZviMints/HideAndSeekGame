@@ -47,10 +47,9 @@ public class Algo {
 			double distance2ClosestPoint = coords.distance3d(pac_point, Closest_point);
 			double speed = Double.parseDouble(pac.getInfo().getSpeed());
 			double radius = Double.parseDouble(pac.getInfo().getRadius());
-
 			setTime(getTime() + ( distance2ClosestPoint - radius ) / speed);
 			Point3D vec = new Point3D(coords.vector3D(pac_point,Closest_point));
-
+			
 			Path path = new Path(pac.getInfo().getID(),
 					(pac_point).x(),
 					(pac_point).y(),
@@ -68,15 +67,20 @@ public class Algo {
 
 	private Pacman NextPacman() {
 		double Min_time = Double.MAX_VALUE;
+		MyCoords coords = new MyCoords();
 		Pacman ans = null;	
-		for(Pacman pacman : PacmansList)
+		for(int i=0; i< PacmansList.size() ; i++)
 		{
-			for(Fruit fruit : FruitsList)
+			Pacman pacman = PacmansList.get(i);
+			for(int j=0; j<FruitsList.size(); j++)
 			{
+				Fruit fruit = FruitsList.get(j);
 				Point3D fruit_point = (Point3D) fruit.getGeom(); 
 				Point3D pacman_point = (Point3D) pacman.getGeom();
-				double Pacman_time = fruit_point.distance3D(pacman_point) /
-						Double.parseDouble(pacman.getInfo().getSpeed());
+				double distance = coords.distance3d(pacman_point, fruit_point);
+				double radius = Double.parseDouble(pacman.getInfo().getRadius());
+				double speed = Double.parseDouble(pacman.getInfo().getSpeed());
+				double Pacman_time = (distance - radius) / speed ;
 				if(Min_time > Pacman_time)
 				{
 					Min_time = Pacman_time;
@@ -91,10 +95,12 @@ public class Algo {
 	private Fruit findClosest2Pac(Point3D pacman_point) {
 		double min = Double.MAX_VALUE;
 		Fruit ans = null;
-		for(Fruit fruit : FruitsList)
+		MyCoords coords = new MyCoords();
+		for(int i=0; i<FruitsList.size(); i++)
 		{
+			Fruit fruit = FruitsList.get(i);
 			Point3D fruit_point = (Point3D) fruit.getGeom(); 
-			double distance = fruit_point.distance3D(pacman_point);
+			double distance = coords.distance3d(fruit_point, pacman_point);
 			if(min > distance)
 			{
 				min = distance;

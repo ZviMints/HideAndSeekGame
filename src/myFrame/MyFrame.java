@@ -117,7 +117,7 @@ public class MyFrame{
 					Clear.setVisible(false);
 					Load.setVisible(false);
 					Save.setVisible(false);
-					Info.setVisible(true);
+					Info.setVisible(false);
 					panel.Solve();
 				}
 				}});
@@ -161,5 +161,7 @@ public class MyFrame{
 		ClearH.setVisible(true);
 		Load.setVisible(true);
 		Save.setVisible(true);		
+		Info.setVisible(true);
+
 	}
 }

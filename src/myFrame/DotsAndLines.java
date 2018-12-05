@@ -59,7 +59,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		Solutions.add(path);
 	}
 	/* * * * * * * * * * * * * * * * * *  paintComponent * * * * * * * * * * * * * * * */
-	public void paintComponent(Graphics g)
+	public synchronized void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
 		g.drawImage(bgImage , 0, 0, this);
@@ -73,12 +73,13 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int y = (int) p_pixels.y();
 			g.drawImage(FruitImage, x-25, y-25, this);
 		}
-
+		
 		for(Path path : Solutions)
 		{
 			g.setColor(path.color);
 			Graphics2D g2 = (Graphics2D) g;
-			g2.setStroke(new BasicStroke(7));
+			
+			g2.setStroke(new BasicStroke(10));
 			Point3D path_point1_in_pixels = map.getPixelFromCord(new Point3D(path.x0,path.y0,0));
 			Point3D path_point2_in_pixels = map.getPixelFromCord(new Point3D(path.x1,path.y1,0));
 			g2.draw(new Line2D.Double(path_point1_in_pixels.x(), path_point1_in_pixels.y(),
@@ -135,11 +136,12 @@ public class DotsAndLines extends JPanel implements MouseListener{
 				MyFrame.game.getFruitList().add(fruit);
 			}
 		}
-		else if(e.getButton() == MouseEvent.BUTTON2) // Right click
+		else if(e.getButton() == MouseEvent.BUTTON2 && threads.isEmpty()) // Middle click
 		{
 			MyFrame.game.getPacmanList().clear();
 			MyFrame.game.getFruitList().clear();
 			Solutions = new Vector<Path>();
+			MyFrame.UpdateTime(0);
 			repaint();
 
 		}
