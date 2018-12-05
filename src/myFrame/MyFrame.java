@@ -139,6 +139,10 @@ public class MyFrame{
 		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
 		panel.setBounds(0, 0, 1433, 642);
 		frame.getContentPane().add(panel);
+		
+		ImageIcon icon = new ImageIcon("./img/icon.png"); // Set Icon to Frame
+		frame.setIconImage(icon.getImage());
+		
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
 		frame.setLocationRelativeTo(null); // Puts on the center of the Screen		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Will Close the JFame on [X]

@@ -74,8 +74,9 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			g.drawImage(FruitImage, x-25, y-25, this);
 		}
 		
-		for(Path path : Solutions)
+		for(int i =0;i<Solutions.size();i++)
 		{
+			Path path = Solutions.get(i);
 			g.setColor(path.color);
 			Graphics2D g2 = (Graphics2D) g;
 			
