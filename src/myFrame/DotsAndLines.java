@@ -39,6 +39,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
 	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
 	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
+	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
+
 
 
 	public DotsAndLines(String path, Game game, Map map)
@@ -73,20 +75,20 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int y = (int) p_pixels.y();
 			g.drawImage(FruitImage, x-25, y-25, this);
 		}
-		
+
 		for(int i =0;i<Solutions.size();i++)
 		{
 			Path path = Solutions.get(i);
 			g.setColor(path.color);
 			Graphics2D g2 = (Graphics2D) g;
-			
+
 			g2.setStroke(new BasicStroke(10));
 			Point3D path_point1_in_pixels = map.getPixelFromCord(new Point3D(path.x0,path.y0,0));
 			Point3D path_point2_in_pixels = map.getPixelFromCord(new Point3D(path.x1,path.y1,0));
 			g2.draw(new Line2D.Double(path_point1_in_pixels.x(), path_point1_in_pixels.y(),
 					path_point2_in_pixels.x(), path_point2_in_pixels.y()));    
 		}
-
+		
 		for(Pacman pacman : MyFrame.game.getPacmanList())
 		{
 			Point3D p = (Point3D) pacman.getGeom();
@@ -97,6 +99,20 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			g.fillOval(x-13, y-5, 30, 30);
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
+		
+		for(PacmanThread thread : threads)
+		{
+			if(!thread.isAlive())
+			{
+				Point3D p = (Point3D) thread.pacman.getGeom();
+				Point3D p_pixels = map.getPixelFromCord(p);
+				int x = (int) p_pixels.x();
+				int y = (int) p_pixels.y();
+				g.drawImage(Finished, x-30, y-47, this);
+			}
+		}
+		
+		
 		if(finished.size() == threads.size() && !threads.isEmpty())
 		{
 			MyFrame.VisableAllButtons();
@@ -116,9 +132,10 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		for(Thread thread : threads)
 		{
 			thread.start();
-			
+
 		}
 	}
+
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
 	public void Clear() {
 		Solutions.clear();

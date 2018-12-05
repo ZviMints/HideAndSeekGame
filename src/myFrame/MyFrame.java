@@ -38,7 +38,7 @@ public class MyFrame{
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
 	private void initialize() {
 		JFrame frame = new JFrame();	
-		frame.setSize(1625, 697); // Set Size to JFrame
+		frame.setSize(1625, 682); // Set Size to JFrame
 
 	
 		map = new Map(1433,642);   
