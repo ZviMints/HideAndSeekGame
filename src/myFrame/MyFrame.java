@@ -41,7 +41,7 @@ public class MyFrame{
 		frame.setSize(1625, 697); // Set Size to JFrame
 
 	
-		map = new Map(frame.getWidth(),frame.getHeight());   
+		map = new Map(1433,642);   
 		frame.getContentPane().setLayout(null);
 
 		
@@ -157,9 +157,6 @@ public class MyFrame{
 		panel.Solve();
 	}
 	/* * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
-
-	public static double getWidth() { return panel.getWidth(); }
-	public static double getHeight() { return panel.getHeight(); }
 	public synchronized static void UpdateTime(double time) { ScoreTextField.setText(time + ""); }
 	public synchronized static double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
 	public static void VisableAllButtons() {

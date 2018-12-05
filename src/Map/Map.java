@@ -1,26 +1,23 @@
 package Map;
-import java.util.Collection;
 
 import Coords.MyCoords;
-import Fruit.Fruit;
 import Geom.Point3D;
-import Pacman.Pacman;
 
 public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
-	private int width;
-	private int height;
+	private double width;
+	private double height;
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
-	public Map(int width, int height) {
-		this.setWidth(width);
-		this.setHeight(height);
+	public Map(double d, double e) {
+		this.setWidth(d);
+		this.setHeight(e);
 	}
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
-	public int getHeight() { return height;}
-	public void setHeight(int height) { this.height = height; }
-	public int getWidth() { return width; }
-	public void setWidth(int width) { this.width = width;}
+	public double getHeight() { return height;}
+	public void setHeight(double e) { this.height = e; }
+	public double getWidth() { return width; }
+	public void setWidth(double d) { this.width = d;}
 
 	/* * * * * * * * * * * * * * * * * * GetCord * * * * * * * * * * * * * * * */
 	public Point3D getPixelFromCord(Point3D input) // Output Point3D will return in Pixels;
