@@ -38,11 +38,16 @@ public class MyFrame{
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
 	private void initialize() {
 		JFrame frame = new JFrame();	
-		frame.setSize(1650, 697); // Set Size to JFrame
+		frame.setSize(1625, 697); // Set Size to JFrame
 
+	
 		map = new Map(frame.getWidth(),frame.getHeight());   
 		frame.getContentPane().setLayout(null);
 
+		
+		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
+		panel.setBounds(0, 0, 1433, 642);
+		frame.getContentPane().add(panel);
 
 		//Solve JButton
 		Solve = new JLabel(new ImageIcon("./img/Solve.png"));
@@ -136,13 +141,11 @@ public class MyFrame{
 				UpdateTime(0);
 			}});
 
-		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
-		panel.setBounds(0, 0, 1433, 642);
-		frame.getContentPane().add(panel);
+
 		
 		ImageIcon icon = new ImageIcon("./img/icon.png"); // Set Icon to Frame
 		frame.setIconImage(icon.getImage());
-		
+		frame.setResizable(false);
 		frame.setTitle("T&O OP_3 Exercise"); // Set Title
 		frame.setLocationRelativeTo(null); // Puts on the center of the Screen		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Will Close the JFame on [X]
@@ -155,8 +158,8 @@ public class MyFrame{
 	}
 	/* * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 
-	public static double getWidth() { return frame.getWidth(); }
-	public static double getHeight() { return frame.getHeight(); }
+	public static double getWidth() { return panel.getWidth(); }
+	public static double getHeight() { return panel.getHeight(); }
 	public synchronized static void UpdateTime(double time) { ScoreTextField.setText(time + ""); }
 	public synchronized static double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
 	public static void VisableAllButtons() {
