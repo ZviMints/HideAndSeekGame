@@ -32,6 +32,7 @@ public class CSVToMatrix {
 			e.printStackTrace();
 		}
 	}
+	
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public String getPath() {
 		return path;
