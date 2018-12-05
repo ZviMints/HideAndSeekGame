@@ -91,6 +91,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			Point3D p_pixels = map.getPixelFromCord(p);
 			int x = (int) p_pixels.x();
 			int y = (int) p_pixels.y();
+			g.setColor(pacman.getInfo().color);
+			g.fillOval(x-13, y-5, 30, 30);
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
 		if(finished.size() == threads.size() && !threads.isEmpty())
@@ -112,6 +114,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		for(Thread thread : threads)
 		{
 			thread.start();
+			
 		}
 	}
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
