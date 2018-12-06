@@ -163,9 +163,10 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		}
 		// ** Middle Mouse Click - Clear ** //
 		else if(e.getButton() == MouseEvent.BUTTON2
-				&& threads.isEmpty())
+				&& finished.isEmpty())
 		{
 			PacmansList.clear();
+			threads.clear();
 			MyFrame.UpdateScoreTime(0);
 			clearH();
 		}
