@@ -6,6 +6,7 @@ import Geom.Geom_element;
 import Geom.Point3D;
 import Pacman.Pacman;
 public class Game{
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private List<Pacman> Pacman_List;
 	private List<Fruit> Fruit_List;
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
@@ -13,11 +14,6 @@ public class Game{
 	public List<Fruit> getFruitList() { return Fruit_List; }
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
-	public Game() {
-		// ************ initialize Set ************ //
-		Pacman_List = new ArrayList<Pacman>();
-		Fruit_List = new ArrayList<Fruit>();
-	}
 	public Game(String path)
 	{
 		// ************ initialize Set ************ //
@@ -49,30 +45,6 @@ public class Game{
 				Pacman_List.add(pacman);	
 			}
 		}
-	}
-	/* * * * * * * * * * * * * * * * * * Has Fruit * * * * * * * * * * * * * * * */
-	public boolean HasF(Fruit f)
-	{
-
-		for(Fruit current : Fruit_List)
-		{
-			Point3D current_point = (Point3D)current.getGeom();
-			Point3D f_point = (Point3D)f.getGeom();
-			if(f_point.equals(current_point)) return true;
-		}
-		return false;	
-	}
-	/* * * * * * * * * * * * * * * * * * Has Pacman * * * * * * * * * * * * * * * */
-	public boolean HasP(Pacman p)
-	{
-
-		for(Pacman current : Pacman_List)
-		{
-			Point3D current_point = (Point3D)current.getGeom();
-			Point3D f_point = (Point3D)p.getGeom();
-			if(f_point.equals(current_point)) return true;
-		}
-		return false;	
 	}
 	/* * * * * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()

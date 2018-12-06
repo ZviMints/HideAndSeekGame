@@ -1,6 +1,9 @@
+/**
+ * The Method is the main Panel of the game
+ * @author Tzvi Mints and Or Abuhazira
+ */
 package myFrame;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -21,20 +24,21 @@ import Game.Game;
 import Geom.Point3D;
 import Map.Map;
 import Pacman.Pacman;
+import Pacman.PacmanThread;
 import Path.Path;
 import ShortestPathAlgo.Algo;
 
 public class DotsAndLines extends JPanel implements MouseListener{
-	Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
-	private List<Fruit> FruitsList = new ArrayList<Fruit>();
-	private List<Pacman> PacmansList = new ArrayList<Pacman>();
-	volatile List<Boolean> finished = new ArrayList<Boolean>();
 
-
-	private List<PacmanThread> threads = new ArrayList<PacmanThread>();
-	private Game game;
-	private Algo algo;
-	private Map map;
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
+	public volatile List<Boolean> finished = new ArrayList<Boolean>(); // Boolean List for the threads. Responsible to say if thread in index[i] is finished
+	public Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
+	public List<PacmanThread> threads = new ArrayList<PacmanThread>(); // List of all Pacman Threads
+	private List<Fruit> FruitsList; // All the Fruits
+	private List<Pacman> PacmansList;	 // All the Pacmans
+	private Game game; // This Game Database
+	private Algo algo; // Algorithm of the current game
+	private Map map; // Map of current game 
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
 	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
@@ -42,32 +46,34 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
 
 
-
+	/* * * * * * * * * * * * * * * * * *   Constructor * * * * * * * * * * * * * * * */
 	public DotsAndLines(String path, Game game, Map map)
 	{	
-		this.map = map;
 		this.game = game;
-		FruitsList.addAll(this.game.getFruitList());
-		PacmansList.addAll(this.game.getPacmanList());
+		this.map = map;
+		FruitsList = this.game.getFruitList();
+		PacmansList = this.game.getPacmanList();
 		addMouseListener(this); // Mouse Clicks
 		setFocusable(true);
 	}
-	/* * * * * * * * * * * * * * * * * *   getAlgoTime * * * * * * * * * * * * * * * */
-	public double getAlgoTime() { return this.algo.getTime(); }
-
 	/* * * * * * * * * * * * * * * * * *   AddSolution * * * * * * * * * * * * * * * */
-	public void AddSolution(Path path)
+	/**
+	 * The Method is Responsible to add Path to Solutions.
+	 * used will Thread is running
+	 */
+	public synchronized void AddSolution(Path path)
 	{
 		Solutions.add(path);
 	}
-	/* * * * * * * * * * * * * * * * * *  paintComponent * * * * * * * * * * * * * * * */
-	public synchronized void paintComponent(Graphics g)
+	/* * * * * * * * * * * * * * * Main Paint Method! * * * * * * * * * * * * * * * */
+	public void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
 		g.drawImage(bgImage , 0, 0, this);
 		g.drawImage(bgImageHover , 0, 0, this);
 
-		for(Fruit fruit : MyFrame.game.getFruitList())
+		// ** Print all Fruits that load from .CSV file ** //
+		for(Fruit fruit : FruitsList)
 		{
 			Point3D p = (Point3D) fruit.getGeom();
 			Point3D p_pixels = map.getPixelFromCord(p);
@@ -75,8 +81,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int y = (int) p_pixels.y();
 			g.drawImage(FruitImage, x-25, y-25, this);
 		}
-
-		for(int i =0;i<Solutions.size();i++)
+		// ** Print all the Path ( Solutions ) ** //
+		for(int i = 0;i<Solutions.size();i++)
 		{
 			Path path = Solutions.get(i);
 			g.setColor(path.color);
@@ -88,8 +94,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			g2.draw(new Line2D.Double(path_point1_in_pixels.x(), path_point1_in_pixels.y(),
 					path_point2_in_pixels.x(), path_point2_in_pixels.y()));    
 		}
-		
-		for(Pacman pacman : MyFrame.game.getPacmanList())
+		// ** Print all Pacmans that load from .CSV file ** //
+		for(Pacman pacman : PacmansList)
 		{
 			Point3D p = (Point3D) pacman.getGeom();
 			Point3D p_pixels = map.getPixelFromCord(p);
@@ -99,7 +105,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			g.fillOval(x-13, y-5, 30, 30);
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
-		
+		// ** Print all the Hats the Finish the Algo ** //
 		for(PacmanThread thread : threads)
 		{
 			if(!thread.isAlive())
@@ -111,32 +117,30 @@ public class DotsAndLines extends JPanel implements MouseListener{
 				g.drawImage(Finished, x-30, y-47, this);
 			}
 		}
-		
-		
-		if(finished.size() == threads.size() && !threads.isEmpty())
-		{
-			MyFrame.VisableAllButtons();
-			threads.clear();
-			finished.clear();
-		}
 	}
-
 	/* * * * * * * * * * * * * * * * * *  Solve * * * * * * * * * * * * * * * */
+	/**
+	 * This Method is responsible to Solve the current game using Algo Class
+	 * Will start working after click on "Start" at Frame.
+	 */
 	public void Solve() {
+		threads.clear(); // Remove the Hats
+		
 		algo = new Algo(this.game);
 		List<Path> lines = algo.getSolution();
+		double max_time = algo.getGreedyAlgoTime();
+		
 		for(Pacman pac : PacmansList)
-		{
-			threads.add(new PacmanThread(this,pac,lines));	
-		}
+			threads.add(new PacmanThread(this,pac,lines,max_time));	
+		
 		for(Thread thread : threads)
-		{
 			thread.start();
-
-		}
 	}
 
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
+	/**
+	 * Clear the Solutions, Remove all the Path's.
+	 */
 	public void Clear() {
 		Solutions.clear();
 		repaint();
@@ -144,44 +148,82 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	/* * * * * * * * * * * * * * * * * * Mouse Listener * * * * * * * * * * * * * * * */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1 && this.Solutions.isEmpty()  && !game.getPacmanList().isEmpty()) // Left Click
+		// ** Left Mouse Click - Add Fruit ** //
+		if(e.getButton() == MouseEvent.BUTTON1 
+				&& this.Solutions.isEmpty() 
+				&& !PacmansList.isEmpty()) // Left Click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));	
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			Fruit fruit = new Fruit(timeStamp, p);
-			if(!MyFrame.game.HasF(fruit)) 
+			if(!HasF(fruit)) 
 			{
-				MyFrame.game.getFruitList().add(fruit);
+				FruitsList.add(fruit);
 			}
 		}
-		else if(e.getButton() == MouseEvent.BUTTON2 && threads.isEmpty()) // Middle click
+		// ** Middle Mouse Click - Clear ** //
+		else if(e.getButton() == MouseEvent.BUTTON2
+				&& threads.isEmpty())
 		{
-			MyFrame.game.getPacmanList().clear();
-			MyFrame.game.getFruitList().clear();
-			Solutions = new Vector<Path>();
-			MyFrame.UpdateTime(0);
-			repaint();
-
+			PacmansList.clear();
+			MyFrame.UpdateScoreTime(0);
+			clearH();
 		}
-
+		// ** Right Mouse Click - Add Pacman ** //
 		else if(e.getButton() == MouseEvent.BUTTON3 && this.Solutions.isEmpty()) // Right click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			Pacman pacman = new Pacman(timeStamp, "1", "1", p);
-			if(!MyFrame.game.HasP(pacman)) 
+			if(!HasP(pacman)) 
 			{
-				MyFrame.game.getPacmanList().add(pacman);
+				PacmansList.add(pacman);
 			}
 		}
 		repaint();
-
 	}
 
 	/* * * * * * * * * * * * * * * * * * Clear Fruits * * * * * * * * * * * * * * * */
+	/**
+	 * Clear the map, Remove all the Fruits.
+	 */
 	public void clearH() {
-		MyFrame.game.getFruitList().clear();
+		FruitsList.clear();
 		Clear();
+	}
+	/* * * * * * * * * * * * * * * * * * Has Fruit * * * * * * * * * * * * * * * */
+	/**
+	 * Check if Fruit is already Exists in the Fruit List
+	 * @param f is the input Fruit
+	 * @return true iff Fruitslist contains list
+	 */
+	public boolean HasF(Fruit f)
+	{
+
+		for(Fruit current : FruitsList)
+		{
+			Point3D current_point = (Point3D)current.getGeom();
+			Point3D f_point = (Point3D)f.getGeom();
+			if(f_point.equals(current_point)) return true;
+		}
+		return false;	
+	}
+	/* * * * * * * * * * * * * * * * * * Has Pacman * * * * * * * * * * * * * * * */
+	/**
+	 * Check if Pacman is already Exists in the Pacman List
+	 * @param f is the input Pacman
+	 * @return true iff PacmansList contains list
+	 */
+	public boolean HasP(Pacman p)
+	{
+
+		for(Pacman current : PacmansList)
+		{
+			Point3D current_point = (Point3D)current.getGeom();
+			Point3D f_point = (Point3D)p.getGeom();
+			if(f_point.equals(current_point)) return true;
+		}
+		return false;	
 	}
 	/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
 	@Override public void mouseClicked(MouseEvent e) { }

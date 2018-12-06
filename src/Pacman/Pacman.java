@@ -1,7 +1,8 @@
 /**
  * This Class represent Fruit that implements GIS_Fruit
- * each Element is a Line,
- * each Element have Geom and ID.
+ * each Pacman is a Line,
+ * each Pacman have Pacman Data
+ * each Pacman have time 
  * @author Tzvi Mints and Or Abuhazira
  */
 package Pacman;
@@ -13,12 +14,12 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class Pacman implements GIS_Pacman{
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private Geom_element geo;
 	private PacmanData PacmanData;
 
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public PacmanData getInfo() { return PacmanData; }
-	
 	/* * * * * * * * * * * * * * * * * * Constructors * * * * * * * * * * * * * * * */
 	public Pacman(String id,String speed,String radius, Geom_element geo) { 
 		// ************ initialize Geom_element ************ //

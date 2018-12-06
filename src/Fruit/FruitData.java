@@ -5,7 +5,7 @@
  */
 package Fruit;
 public class FruitData implements Meta_data {
-	/* * * * * * * * * * * * * *  Private Strings * * * * * * * * * * * * * * * */
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private String id;
 	
 	/* * * * * * * * * * * * * *  Constructor * * * * * * * * * * * * * * * */

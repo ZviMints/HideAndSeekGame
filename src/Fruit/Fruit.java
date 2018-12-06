@@ -1,7 +1,7 @@
 /**
  * This Class represent Fruit that implements GIS_Fruit
  * each Element is a Line,
- * each Element have Geom and ID.
+ * each Element have Fruit Data
  * @author Tzvi Mints and Or Abuhazira
  */
 package Fruit;
@@ -10,6 +10,7 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class Fruit implements GIS_Fruit{
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private Geom_element geo;
 	private FruitData FruitData;
 

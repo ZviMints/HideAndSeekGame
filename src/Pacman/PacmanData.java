@@ -8,11 +8,12 @@ package Pacman;
 import java.awt.Color;
 
 public class PacmanData implements Meta_data {
-	/* * * * * * * * * * * * * *  Private Strings * * * * * * * * * * * * * * * */
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private String id;
 	private String speed;
 	private String radius;
 	public Color color;
+	public double time = 0 ;
 
 	/* * * * * * * * * * * * * *  Constructor * * * * * * * * * * * * * * * */
 	public PacmanData(String id, String speed, String radius, Color color) {
@@ -39,5 +40,8 @@ public class PacmanData implements Meta_data {
 	public void setSpeed(String speed) { this.speed = speed; }
 	public String getRadius() { return radius; }
 	public void setRadius(String radius) { this.radius = radius; }
+	public double getTime() { return time; }
+	public void setTime(double time) { this.time = time; }
+
 }
 

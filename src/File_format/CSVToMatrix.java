@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CSVToMatrix {
+	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private static String path;
 	private static ArrayList<ArrayList<String>> matrix;
 	private static BufferedReader br;
@@ -32,7 +33,6 @@ public class CSVToMatrix {
 			e.printStackTrace();
 		}
 	}
-	
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public String getPath() {
 		return path;
