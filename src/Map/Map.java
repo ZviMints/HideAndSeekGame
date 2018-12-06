@@ -33,20 +33,22 @@ public class Map {
 
 		double TotalXInMeters = coords.distance2d(p00, p01);
 		double TotalYInMeters = coords.distance2d(p00, p10);
-		
-		
+
+
 		Point3D find_x = new Point3D(32.105848,input.y(),0);
 		double xInMeters = coords.distance2d(p00,find_x);
 
 		Point3D find_y = new Point3D(input.x(),35.202429,0);
 		double yInMeters = coords.distance2d(p00,find_y);
-				
+
 		double x = ( xInMeters / TotalXInMeters ) * getWidth();
 		double y = ( yInMeters / TotalYInMeters ) * getHeight();
-		
+
 		Point3D ans = new Point3D(x,y,0);
 		return ans;
 	}
+	/////////////////////////////////////// or bug ///////////////////////////////////
+
 	public Point3D getCordFromPixel(Point3D input) {
 		MyCoords coords = new MyCoords();
 		// p00(32.105848,35.202429) ******  p01(32.105848,35.212541) //
@@ -60,15 +62,20 @@ public class Map {
 		double TotalXInMeters = coords.distance2d(p00, p01);
 		double TotalYInMeters = coords.distance2d(p00, p10);
 
-		
-		
-		double xInMeters = ( input.x() / getWidth()  ) * TotalXInMeters;
-		double yInMeters = ( input.y() / getHeight() ) * TotalYInMeters;
-		
-		double x = coords.MTD_x(xInMeters);
-		double y = coords.MTD_y(yInMeters, xInMeters);
-		
-		Point3D ans = new Point3D(x,y,0);
+		double xInMeters = Math.abs(( input.x() * TotalXInMeters ) / getWidth());
+		double yInMeters = Math.abs(( input.y() * TotalYInMeters ) / getHeight());
+
+
+		double x = coords.MTD_x(yInMeters);
+		double y = coords.MTD_y(xInMeters, yInMeters);
+
+
+		double dx =   p00.x() - x ;
+		double dy =   p00.y() - y ;
+
+
+		Point3D ans = new Point3D(dx,dy,0);
 		return ans;
 	}
+	/////////////////////////////////////// or bug ///////////////////////////////////
 }
