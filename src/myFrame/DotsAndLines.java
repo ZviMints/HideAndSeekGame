@@ -47,7 +47,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 
 
 	/* * * * * * * * * * * * * * * * * *   Constructor * * * * * * * * * * * * * * * */
-	public DotsAndLines(String path, Game game, Map map)
+	public DotsAndLines(Game game, Map map)
 	{	
 		this.game = game;
 		this.map = map;

@@ -5,6 +5,7 @@
  */
 package myFrame;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,9 +13,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import java.io.File;
+import java.io.IOException;
 
 import Game.Game;
 import Map.Map;
@@ -34,16 +41,23 @@ public class MyFrame{
 	static  JLabel Info;
 	public static  JTextField InProgress;
 	public static JTextField TotalTF;
+	private String fileName;
 
+	public MyFrame() 
+	{
+		//		frame = new JFrame();
+		game = new Game("./data/Empty_Csv.csv");
+		initialize(null);
+	}
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public MyFrame (String path)
 	{
 		frame = new JFrame();
 		game = new Game(path);
-		initialize();
+		initialize(path);
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
-	private void initialize() {
+	private void initialize(String path) {
 		JFrame frame = new JFrame();	
 		frame.setSize(1625, 682); // Set Size to JFrame
 
@@ -51,10 +65,6 @@ public class MyFrame{
 		map = new Map(1433,642);   
 		frame.getContentPane().setLayout(null);
 
-
-		panel = new DotsAndLines("./data/game_chk.csv",game,this.map);
-		panel.setBounds(0, 0, 1433, 642);
-		frame.getContentPane().add(panel);
 
 		//Solve JButton
 		Solve = new JLabel(new ImageIcon("./img/Solve.png"));
@@ -111,11 +121,47 @@ public class MyFrame{
 		frame.getContentPane().add(Save);
 		Save.setBounds(1433, 20 + 20 + 56, 188, 56);
 
+		panel = new DotsAndLines(game,MyFrame.map);
+		panel.setBounds(0, 0, 1433, 642);
+		frame.getContentPane().add(panel);
+
+
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
 		frame.getContentPane().add(Load);
 		Load.setBounds(1433, 20 + 20 + 56 + 56 + 20, 188, 56);
+		Load.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e)  {
+				JFileChooser chooser = new JFileChooser();
+				if (chooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) 
+				{
+					fileName = chooser.getSelectedFile().getAbsolutePath();
+					if(fileName.contains(".csv")) 
+					{	
+						panel.invalidate();
+						panel.setVisible(false);
+						panel.removeAll();
+						game = new Game(fileName);
+						panel= new DotsAndLines(game,MyFrame.map);
+						panel.setBounds(0, 0, 1433, 642);
+						frame.getContentPane().add(panel);
+						panel.updateUI();
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "this file it's not csv");
+					}
+				}
+			}
+		});
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| UnsupportedLookAndFeelException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 
 		//Clear JButton
 		Clear = new JLabel(new ImageIcon("./img/Clear.png"));
@@ -173,7 +219,6 @@ public class MyFrame{
 					Save.setVisible(false);
 					Info.setVisible(false);
 					TotalTF.setVisible(true);
-
 					InProgress.setVisible(true);
 					panel.Solve();
 				}

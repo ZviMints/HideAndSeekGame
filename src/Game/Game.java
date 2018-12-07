@@ -14,6 +14,11 @@ public class Game{
 	public List<Fruit> getFruitList() { return Fruit_List; }
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
+	public Game() {
+		// ************ initialize Set ************ //
+		Pacman_List = new ArrayList<Pacman>();
+		Fruit_List = new ArrayList<Fruit>();
+	}
 	public Game(String path)
 	{
 		// ************ initialize Set ************ //
