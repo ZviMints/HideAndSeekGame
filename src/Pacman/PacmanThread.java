@@ -54,7 +54,7 @@ public class PacmanThread extends Thread{
 		{
 		MyFrame.VisableAllButtons();
 		MyFrame.UpdateScoreTime(max_time);
-		MyFrame.InProgress.setText("   " + "0");
+		MyFrame.InProgress.setText("0");
 		canvas.finished.clear();
 		canvas.repaint(); // Will make Hat the the last pacman
 		}

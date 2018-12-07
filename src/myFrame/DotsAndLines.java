@@ -44,6 +44,9 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
 	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
 	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
+	private String newPacman ="New Pacman From Mouse Click #";
+	private String newFruit ="New Fruit From Mouse Click #";
+
 
 
 	/* * * * * * * * * * * * * * * * * *   Constructor * * * * * * * * * * * * * * * */
@@ -154,8 +157,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 				&& !PacmansList.isEmpty()) // Left Click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));	
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			Fruit fruit = new Fruit(timeStamp, p);
+			Fruit fruit = new Fruit(newFruit + FruitsList.size(), p);
 			if(!HasF(fruit)) 
 			{
 				FruitsList.add(fruit);
@@ -174,8 +176,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		else if(e.getButton() == MouseEvent.BUTTON3 && this.Solutions.isEmpty()) // Right click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));
-			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			Pacman pacman = new Pacman(timeStamp, "1", "1", p);
+			Pacman pacman = new Pacman(newPacman + PacmansList.size(), "1", "1", p);
 			if(!HasP(pacman)) 
 			{
 				PacmansList.add(pacman);

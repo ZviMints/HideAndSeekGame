@@ -20,8 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import java.io.File;
-import java.io.IOException;
+
 
 import Game.Game;
 import Map.Map;
@@ -43,21 +42,20 @@ public class MyFrame{
 	public static JTextField TotalTF;
 	private String fileName;
 
-	public MyFrame() 
-	{
-		//		frame = new JFrame();
-		game = new Game("./data/Empty_Csv.csv");
-		initialize(null);
-	}
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public MyFrame (String path)
 	{
 		frame = new JFrame();
 		game = new Game(path);
-		initialize(path);
+		initialize();
+	}
+	public MyFrame() 
+	{
+		game = new Game("./data/Start.csv");
+		initialize();
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
-	private void initialize(String path) {
+	private void initialize() {
 		JFrame frame = new JFrame();	
 		frame.setSize(1625, 682); // Set Size to JFrame
 
@@ -149,7 +147,7 @@ public class MyFrame{
 						panel.updateUI();
 					}
 					else {
-						JOptionPane.showMessageDialog(null, "this file it's not csv");
+						JOptionPane.showMessageDialog(null, "This File is not .CSV file");
 					}
 				}
 			}
