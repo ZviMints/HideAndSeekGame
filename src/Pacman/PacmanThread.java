@@ -9,7 +9,7 @@ package Pacman;
 import java.util.List;
 import Path.Path;
 import myFrame.DotsAndLines;
-import myFrame.MyFrame;
+import myFrame.Menu;
 
 public class PacmanThread extends Thread{
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
@@ -40,7 +40,7 @@ public class PacmanThread extends Thread{
 				if(path.time >= 0)
 				{
 					try {
-						Thread.sleep((long) (path.time * 10));
+						Thread.sleep((long) (path.time * 5));
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -52,16 +52,16 @@ public class PacmanThread extends Thread{
 		}
 		if(lastest_thread) // if its the last thread alive
 		{
-		MyFrame.VisableAllButtons();
-		MyFrame.UpdateScoreTime(max_time);
-		MyFrame.InProgress.setText("0");
+		Menu.VisableAllButtons();
+		Menu.UpdateScoreTime(max_time);
+		Menu.InProgress.setText("0");
 		canvas.finished.clear();
 		canvas.repaint(); // Will make Hat the the last pacman
 		}
 		else // its not, will update InProgress and Update Time
 		{
-			MyFrame.UpdateFinished();
-			MyFrame.UpdateScoreTime(Math.abs(max_time));
+			Menu.UpdateFinished();
+			Menu.UpdateScoreTime(Math.abs(max_time));
 		}
 	}
 }

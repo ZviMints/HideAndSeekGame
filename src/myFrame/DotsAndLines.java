@@ -72,8 +72,9 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
-		g.drawImage(bgImage , 0, 0, this);
-		g.drawImage(bgImageHover , 0, 0, this);
+		g.drawImage(bgImage , 0, 0,map.getWidth(),map.getHeight(), this);
+		g.drawImage(bgImageHover , 0, 0,map.getWidth(),map.getHeight(), this);
+
 
 		// ** Print all Fruits that load from .CSV file ** //
 		for(Fruit fruit : FruitsList)
@@ -169,7 +170,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		{
 			PacmansList.clear();
 			threads.clear();
-			MyFrame.UpdateScoreTime(0);
+			Menu.UpdateScoreTime(0);
 			clearH();
 		}
 		// ** Right Mouse Click - Add Pacman ** //

@@ -16,7 +16,7 @@ import Pacman.Pacman;
 import Pacman.PacmanThread;
 import Path.Path;
 import myFrame.DotsAndLines;
-import myFrame.MyFrame;
+import myFrame.Menu;
 
 public class Algo {
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */

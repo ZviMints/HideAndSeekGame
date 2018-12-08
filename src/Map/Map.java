@@ -10,8 +10,8 @@ import Geom.Point3D;
 
 public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
-	private double width;
-	private double height;
+	private int width;
+	private int height;
 	// p00(32.105848,35.202429) **  p01(32.105848,35.212541) //
 	//                          **                           //
 	//                          **                           //
@@ -22,15 +22,15 @@ public class Map {
 
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
-	public Map(double d, double e) {
+	public Map(int d, int e) {
 		this.setWidth(d);
 		this.setHeight(e);
 	}
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
-	public double getHeight() { return height;}
-	public void setHeight(double e) { this.height = e; }
-	public double getWidth() { return width; }
-	public void setWidth(double d) { this.width = d;}
+	public int getHeight() { return height;}
+	public void setHeight(int e) { this.height = e; }
+	public int getWidth() { return width; }
+	public void setWidth(int d) { this.width = d;}
 
 	/* * * * * * * * * * * * * * * * * * GetCord * * * * * * * * * * * * * * * */
 	/**
