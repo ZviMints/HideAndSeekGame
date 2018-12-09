@@ -91,6 +91,6 @@ public class MyFrame extends JFrame {
 
 	/* * * * * * * * * * * * * * Main * * * * * * * * * * * * * * * */   
 	public static void main(String[] args) {
-		MyFrame Game = new MyFrame();
+		MyFrame Game = new MyFrame("./data/game_1543684662657.csv");
 	}
 }

@@ -5,6 +5,9 @@
  */
 package Map;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import Coords.MyCoords;
 import Geom.Point3D;
 
@@ -12,6 +15,8 @@ public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
 	private int width;
 	private int height;
+	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
+	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
 	// p00(32.105848,35.202429) **  p01(32.105848,35.212541) //
 	//                          **                           //
 	//                          **                           //
@@ -31,6 +36,10 @@ public class Map {
 	public void setHeight(int e) { this.height = e; }
 	public int getWidth() { return width; }
 	public void setWidth(int d) { this.width = d;}
+	public Image getBgImage() { return bgImage; }
+	public void setBgImage(Image bgImage) { this.bgImage = bgImage; }
+	public Image getBgImageHover() { return bgImageHover; }
+	public void setBgImageHover(Image bgImageHover) { this.bgImageHover = bgImageHover; }
 
 	/* * * * * * * * * * * * * * * * * * GetCord * * * * * * * * * * * * * * * */
 	/**

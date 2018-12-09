@@ -42,8 +42,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Map map; // Map of current game 
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
-	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
-	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
 	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
 	private String newPacman ="New Pacman From Mouse Click #";
 	private String newFruit ="New Fruit From Mouse Click #";
@@ -73,8 +71,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
-		g.drawImage(bgImage , 0, 0,map.getWidth(),map.getHeight(), this);
-		g.drawImage(bgImageHover , 0, 0,map.getWidth(),map.getHeight(), this);
+		g.drawImage(this.map.getBgImage() , 0, 0,map.getWidth(),map.getHeight(), this);
+		g.drawImage(this.map.getBgImageHover() , 0, 0,map.getWidth(),map.getHeight(), this);
 
 
 		// ** Print all Fruits that load from .CSV file ** //
@@ -134,7 +132,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		algo = new Algo(this.game);
 		List<Path> lines = algo.getSolution();
 		double max_time = algo.getGreedyAlgoTime();
-		
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
 		
