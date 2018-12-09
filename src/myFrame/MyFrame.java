@@ -57,7 +57,7 @@ public class MyFrame extends JFrame {
 		// ******** Menu ******** ///
 		MenuPanel = new JPanel();
 		MenuPanel.setLayout(new BoxLayout(MenuPanel, BoxLayout.X_AXIS));
-		Menu menu = new Menu(panel);
+		Menu menu = new Menu(this);
 		menu.setAutoscrolls(true);
 		menu.setFocusable(false);
 		menu.setLayout(null);
@@ -101,6 +101,6 @@ public class MyFrame extends JFrame {
 
 	/* * * * * * * * * * * * * * Main * * * * * * * * * * * * * * * */   
 	public static void main(String[] args) {
-		MyFrame Game = new MyFrame("./data/game_1543685769754.csv");
+		MyFrame Game = new MyFrame();
 	}
 }

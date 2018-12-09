@@ -35,6 +35,7 @@ public class Menu extends JPanel{
 	public static JTextField TotalTF;
 	public static String fileName;
 	public static JLabel Info;
+	public static MyFrame MainFrame;
 
 	public static DotsAndLines panel;
 
@@ -75,9 +76,10 @@ public class Menu extends JPanel{
 		InProgress.setVisible(true);				
 	}
 	/* * * * * * * * * * * * * *  Constructor  * * * * * * * * * * * * * * * */
-	public Menu(DotsAndLines panel)
+	public Menu(MyFrame myFrame)
 	{
-		this.panel = panel; 
+		this.MainFrame = myFrame;
+		this.panel = myFrame.panel; 
 		initialize();
 	}
 	/* * * * * * * * * * * * * * * * * * Initialize Window * * * * * * * * * * * * * * * */
@@ -152,7 +154,13 @@ public class Menu extends JPanel{
 					fileName = chooser.getSelectedFile().getAbsolutePath();
 					if(fileName.contains(".csv")) 
 					{	
-						MyFrame.game = new Game(fileName);
+						MainFrame.game = new Game(fileName);
+						MainFrame.mainSplittedPane.invalidate();
+						MainFrame.mainSplittedPane.setVisible(false);
+						MainFrame.mainSplittedPane.removeAll();
+						MainFrame.panel=new DotsAndLines(MainFrame.game,MainFrame.map);
+						MainFrame.StartPanel();
+
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "This File is not .CSV file");
