@@ -5,6 +5,7 @@
  */
 package ShortestPathAlgo;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import Coords.MyCoords;
@@ -25,7 +26,6 @@ public class Algo {
 	private  List<Pacman> PacmansList = new ArrayList<Pacman>();
 	private Fruit arrF[];
 	private double arrT[];
-	private double time = 0; 
 
 	/* * * * * * * * * * * * * *  Getters and Setters * * * * * * * * * * * * * * * */
 	public List<Path> getSolution() { return solution; }
@@ -41,10 +41,12 @@ public class Algo {
 
 		arrF = new Fruit[PacmansList.size()];
 		arrT = new double[PacmansList.size()];
-		Calculate();
+		Greedy();
 	}
-
-	private void Calculate() {
+	/* * * * * * * * * * * * * *  Brute Force - O(n!) * * * * * * * * * * * * * * * */
+	// Not Implement yet
+	/* * * * * * * * * * * * * *  Greedy Algorithm * * * * * * * * * * * * * * * */
+	private void Greedy() {
 		// Initialization Coords for Calculation //
 		// O(1) //
 		MyCoords coords = new MyCoords();

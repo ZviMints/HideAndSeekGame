@@ -56,6 +56,7 @@ public class PacmanThread extends Thread{
 		Menu.UpdateScoreTime(max_time);
 		Menu.InProgress.setText("0");
 		canvas.finished.clear();
+		canvas.FinishedAlgo = true;
 		canvas.repaint(); // Will make Hat the the last pacman
 		}
 		else // its not, will update InProgress and Update Time

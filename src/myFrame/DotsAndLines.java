@@ -34,6 +34,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public volatile List<Boolean> finished = new ArrayList<Boolean>(); // Boolean List for the threads. Responsible to say if thread in index[i] is finished
 	public Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
 	public List<PacmanThread> threads = new ArrayList<PacmanThread>(); // List of all Pacman Threads
+	public volatile boolean FinishedAlgo = true;
 	private List<Fruit> FruitsList; // All the Fruits
 	private List<Pacman> PacmansList;	 // All the Pacmans
 	private Game game; // This Game Database
@@ -129,7 +130,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	 */
 	public void Solve() {
 		threads.clear(); // Remove the Hats
-		
+		 FinishedAlgo = false;
 		algo = new Algo(this.game);
 		List<Path> lines = algo.getSolution();
 		double max_time = algo.getGreedyAlgoTime();
@@ -154,7 +155,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// ** Left Mouse Click - Add Fruit ** //
 		if(e.getButton() == MouseEvent.BUTTON1 
-				&& this.Solutions.isEmpty() 
+				&& FinishedAlgo
 				&& !PacmansList.isEmpty()) // Left Click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));	
@@ -166,7 +167,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		}
 		// ** Middle Mouse Click - Clear ** //
 		else if(e.getButton() == MouseEvent.BUTTON2
-				&& finished.isEmpty())
+				&& FinishedAlgo)
 		{
 			PacmansList.clear();
 			threads.clear();
@@ -174,7 +175,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			clearH();
 		}
 		// ** Right Mouse Click - Add Pacman ** //
-		else if(e.getButton() == MouseEvent.BUTTON3 && this.Solutions.isEmpty()) // Right click
+		else if(e.getButton() == MouseEvent.BUTTON3 && FinishedAlgo) // Right click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));
 			Pacman pacman = new Pacman(newPacman + PacmansList.size(), "1", "1", p);

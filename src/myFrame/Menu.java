@@ -16,7 +16,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -198,9 +197,10 @@ public class Menu extends JPanel{
 		Solve.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if(MyFrame.game.getFruitList().size() > 0
-						&& panel.Solutions.isEmpty() )
+						&& panel.FinishedAlgo )
 				{
 					TotalTF.setText(MyFrame.game.getFruitList().size()+","+MyFrame.game.getPacmanList().size());
+					panel.Clear();
 					Solve.setVisible(false);
 					ScoreTextField.setVisible(true);
 					ClearH.setVisible(false);

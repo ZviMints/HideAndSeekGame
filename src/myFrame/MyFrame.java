@@ -1,8 +1,4 @@
-/**
- * Will class represent the GUI Frame of the Project.
- * @author Tzvi Mints and Or Abuhazira
- * @version 3.0
- */
+
 package myFrame;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,6 +6,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -45,7 +43,7 @@ public class MyFrame extends JFrame {
 		// ******** Map ******** ///
 		map = new Map(1433,642);   
 		panel = new DotsAndLines(game, map);
-		
+
 		// ******** Menu ******** ///
 		MenuPanel = new JPanel();
 		MenuPanel.setLayout(new BoxLayout(MenuPanel, BoxLayout.X_AXIS));
@@ -71,17 +69,25 @@ public class MyFrame extends JFrame {
 		mainSplittedPane.setDividerLocation(1433);
 		setVisible(true);
 		pack();
-		
-		/* * * * * * * * * * * * * * Make Resize able * * * * * * * * * * * * * * * */   
-	       this.addComponentListener(new ComponentAdapter() {
-	            @Override
-	            public void componentResized(ComponentEvent e) {
-	                                //If you see output on the console, then you are getting notified of the resizing!
-	            	map.setWidth(mainSplittedPane.getWidth() - 1625 + 1433);
-	            	map.setHeight(mainSplittedPane.getSize().height);
-	            	}
-	        });
-    }
+
+		/* * * * * * * * * * * * * * Make Resize able - Divider * * * * * * * * * * * * * * * */   
+		mainSplittedPane.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent changeEvent) {
+				if (changeEvent.getPropertyName().equals(JSplitPane.DIVIDER_LOCATION_PROPERTY)) {
+					map.setWidth(mainSplittedPane.getWidth() - mainSplittedPane.getWidth() + mainSplittedPane.getDividerLocation());
+				}
+			} 
+		});
+
+		/* * * * * * * * * * * * * * Make Resize able - Panel * * * * * * * * * * * * * * * */   
+		this.addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentResized(ComponentEvent e) {
+				map.setWidth(mainSplittedPane.getWidth() - mainSplittedPane.getWidth() + mainSplittedPane.getDividerLocation());
+				map.setHeight(mainSplittedPane.getSize().height);
+			}
+		});
+	}
 
 	/* * * * * * * * * * * * * * Main * * * * * * * * * * * * * * * */   
 	public static void main(String[] args) {
