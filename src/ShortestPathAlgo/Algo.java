@@ -145,4 +145,17 @@ public class Algo {
 		}
 		return max;
 	}
+	/* * * * * * * * * * * * * *  Run new Algorithm * * * * * * * * * * * * * * * */
+	public void setGame(Game game) {
+		solution.clear();
+		FruitsList.clear();
+		PacmansList.clear();
+		for(Fruit f : game.getFruitList())
+			FruitsList.add(new Fruit(f));
+		for(Pacman p : game.getPacmanList())
+			PacmansList.add(new Pacman(p));
+		arrF = new Fruit[PacmansList.size()];
+		arrT = new double[PacmansList.size()];
+		Greedy();
+	}
 }

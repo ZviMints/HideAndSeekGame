@@ -35,7 +35,7 @@ public class Menu extends JPanel{
 	public static JTextField TotalTF;
 	public static String fileName;
 	public static JLabel Info;
-	
+
 	public static DotsAndLines panel;
 
 	/* * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
@@ -57,6 +57,22 @@ public class Menu extends JPanel{
 		InProgress.setVisible(false);
 		TotalTF.setVisible(false);
 
+	}
+	/* * * * * * * * * * * * * *  VisableFalseButtons  * * * * * * * * * * * * * * * */
+	/**
+	 * This Method is responsible to make all Buttons Visable To False
+	 * Used while running the Game
+	 */
+	private void VisableFalseButtons() {
+		Solve.setVisible(false);
+		ScoreTextField.setVisible(true);
+		ClearH.setVisible(false);
+		Clear.setVisible(false);
+		Load.setVisible(false);
+		Save.setVisible(false);
+		Info.setVisible(false);
+		TotalTF.setVisible(true);
+		InProgress.setVisible(true);				
 	}
 	/* * * * * * * * * * * * * *  Constructor  * * * * * * * * * * * * * * * */
 	public Menu(DotsAndLines panel)
@@ -128,8 +144,7 @@ public class Menu extends JPanel{
 		Load.setBounds(0, 20 + 20 + 56 + 56 + 20, 188, 56);
 		this.add(Load);
 
-		//On Click Load
-		Load.addMouseListener(new MouseAdapter() {
+		Load.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
 				JFileChooser chooser = new JFileChooser();
 				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
@@ -193,40 +208,30 @@ public class Menu extends JPanel{
 		ScoreTextField.setBounds(0 + 8, 697 - 120 , 170, 56);
 		ScoreTextField.setEditable(false);
 		this.add(ScoreTextField);
-		// On Click "Solve":
-		Solve.addMouseListener(new MouseAdapter() {
+		Solve.addMouseListener(new MouseAdapter() { 		// ************** On Click "Solve":
 			public void mouseClicked(MouseEvent e) {
 				if(MyFrame.game.getFruitList().size() > 0
 						&& panel.FinishedAlgo )
 				{
 					TotalTF.setText(MyFrame.game.getFruitList().size()+","+MyFrame.game.getPacmanList().size());
 					panel.Clear();
-					Solve.setVisible(false);
-					ScoreTextField.setVisible(true);
-					ClearH.setVisible(false);
-					Clear.setVisible(false);
-					Load.setVisible(false);
-					Save.setVisible(false);
-					Info.setVisible(false);
-					TotalTF.setVisible(true);
-					InProgress.setVisible(true);
+					VisableFalseButtons();
 					panel.Solve();
+					UpdateScoreTime(0);
 				}
-			}});
+			}
+		});
 
-		// On Click "ClearH":
-		ClearH.addMouseListener(new MouseAdapter() {
+		ClearH.addMouseListener(new MouseAdapter() { 		// ************** On Click "ClearH":
 			public void mouseClicked(MouseEvent e) {
 				panel.clearH();
 				UpdateScoreTime(0);
 			}});
 
-		// On Click "Clear":
-		Clear.addMouseListener(new MouseAdapter() {
+		Clear.addMouseListener(new MouseAdapter() { 		// ************** On Click "Clear":
 			public void mouseClicked(MouseEvent e) {
 				panel.Clear();
 				UpdateScoreTime(0);
 			}});
-
 	}
 }

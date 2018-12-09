@@ -128,13 +128,17 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	 */
 	public void Solve() {
 		threads.clear(); // Remove the Hats
-		 FinishedAlgo = false;
-		algo = new Algo(this.game);
+		FinishedAlgo = false;
+		if(algo == null)
+			algo =  new Algo(this.game);
+		else
+			algo.setGame(this.game);
+		
 		List<Path> lines = algo.getSolution();
 		double max_time = algo.getGreedyAlgoTime();
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
-		
+
 		for(Thread thread : threads)
 			thread.start();
 	}
