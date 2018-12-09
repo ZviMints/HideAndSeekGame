@@ -15,19 +15,24 @@ public class Map {
 	/* * * * * * * * * * * * * * * * * * Private constants * * * * * * * * * * * * * * * */
 	private int width;
 	private int height;
-	private Image bgImage = Toolkit.getDefaultToolkit().getImage("./img/background.png");
+	private Image bgImage;
 	private Image bgImageHover = Toolkit.getDefaultToolkit().getImage("./img/BackGroundHover.png");
-	// p00(32.105848,35.202429) **  p01(32.105848,35.212541) //
-	//                          **                           //
-	//                          **                           //
-	// p10(32.101951,35.202429) **  p11(32.101951,35.212541) //
-	private Point3D p00 = new Point3D("32.105848,35.202429,0");
-	private Point3D p01=new Point3D("32.105848,35.212541,0");
-	private Point3D p10=new Point3D("32.101951,35.202429,0");
-
+	// p00     p01 //
+	//     **      //
+	//     **      //
+	// p10     p11 //
+	private Point3D p00;
+	private Point3D p01;
+	private Point3D p10;
+	private Point3D p11;
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
-	public Map(int d, int e) {
+	public Map(String ImagePath, Point3D p00, Point3D p01, Point3D p10, Point3D p11, int d, int e) {
+		this.bgImage = Toolkit.getDefaultToolkit().getImage(ImagePath);
+		this.p00 = p00;
+		this.p01= p01;
+		this.p10 = p10;
+		this.p11 = p11; 
 		this.setWidth(d);
 		this.setHeight(e);
 	}
