@@ -144,7 +144,7 @@ public class Menu extends JPanel{
 		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
 				try {
-					Object2KML k =new Object2KML(MyFrame.game, MyFrame.panel.algo);
+					Object2KML k =new Object2KML(MainFrame.game, MainFrame.panel.algo);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -67,7 +67,8 @@ public class Object2KML {
 		   KML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" 
 				    + "<kml xmlns=\"http://www.opengis.net/kml/2.2\" "
 				    + "xmlns:gx=\"http://www.google.com/kml/ext/2.2\">\n"
-				    + "<Document>\n";
+				    + "<Document>\n"
+				    +Style;
 					
 		}
 	private void MakeTail() {
@@ -90,7 +91,7 @@ public class Object2KML {
 	 */
 	public String CreateFolder(String Name,String ID, double d, List<Path> list, String time) throws ParseException
 	{
-		String body="<Folder>" + "\n" 
+		String body = "<Folder>" + "\n" 
 				+"<name>"+ ID +"</name>" + "\n"
 				+"<Placemark>"
 				+ "<name>"+ ID +"</name>" + "\n"
@@ -104,15 +105,25 @@ public class Object2KML {
 	}
 	private String GetWhenFromPacman(String Name, List<Path> list, String time) throws ParseException {
 		String ans ="";
+		String NewTime = time;
+		int i=0;
 		for (Path p :list) {
 			if(p.ID==Name) {
-				String NewTime = Time(time,(int)p.time);
-				NewTime=NewTime.replaceAll("\\s","T");
-				NewTime+="Z";
-				ans+="<when>"+NewTime+"</when>"+ "\n"
+				NewTime = Time(NewTime,(int)p.time);
+				String time1=NewTime.replaceAll("\\s","T");
+				time1+="Z";
+				if(!ans.contains(p.y0 +" "+p.x0)){
+					String s = time.replaceAll("\\s","T");
+					s+="Z";
+				ans+="<when>"+s+"</when>"+ "\n"
 				  +"<gx:coord>"+p.y0 +" "+p.x0+"</gx:coord>"+ "\n";
+				}
+				if(!ans.contains(p.y1 +" "+p.x1)) {
+				ans+="<when>"+time1+"</when>"+ "\n"
+				  +"<gx:coord>"+p.y1 +" "+p.x1+"</gx:coord>"+ "\n";
+					}
+				}
 			}
-		}
 		return ans;
 	
 	}
@@ -147,5 +158,105 @@ public class Object2KML {
 		 String newTime = df.format(cal.getTime());
 		 return newTime;
 	}
+	String Style="<Style id=\"track_n\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <scale>.5</scale>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"      <LabelStyle>\n" + 
+			"        <scale>0</scale>\n" + 
+			"      </LabelStyle>\n" + 
+			"\n" + 
+			"    </Style>\n" + 
+			"    <!-- Highlighted track style -->\n" + 
+			"    <Style id=\"track_h\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <scale>1.2</scale>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"    </Style>\n" + 
+			"    <StyleMap id=\"track\">\n" + 
+			"      <Pair>\n" + 
+			"        <key>normal</key>\n" + 
+			"        <styleUrl>#track_n</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"      <Pair>\n" + 
+			"        <key>highlight</key>\n" + 
+			"        <styleUrl>#track_h</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"    </StyleMap>\n" + 
+			"    <!-- Normal multiTrack style -->\n" + 
+			"    <Style id=\"multiTrack_n\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"      <LineStyle>\n" + 
+			"        <color>99ffac59</color>\n" + 
+			"        <width>6</width>\n" + 
+			"      </LineStyle>\n" + 
+			"\n" + 
+			"    </Style>\n" + 
+			"    <!-- Highlighted multiTrack style -->\n" + 
+			"    <Style id=\"multiTrack_h\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <scale>1.2</scale>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"      <LineStyle>\n" + 
+			"        <color>99ffac59</color>\n" + 
+			"        <width>8</width>\n" + 
+			"      </LineStyle>\n" + 
+			"    </Style>\n" + 
+			"    <StyleMap id=\"multiTrack\">\n" + 
+			"      <Pair>\n" + 
+			"        <key>normal</key>\n" + 
+			"        <styleUrl>#multiTrack_n</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"      <Pair>\n" + 
+			"        <key>highlight</key>\n" + 
+			"        <styleUrl>#multiTrack_h</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"    </StyleMap>\n" + 
+			"    <!-- Normal waypoint style -->\n" + 
+			"    <Style id=\"waypoint_n\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"    </Style>\n" + 
+			"    <!-- Highlighted waypoint style -->\n" + 
+			"    <Style id=\"waypoint_h\">\n" + 
+			"      <IconStyle>\n" + 
+			"        <scale>1.2</scale>\n" + 
+			"        <Icon>\n" + 
+			"          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>\n" + 
+			"        </Icon>\n" + 
+			"      </IconStyle>\n" + 
+			"    </Style>\n" + 
+			"    <StyleMap id=\"waypoint\">\n" + 
+			"      <Pair>\n" + 
+			"        <key>normal</key>\n" + 
+			"        <styleUrl>#waypoint_n</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"      <Pair>\n" + 
+			"        <key>highlight</key>\n" + 
+			"        <styleUrl>#waypoint_h</styleUrl>\n" + 
+			"      </Pair>\n" + 
+			"    </StyleMap>\n" + 
+			"    <Style id=\"lineStyle\">\n" + 
+			"      <LineStyle>\n" + 
+			"        <color>99ffac59</color>\n" + 
+			"        <width>6</width>\n" + 
+			"      </LineStyle>\n" + 
+			"    </Style>";
 
 }
