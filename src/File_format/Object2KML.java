@@ -101,9 +101,10 @@ public class Object2KML {
 	public String CreateFolder(String Name,String ID, double d, List<Path> list, String time) throws ParseException
 	{
 		String body = "<Folder>" + "\n" 
-				+"<name>"+ ID +"</name>" + "\n"
+				+"<name>"+ Name +"</name>" + "\n"
+				+fruit(Name, list)
 				+"<Placemark>"
-				+ "<name>"+ ID +"</name>" + "\n"
+				+ "<name>"+ Name +"</name>" + "\n"
 				+ "<styleUrl>#multiTrack</styleUrl>"
 				+ "<gx:Track>"
 				+ GetWhenFromPacman(Name,list,time)
@@ -114,9 +115,7 @@ public class Object2KML {
 	}
 	private String GetWhenFromPacman(String Name, List<Path> list, String time) throws ParseException {
 		String ans ="";
-		String fruit="";
 		String NewTime = time;
-		int i=0;
 		for (Path p :list) {
 			if(p.ID==Name) {
 				NewTime = Time(NewTime,(int)p.time);
@@ -127,25 +126,35 @@ public class Object2KML {
 					s+="Z";
 					ans+="<when>"+s+"</when>"+ "\n"
 							+"<gx:coord>"+p.y0 +" "+p.x0+"</gx:coord>"+ "\n";
-					
 				}
 				if(!ans.contains(p.y1 +" "+p.x1)) {
 					ans+="<when>"+time1+"</when>"+ "\n"
 							+"<gx:coord>"+p.y1 +" "+p.x1+"</gx:coord>"+ "\n";
 					
-					
+				
+				}
+				
+			}
+		}
+		return ans;
+	}
+	public String fruit(String Name , List<Path> list) {
+		String fruit="";
+		for (Path p :list) {
+			if(p.ID==Name) {
+				if(!fruit.contains(p.y1 +" "+p.x1)) {
 					fruit+="<Placemark>\n" 
 							+"<styleUrl>#red</styleUrl>\n"  
 							+"<Point>\n"  
-							+"<coordinates>+"+p.y1 +" "+p.x1+"</coordinates>\n" 
+							+"<coordinates>"+p.y1 +" "+p.x1+"</coordinates>\n" 
 							+"</Point>\n" 
 							+"</Placemark>\n";
 				}
 				
 			}
 		}
-		ans=ans+fruit;
-		return ans;
+		return fruit;
+		
 	}
 	/* * * * * * * * * * * * * * * * * * File Writer * * * * * * * * * * * * * * * */
 	/**

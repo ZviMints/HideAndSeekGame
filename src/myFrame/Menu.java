@@ -140,8 +140,8 @@ public class Menu extends JPanel{
 
 		//Save JButton
 		Save = new JLabel(new ImageIcon("./img/Save.png"));
-		Save.setVisible(true);
-		Save.setBounds(0, 20 + 20 + 56, 188, 56);
+		Save.setVisible(false);
+		Save.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
 		this.add(Save);
 		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
@@ -158,7 +158,8 @@ public class Menu extends JPanel{
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
-		Load.setBounds(0, 20 + 20 + 56 + 56 + 20, 188, 56);
+		
+		Load.setBounds(0, 20 + 20 + 56, 188, 56);
 		this.add(Load);
 
 		Load.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
@@ -196,13 +197,13 @@ public class Menu extends JPanel{
 		Clear = new JLabel(new ImageIcon("./img/Clear.png"));
 		Clear.setVisible(true);
 		this.add(Clear);
-		Clear.setBounds(0, 20 + 20 + 56 + 56 +56 + 20 + 20, 188, 56);
-
+		Clear.setBounds(0, 20 + 20 + 56 + 56 + 20, 188, 56);
+		
 		//ClearH JButton
 		ClearH = new JLabel(new ImageIcon("./img/ClearH.png"));
 		ClearH.setVisible(true);
 		this.add(ClearH);
-		ClearH.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
+		ClearH.setBounds(0, 20 + 20 + 56 + 56 +56 + 20 + 20, 188, 56);
 
 		//Mouse Info 
 		Info = new JLabel(new ImageIcon("./img/Info.png"));
@@ -236,6 +237,7 @@ public class Menu extends JPanel{
 				if(MyFrame.game.getFruitList().size() > 0
 						&& panel.FinishedAlgo )
 				{
+					Save.setVisible(true);
 					TotalTF.setText(MyFrame.game.getFruitList().size()+","+MyFrame.game.getPacmanList().size());
 					panel.Clear();
 					VisableFalseButtons();
