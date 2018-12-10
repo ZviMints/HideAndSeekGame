@@ -68,7 +68,7 @@ public class Map {
 		double x = ( xInMeters / TotalXInMeters ) * getWidth();
 		double y = ( yInMeters / TotalYInMeters ) * getHeight();
 
-		Point3D ans = new Point3D(x,y,0);
+		Point3D ans = new Point3D(x,y,input.z());
 		return ans;
 	}
 	/**
@@ -91,7 +91,7 @@ public class Map {
 		double dx =   p00.x() - x ;
 		double dy =   p00.y() + y ;
 
-		Point3D ans = new Point3D(dx,dy,0);
+		Point3D ans = new Point3D(dx,dy,input.z());
 		return ans;
 	}
 }

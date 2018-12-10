@@ -125,11 +125,11 @@ public class Object2KML {
 					String s = time.replaceAll("\\s","T");
 					s+="Z";
 					ans+="<when>"+s+"</when>"+ "\n"
-							+"<gx:coord>"+p.y0 +" "+p.x0+"</gx:coord>"+ "\n";
+							+"<gx:coord>"+p.y0 +" "+p.x0 +" "+p.z0+"</gx:coord>"+ "\n";
 				}
 				if(!ans.contains(p.y1 +" "+p.x1)) {
 					ans+="<when>"+time1+"</when>"+ "\n"
-							+"<gx:coord>"+p.y1 +" "+p.x1+"</gx:coord>"+ "\n";
+							+"<gx:coord>"+p.y1 +" "+p.x1+" "+p.z0+"</gx:coord>"+ "\n";
 					
 				
 				}
@@ -146,7 +146,7 @@ public class Object2KML {
 					fruit+="<Placemark>\n" 
 							+"<styleUrl>#red</styleUrl>\n"  
 							+"<Point>\n"  
-							+"<coordinates>"+p.y1 +" "+p.x1+"</coordinates>\n" 
+							+"<coordinates>"+p.y1 +" "+p.x1+" "+p.z0+"</coordinates>\n" 
 							+"</Point>\n" 
 							+"</Placemark>\n";
 				}
