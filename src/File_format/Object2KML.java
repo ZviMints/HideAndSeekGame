@@ -43,7 +43,6 @@ public class Object2KML {
 		try {
 			MakeFile(game);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

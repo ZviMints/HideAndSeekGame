@@ -22,11 +22,11 @@ import Map.Map;
 public class MyFrame extends JFrame {
 
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
-	static JSplitPane mainSplittedPane;
-	static Map map; // The Map of the game
-	static Game game; // Represent the Game Data base
-	static DotsAndLines panel; // Represent the Game
-	static JPanel MenuPanel; // Game Panel
+	JSplitPane mainSplittedPane;
+	Map map; // The Map of the game
+    static Game game; // Represent the Game Data base
+	DotsAndLines panel; // Represent the Game
+	JPanel MenuPanel; // Game Panel
 
 	/* * * * * * * * * * * * * * * * * * Constructors * * * * * * * * * * * * * * * */
 	public MyFrame(String path) {

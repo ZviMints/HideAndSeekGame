@@ -27,25 +27,26 @@ import Game.Game;
 
 public class Menu extends JPanel{
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
-	public static JLabel Solve;
-	public static JLabel ClearH;
-	public static JLabel Clear;
-	public static JLabel Load;
-	public static JLabel Save;
-	public static JTextField ScoreTextField; 
-	public static JTextField InProgress;
-	public static JTextField TotalTF;
-	public static String fileName;
-	public static JLabel Info;
-	public static MyFrame MainFrame;
-	public static Object2KML kml;
-	
+	private static JLabel Solve;
+	private static JLabel ClearH;
+	private static JLabel Clear;
+	private static JLabel Load;
+	private static JLabel Save;
+	private static JTextField TotalTF;
+	private static String fileName;
+	private static JLabel Info;
+	private static Object2KML kml;
 
-	public static DotsAndLines panel;
+	public MyFrame MainFrame;
+	public DotsAndLines panel;
+
+	public static JTextField InProgress;
+	public static  JTextField ScoreTextField; 
+
 
 	/* * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public synchronized static void UpdateScoreTime(double time) { ScoreTextField.setText(time + ""); }
-	public synchronized static double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
+	public synchronized double getTime() { return Double.parseDouble(ScoreTextField.getText()); }
 	public synchronized static void UpdateFinished() { InProgress.setText(( Double.parseDouble(InProgress.getText()) + 1) +""); }
 
 	/* * * * * * * * * * * * * *  VisableAllButtons  * * * * * * * * * * * * * * * */
@@ -140,25 +141,30 @@ public class Menu extends JPanel{
 
 		//Save JButton
 		Save = new JLabel(new ImageIcon("./img/Save.png"));
-		Save.setVisible(false);
+		Save.setVisible(true);
 		Save.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
 		this.add(Save);
 		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
-				try {
-					kml =new Object2KML(MyFrame.game, MyFrame.panel.algo);
-					JOptionPane.showMessageDialog(null, "Success! file on path: "+ MainFrame.game.NameFile);
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(!panel.Solutions.isEmpty())
+				{
+					try {
+						kml = new Object2KML(MyFrame.game, panel.algo);
+						JOptionPane.showMessageDialog(null, "Success! file on path: "+ MyFrame.game.NameFile);
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
 				}
+				else
+					JOptionPane.showMessageDialog(null, "Error! Start Game First");
+	
 			}
 		});
 
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
-		
+
 		Load.setBounds(0, 20 + 20 + 56, 188, 56);
 		this.add(Load);
 
@@ -170,11 +176,11 @@ public class Menu extends JPanel{
 					fileName = chooser.getSelectedFile().getAbsolutePath();
 					if(fileName.contains(".csv")) 
 					{	
-						MainFrame.game = new Game(fileName);
+						MyFrame.game = new Game(fileName);
 						MainFrame.mainSplittedPane.invalidate();
 						MainFrame.mainSplittedPane.setVisible(false);
 						MainFrame.mainSplittedPane.removeAll();
-						MainFrame.panel=new DotsAndLines(MainFrame.game,MainFrame.map);
+						MainFrame.panel = new DotsAndLines(MyFrame.game,MainFrame.map);
 						MainFrame.StartPanel();
 
 					}
@@ -188,7 +194,6 @@ public class Menu extends JPanel{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -198,7 +203,7 @@ public class Menu extends JPanel{
 		Clear.setVisible(true);
 		this.add(Clear);
 		Clear.setBounds(0, 20 + 20 + 56 + 56 + 20, 188, 56);
-		
+
 		//ClearH JButton
 		ClearH = new JLabel(new ImageIcon("./img/ClearH.png"));
 		ClearH.setVisible(true);
@@ -237,7 +242,6 @@ public class Menu extends JPanel{
 				if(MyFrame.game.getFruitList().size() > 0
 						&& panel.FinishedAlgo )
 				{
-					Save.setVisible(true);
 					TotalTF.setText(MyFrame.game.getFruitList().size()+","+MyFrame.game.getPacmanList().size());
 					panel.Clear();
 					VisableFalseButtons();
