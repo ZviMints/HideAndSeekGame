@@ -26,6 +26,7 @@ public class Object2KML {
 	private String KML_BODY;
 	private String KML_HEAD;
 	private String KML_TAIL;
+	public String TimeSave;
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	/**
 	 * Constructor of the KML file. make Header, make Body and make Tail.
@@ -43,6 +44,7 @@ public class Object2KML {
 		try {
 			MakeFile(game);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -52,13 +54,9 @@ public class Object2KML {
 	 * @throws ParseException 
 	 */
 	private void ConvertPath(Algo algo,Game game) throws ParseException {
-		int i=1;
 		String time = algo.StartGameTime;
-		System.out.println(time);
 		for(Pacman p : game.getPacmanList()) {
-			String s ="pac "+i;
-			KML_BODY += CreateFolder(p.getInfo().getID(),s, p.getInfo().getTime(),algo.getSolution(),time);
-			i++;
+			KML_BODY += CreateFolder(p.getInfo().getID(), p.getInfo().getTime(),algo.getSolution(),time);
 		}
 	}
 	/* * * * * * * * * * * * * * * Make Head,Body,Tail * * * * * * * * * * * * * * * */
@@ -97,7 +95,7 @@ public class Object2KML {
 	 * @return
 	 * @throws ParseException 
 	 */
-	public String CreateFolder(String Name,String ID, double d, List<Path> list, String time) throws ParseException
+	public String CreateFolder(String Name, double d, List<Path> list, String time) throws ParseException
 	{
 		String body = "<Folder>" + "\n" 
 				+"<name>"+ Name +"</name>" + "\n"
@@ -158,18 +156,19 @@ public class Object2KML {
 	/* * * * * * * * * * * * * * * * * * File Writer * * * * * * * * * * * * * * * */
 	/**
 	 * This method responsible to Make the KML file
+	 * @param startGameTime 
 	 * @throws Exception
 	 */
 	public void MakeFile(Game game) throws Exception
 	{
-		System.out.println(game.NameFile);
-		String SavePath = game.NameFile.replaceAll(".csv", ".kml");
+		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());
+		String SavePath = game.NameFile.replaceAll(game.NameFile, "./data/"+TimeSave+".kml");
 		PrintWriter pw = new PrintWriter(new File(SavePath));
 		StringBuilder sb = new StringBuilder();	
 		sb.append(KML_HEAD + KML_BODY + KML_TAIL);
 		pw.write(sb.toString());
 		pw.close();
-		System.out.println("Success! file on path: " +game.NameFile);
+
 	}
 	/* * * * * * * * * * * * * * * toString * * * * * * * * * * * * * * * */
 	public String toString()

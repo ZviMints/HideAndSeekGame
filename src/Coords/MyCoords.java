@@ -1,5 +1,5 @@
 /**
- * This method is responsible for actions between Objects of the kind Point3D.
+ * This class is responsible for actions between Objects of the kind Point3D.
  * @author Tzvi Mints and Or Abuhazira
  * @version 1.0
  */

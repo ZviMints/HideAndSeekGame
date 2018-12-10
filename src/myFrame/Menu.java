@@ -150,7 +150,7 @@ public class Menu extends JPanel{
 				{
 					try {
 						kml = new Object2KML(MyFrame.game, panel.algo);
-						JOptionPane.showMessageDialog(null, "Success! file on path: "+ MyFrame.game.NameFile);
+						JOptionPane.showMessageDialog(null, "Success! file on path: "+ kml.TimeSave);
 					} catch (ParseException e1) {
 						e1.printStackTrace();
 					}
