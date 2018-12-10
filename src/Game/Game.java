@@ -6,9 +6,11 @@ import Geom.Geom_element;
 import Geom.Point3D;
 import Pacman.Pacman;
 public class Game{
+	
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private List<Pacman> Pacman_List;
 	private List<Fruit> Fruit_List;
+	public String NameFile;
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public List<Pacman> getPacmanList() { return Pacman_List; }
 	public List<Fruit> getFruitList() { return Fruit_List; }
@@ -21,6 +23,7 @@ public class Game{
 	}
 	public Game(String path)
 	{
+		this.NameFile=path;
 		// ************ initialize Set ************ //
 		Pacman_List = new ArrayList<Pacman>();
 		Fruit_List = new ArrayList<Fruit>();

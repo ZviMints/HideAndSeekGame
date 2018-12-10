@@ -28,6 +28,6 @@ public class Path {
 	
 	public String toString()
 	{
-		return "Pacman ID:" + ID + " ("+x0+","+y0+")"+ " ----> " + "("+x1+","+y1+")\n";
+		return "Pacman ID:" + ID +" " + time +" ("+x0+","+y0+")"+ " ----> " + "("+x1+","+y1+")\n";
 	}
 }

@@ -38,7 +38,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private List<Fruit> FruitsList; // All the Fruits
 	private List<Pacman> PacmansList;	 // All the Pacmans
 	private Game game; // This Game Database
-	private Algo algo; // Algorithm of the current game
+	public Algo algo; // Algorithm of the current game
 	private Map map; // Map of current game 
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
@@ -73,7 +73,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		super.paintComponent(g); // Reprint
 		g.drawImage(this.map.getBgImage() , 0, 0,map.getWidth(),map.getHeight(), this);
 		g.drawImage(this.map.getBgImageHover() , 0, 0,map.getWidth(),map.getHeight(), this);
-
 
 		// ** Print all Fruits that load from .CSV file ** //
 		for(Fruit fruit : FruitsList)
@@ -138,9 +137,11 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		double max_time = algo.getGreedyAlgoTime();
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
+		
 
 		for(Thread thread : threads)
 			thread.start();
+		
 	}
 
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */

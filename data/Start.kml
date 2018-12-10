@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+null<Folder>
+<name>pac 1</name>
+<Placemark><name>pac 1</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-10T15:25:28Z</when>
+<gx:coord>35.210466381701316 32.10360658823645</gx:coord>
+<when>2018-12-10T15:25:31Z</when>
+<gx:coord>35.210480494750925 32.10422425000104</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder></Document>
+</kml>

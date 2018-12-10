@@ -42,7 +42,7 @@ public class Pacman implements GIS_Pacman{
 	{
 		String ans = "Pacman:" + "--> ";
 		ans += PacmanData.toString();
-		ans +=  "," + "Geom element" + ":" + geo;
+		ans +=  "," + "Geom element" + ":" + geo ;
 		return ans;
 	}
 	/* * * * * * * * * * * * * * * * * * Override * * * * * * * * * * * * * * * */

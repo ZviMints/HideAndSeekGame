@@ -4,8 +4,10 @@
  * @author Tzvi Mints and Or Abuhazira
  */
 package ShortestPathAlgo;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import Coords.MyCoords;
@@ -26,6 +28,7 @@ public class Algo {
 	private  List<Pacman> PacmansList = new ArrayList<Pacman>();
 	private Fruit arrF[];
 	private double arrT[];
+	public String StartGameTime;
 
 	/* * * * * * * * * * * * * *  Getters and Setters * * * * * * * * * * * * * * * */
 	public List<Path> getSolution() { return solution; }
@@ -33,6 +36,7 @@ public class Algo {
 	/* * * * * * * * * * * * * *  Calculate * * * * * * * * * * * * * * * */
 	public Algo(Game game)
 	{
+		StartGameTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 		solution = new ArrayList<Path>();
 		for(Fruit f : game.getFruitList())
 			FruitsList.add(new Fruit(f));
@@ -147,6 +151,7 @@ public class Algo {
 	}
 	/* * * * * * * * * * * * * *  Run new Algorithm * * * * * * * * * * * * * * * */
 	public void setGame(Game game) {
+		StartGameTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 		solution.clear();
 		FruitsList.clear();
 		PacmansList.clear();

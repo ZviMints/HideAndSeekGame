@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import File_format.Object2KML;
 import Game.Game;
 
 
@@ -139,6 +141,16 @@ public class Menu extends JPanel{
 		Save.setVisible(true);
 		Save.setBounds(0, 20 + 20 + 56, 188, 56);
 		this.add(Save);
+		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
+			public void mouseClicked(MouseEvent e)  {
+				try {
+					Object2KML k =new Object2KML(MyFrame.game, MyFrame.panel.algo);
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
