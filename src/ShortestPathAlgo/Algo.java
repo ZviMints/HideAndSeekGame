@@ -24,17 +24,17 @@ import myFrame.Menu;
 public class Algo {
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	private List<Path> solution;
-	private  List<Fruit> FruitsList = new ArrayList<Fruit>();
-	private  List<Pacman> PacmansList = new ArrayList<Pacman>();
-	private Fruit arrF[];
-	private double arrT[];
-	public String StartGameTime;
+	private  List<Fruit> FruitsList = new ArrayList<Fruit>(); // Fruits List
+	private  List<Pacman> PacmansList = new ArrayList<Pacman>(); // Pacmans List
+	private Fruit arrF[]; // Array that represent the Fruits
+	private double arrT[]; // Array that represent the Distances
+	public String StartGameTime; // Start Time of the Algorithm
 
 	/* * * * * * * * * * * * * *  Getters and Setters * * * * * * * * * * * * * * * */
 	public List<Path> getSolution() { return solution; }
 
-	/* * * * * * * * * * * * * *  Calculate * * * * * * * * * * * * * * * */
-	public Algo(Game game)
+	/* * * * * * * * * * * * * *  Constructors * * * * * * * * * * * * * * * */
+	public Algo(Game game) // For the First time
 	{
 		StartGameTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 		solution = new ArrayList<Path>();
@@ -47,13 +47,27 @@ public class Algo {
 		arrT = new double[PacmansList.size()];
 		Greedy();
 	}
+	/* * * * * * * * * * * * * *  Run new Algorithm * * * * * * * * * * * * * * * */
+	public void setGame(Game game) {
+		StartGameTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		solution.clear();
+		FruitsList.clear();
+		PacmansList.clear();
+		for(Fruit f : game.getFruitList())
+			FruitsList.add(new Fruit(f));
+		for(Pacman p : game.getPacmanList())
+			PacmansList.add(new Pacman(p));
+		arrF = new Fruit[PacmansList.size()];
+		arrT = new double[PacmansList.size()];
+		Greedy();
+	}
 	/* * * * * * * * * * * * * *  Brute Force - O(n!) * * * * * * * * * * * * * * * */
-	// Not Implement yet
+	// Not Implement yet, Maybe at 4.0 version
 	/* * * * * * * * * * * * * *  Greedy Algorithm * * * * * * * * * * * * * * * */
+	/**
+	 * The Greedy Algorithm Of The Game
+	 */
 	private void Greedy() {
-		// Initialization Coords for Calculation //
-		// O(1) //
-		MyCoords coords = new MyCoords();
 
 		// Initialization All Pacmans Time to 0 //
 		// O(|P|) : when |P| is the number of total Pacmans //
@@ -68,43 +82,73 @@ public class Algo {
 			for(int i=0; i < PacmansList.size() ; i ++) // O(|P|)
 				FindTimeToNextClosestFruit(PacmansList.get(i),i); // O(|F|)
 
-			/// Find the Min_Time to get To the Closes Fruit From ^^^ //
-			double Min_Time = Double.MAX_VALUE;
-			int index = -1 ;
-			for(int i=0; i<arrT.length; i++) // O(|P|)
-				if(Min_Time > arrT[i])
-				{
-					Min_Time = arrT[i];
-					index = i;
-				}
+			/// Find the Min_Time to get To the Closes Fruit From All Fruits//
+			int Min_Time_Index = FindIndexOfMinTime(); // O(|P|)
 
-			/// Now we have the Index [Saved as Index] of our GREEDY choice //
-			Pacman pac = PacmansList.get(index);
-			Point3D pac_point = (Point3D)pac.getGeom();
-			Fruit Fruit = arrF[index];
-			Point3D Closest_point = (Point3D)Fruit.getGeom();
-			double distancePacman2Fruit = coords.distance3d(pac_point, Closest_point);
-			double speed = Double.parseDouble(pac.getInfo().getSpeed());
-			double radius = Double.parseDouble(pac.getInfo().getRadius());
-			pac.getInfo().setTime(pac.getInfo().getTime() + ( distancePacman2Fruit - radius ) / speed);
-			Point3D vec = new Point3D(coords.vector3D(pac_point,Closest_point));
-			/// Make Path From Pacman ---> Fruit //
-			Path path = new Path(pac.getInfo().getID(),
-					(pac_point).x(),
-					(pac_point).y(),
-					Closest_point.x(),
-					Closest_point.y(),
-					pac.getInfo().color
-					,( distancePacman2Fruit - radius ) / speed
-					,vec);
-			/// Translate Pacman to  ---> Fruit //
-			pac.translate(vec);	
-			/// Addes Path to Solutions List //
-			solution.add(path);
+			/// Now we have the Index [Saved as Min_Time_Index] of our GREEDY choice //
+			Pacman Pacman = PacmansList.get(Min_Time_Index);
+			Fruit Fruit = arrF[Min_Time_Index];
+			Point3D Fruit_Point3D = (Point3D)Fruit.getGeom();
+			MakePathAndTransfer(Pacman,Fruit_Point3D);
+
+
 			/// Remove the Fruit that has been eaten from the List //
 			FruitsList.remove(Fruit);
 		}
 	}
+	/* * * * * * * * * * * * * *  MakePathAndTransfer * * * * * * * * * * * * * * * */
+	/**
+	 * This Method is responsible to Make Path From Point3D (fit to eaten Fruit)
+	 * and Pacman, moreover, responsible to transfer Pacman to fruit point
+	 * @param Pacman is the current Pacman
+	 * @param Fruit_Point3D is the current Point of Fruit
+	 */
+	private void MakePathAndTransfer(Pacman Pacman, Point3D Fruit_Point3D) {
+		// Initialize Coords
+		MyCoords coords = new MyCoords();
+		
+		// Initialize current Pacman Point3D
+		Point3D Pacman_Point3D = (Point3D)Pacman.getGeom();
+		
+		// Initialize relevant information about Pacman
+		double speed = Double.parseDouble(Pacman.getInfo().getSpeed());
+		double radius = Double.parseDouble(Pacman.getInfo().getRadius());
+		double distance = coords.distance3d(Pacman_Point3D, Fruit_Point3D);
+		
+		//info[0,1,2] = [azimuth,elevation,distance]
+		double[] info = coords.azimuth_elevation_dist(Pacman_Point3D, Fruit_Point3D); 
+		
+		//Initialize Vector
+		double x = Math.cos(Math.toRadians(info[0])) * (info[2] - radius);
+		double y = Math.sin(Math.toRadians(info[0])) * (info[2] - radius);
+		double z = Math.sin(Math.toRadians(info[1])) * (info[2] - radius);
+		Point3D vec = new Point3D(x,y,z);
+
+		//Initialize destination point
+		Point3D dist = coords.add(Pacman_Point3D, vec);
+
+		/// Make Path From Pacman ---> destination //
+		Path path = new Path(Pacman.getInfo().getID(), // Pacman ID
+				            (Pacman_Point3D).x(), // From Where Lat
+				            (Pacman_Point3D).y(), // From Where Lon
+				            (Pacman_Point3D).z(), // From Where Alt
+				            dist.x(),   // To Where Lat
+				            dist.y(),   // To Where Lon
+				            dist.z(),   // To Where Alt
+				             Pacman.getInfo().color, // Pacman Color ( for the path color )
+				             (info[2] - radius ) / speed,
+				              vec // The Vector
+				              );
+		
+		// Set time to the Pacman, ( time that the path is taking)
+		Pacman.getInfo().setTime(Pacman.getInfo().getTime() + ( info[2] - radius ) / speed);
+		
+		/// Translate Pacman to  ---> destination //
+		Pacman.translate(vec);	
+		/// Addes Path to Solutions List //
+		solution.add(path);		
+	}
+
 	/**
 	 * The method is repsonsible to find the time from input pacman to the closest fruit by time
 	 * @param pacman is the input pacman
@@ -142,25 +186,23 @@ public class Algo {
 		double max = Double.MIN_VALUE ;
 		for(int i = 0; i <PacmansList.size(); i++)
 		{
-			if( max < PacmansList.get(i).getInfo().getTime())
-			{
-				max =  PacmansList.get(i).getInfo().getTime();
-			}
+			if( max < PacmansList.get(i).getInfo().getTime()) max =  PacmansList.get(i).getInfo().getTime();
 		}
 		return max;
 	}
-	/* * * * * * * * * * * * * *  Run new Algorithm * * * * * * * * * * * * * * * */
-	public void setGame(Game game) {
-		StartGameTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		solution.clear();
-		FruitsList.clear();
-		PacmansList.clear();
-		for(Fruit f : game.getFruitList())
-			FruitsList.add(new Fruit(f));
-		for(Pacman p : game.getPacmanList())
-			PacmansList.add(new Pacman(p));
-		arrF = new Fruit[PacmansList.size()];
-		arrT = new double[PacmansList.size()];
-		Greedy();
+	/* * * * * * * * * * * * * *  FindIndexOfMinTime * * * * * * * * * * * * * * * */	
+	/**
+	 * Return the index of the Minimum value of arrT
+	 */
+	private int FindIndexOfMinTime() {
+		double Min_Time = Double.MAX_VALUE;
+		int index = -1 ;
+		for(int i=0; i<arrT.length; i++) // O(|P|)
+			if(Min_Time > arrT[i])
+			{
+				Min_Time = arrT[i];
+				index = i;
+			}	
+		return index;
 	}
 }

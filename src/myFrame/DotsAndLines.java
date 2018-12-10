@@ -43,8 +43,8 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
 	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
 	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
-	private String newPacman ="New Pacman From Mouse Click #";
-	private String newFruit ="New Fruit From Mouse Click #";
+	private String newPacman ="PacmanFromMouse #";
+	private String newFruit ="FruitFromMouse #";
 
 
 
@@ -137,7 +137,6 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		double max_time = algo.getGreedyAlgoTime();
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
-		System.out.println(algo.getSolution());
 
 		for(Thread thread : threads)
 			thread.start();
