@@ -4,8 +4,6 @@
  */
 package Pacman;
 
-
-
 import java.util.List;
 import Path.Path;
 import myFrame.DotsAndLines;
@@ -13,11 +11,11 @@ import myFrame.Menu;
 
 public class PacmanThread extends Thread{
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
-	DotsAndLines canvas;
-	public Pacman pacman;
-	List<Path> lines;
-	boolean lastest_thread = false;
-	double max_time = -1;
+	DotsAndLines canvas; // the Game Panel
+	public Pacman pacman; // current pacman
+	List<Path> lines; // total solution of the algorithm, all the path's.
+	boolean lastest_thread = false; // if current thread is the last thread alive in the game
+	double max_time; // The total time of the walkman's walk in the chosen route
 	/* * * * * * * * * * * * * *  Constructor * * * * * * * * * * * * * * * */
 	public PacmanThread(DotsAndLines canvas, Pacman pacman, List<Path> lines, double Max_time_To_Algo)
 	{

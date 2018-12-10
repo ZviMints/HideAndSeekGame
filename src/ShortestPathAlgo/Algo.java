@@ -1,5 +1,5 @@
 /**
- * This Class is responsible to find the best greedy way to
+ * This Class is responsible to find the best greedy way to find
  * the shortest road by time
  * @author Tzvi Mints and Or Abuhazira
  */
@@ -121,9 +121,12 @@ public class Algo {
 		//Initialize Vector
 		double x = Math.cos(Math.toRadians(info[0])) * (info[2] - radius);
 		double y = Math.sin(Math.toRadians(info[0])) * (info[2] - radius);
-		double z = Math.sin(Math.toRadians(info[1])) * (info[2] - radius);
+		double z = Math.sin(Math.toRadians(info[1]))
+				
+				* (info[2] - radius);
+		if(Double.isNaN(z)) z = 0 ;
+		
 		Point3D vec = new Point3D(x,y,z);
-
 		//Initialize destination point
 		Point3D dist = coords.add(Pacman_Point3D, vec);
 

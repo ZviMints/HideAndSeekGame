@@ -1,3 +1,8 @@
+/**
+ * This class represent Game which include Fruits List and Pacmans List
+ * this class can init Pacmans and Fruits from Matrix
+ * @author Tzvi Mints and Or Abuhazira
+ */
 package Game;
 import java.util.*;
 import File_format.*;

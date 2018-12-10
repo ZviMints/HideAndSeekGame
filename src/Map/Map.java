@@ -23,7 +23,7 @@ public class Map {
 	// p10     p11 //
 	private Point3D p00;
 	private Point3D p01;
-	private Point3D p10;
+	private Point3D p10; // NOTE! 
 	private Point3D p11;
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */

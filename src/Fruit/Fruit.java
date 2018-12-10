@@ -1,7 +1,6 @@
 /**
  * This Class represent Fruit that implements GIS_Fruit
- * each Element is a Line,
- * each Element have Fruit Data
+ * each Fruit has Fruit Data and Geom Element
  * @author Tzvi Mints and Or Abuhazira
  */
 package Fruit;

@@ -1,8 +1,6 @@
 /**
- * This Class represent Fruit that implements GIS_Fruit
- * each Pacman is a Line,
- * each Pacman have Pacman Data
- * each Pacman have time 
+ * This Class represent Pacman that implements GIS_Pacman
+ * each Pacman has Pacman Data and Geom Element
  * @author Tzvi Mints and Or Abuhazira
  */
 package Pacman;

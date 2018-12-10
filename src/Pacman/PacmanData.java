@@ -1,6 +1,5 @@
 /**
- * This Class represent Data that implements Meta_data
- * each Data is a Line information,
+ * This Class represent Data About Pacman that implements Meta_data
  * @author Tzvi Mints and Or Abuhazira
  */
 package Pacman;
