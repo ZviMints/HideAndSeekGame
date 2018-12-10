@@ -38,6 +38,8 @@ public class Menu extends JPanel{
 	public static String fileName;
 	public static JLabel Info;
 	public static MyFrame MainFrame;
+	public static Object2KML kml;
+	
 
 	public static DotsAndLines panel;
 
@@ -144,7 +146,8 @@ public class Menu extends JPanel{
 		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
 				try {
-					Object2KML k =new Object2KML(MainFrame.game, MainFrame.panel.algo);
+					kml =new Object2KML(MyFrame.game, MyFrame.panel.algo);
+					JOptionPane.showMessageDialog(null, "Success! file on path: "+ MainFrame.game.NameFile);
 				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

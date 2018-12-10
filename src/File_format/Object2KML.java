@@ -64,13 +64,22 @@ public class Object2KML {
 	}
 	/* * * * * * * * * * * * * * * Make Head,Body,Tail * * * * * * * * * * * * * * * */
 	private void MakeHead() {
-		   KML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" 
-				    + "<kml xmlns=\"http://www.opengis.net/kml/2.2\" "
-				    + "xmlns:gx=\"http://www.google.com/kml/ext/2.2\">\n"
-				    + "<Document>\n"
-				    +Style;
-					
-		}
+		KML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" 
+				+ "<kml xmlns=\"http://www.opengis.net/kml/2.2\" "
+				+ "xmlns:gx=\"http://www.google.com/kml/ext/2.2\">\n"
+				+ "<Document>\n"
+				+"<Style id=\"red\"><IconStyle><Icon>\n" 
+				+"<href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>\n"  
+				+ "</Icon></IconStyle></Style>\n" 
+				+ "<Style id=\"yellow\"><IconStyle><Icon>\n" 
+				+ "<href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>\n" 
+				+ "</Icon></IconStyle></Style>\n" 
+				+"<Style id=\"green\"><IconStyle><Icon>\n" 
+				+ "<href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>\n" 
+				+"</Icon></IconStyle></Style>"
+				+Style;
+
+	}
 	private void MakeTail() {
 		KML_TAIL = "</Document>\n</kml>";
 	}
@@ -105,6 +114,7 @@ public class Object2KML {
 	}
 	private String GetWhenFromPacman(String Name, List<Path> list, String time) throws ParseException {
 		String ans ="";
+		String fruit="";
 		String NewTime = time;
 		int i=0;
 		for (Path p :list) {
@@ -115,17 +125,27 @@ public class Object2KML {
 				if(!ans.contains(p.y0 +" "+p.x0)){
 					String s = time.replaceAll("\\s","T");
 					s+="Z";
-				ans+="<when>"+s+"</when>"+ "\n"
-				  +"<gx:coord>"+p.y0 +" "+p.x0+"</gx:coord>"+ "\n";
+					ans+="<when>"+s+"</when>"+ "\n"
+							+"<gx:coord>"+p.y0 +" "+p.x0+"</gx:coord>"+ "\n";
+					
 				}
 				if(!ans.contains(p.y1 +" "+p.x1)) {
-				ans+="<when>"+time1+"</when>"+ "\n"
-				  +"<gx:coord>"+p.y1 +" "+p.x1+"</gx:coord>"+ "\n";
-					}
+					ans+="<when>"+time1+"</when>"+ "\n"
+							+"<gx:coord>"+p.y1 +" "+p.x1+"</gx:coord>"+ "\n";
+					
+					
+					fruit+="<Placemark>\n" 
+							+"<styleUrl>#red</styleUrl>\n"  
+							+"<Point>\n"  
+							+"<coordinates>+"+p.y1 +" "+p.x1+"</coordinates>\n" 
+							+"</Point>\n" 
+							+"</Placemark>\n";
 				}
+				
 			}
+		}
+		ans=ans+fruit;
 		return ans;
-	
 	}
 	/* * * * * * * * * * * * * * * * * * File Writer * * * * * * * * * * * * * * * */
 	/**
@@ -149,14 +169,14 @@ public class Object2KML {
 		return KML_HEAD + KML_BODY + KML_TAIL;
 	}
 	public String Time(String time , int second) throws ParseException {
-		 String myTime = time;
-		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 java.util.Date d = df.parse(myTime); 
-		 Calendar cal = Calendar.getInstance();
-		 cal.setTime(d);
-		 cal.add(Calendar.SECOND, second);
-		 String newTime = df.format(cal.getTime());
-		 return newTime;
+		String myTime = time;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.util.Date d = df.parse(myTime); 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(d);
+		cal.add(Calendar.SECOND, second);
+		String newTime = df.format(cal.getTime());
+		return newTime;
 	}
 	String Style="<Style id=\"track_n\">\n" + 
 			"      <IconStyle>\n" + 

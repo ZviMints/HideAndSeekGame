@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
 <Document>
+<Style id="red"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="yellow"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="green"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
+</Icon></IconStyle></Style>
 <Style id="track_n">
       <IconStyle>
         <scale>.5</scale>
@@ -102,75 +111,55 @@
       </LineStyle>
     </Style>null<Folder>
 <name>pac 1</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20902709,32.10406321,685.0</coordinates>
+</Point>
+</Placemark>
 <Placemark><name>pac 1</name>
-<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-10T18:27:21Z</when>
-<gx:coord>35.21029702510601 32.10317358823639</gx:coord>
-<when>2018-12-10T18:28:14Z</when>
-<gx:coord>35.210551059999 32.10361295588351</gx:coord>
-<when>2018-12-10T18:29:05Z</when>
-<gx:coord>35.2102758555316 32.104026852942276</gx:coord>
-<when>2018-12-10T18:30:01Z</when>
-<gx:coord>35.20987363361803 32.10441527941272</gx:coord>
-<when>2018-12-10T18:31:07Z</when>
-<gx:coord>35.20916092461418 32.1045044264715</gx:coord>
-<when>2018-12-10T18:31:59Z</when>
-<gx:coord>35.20860345915645 32.10440254411861</gx:coord>
-<when>2018-12-10T18:32:48Z</when>
-<gx:coord>35.20822946334337 32.10407142647168</gx:coord>
-<when>2018-12-10T18:33:43Z</when>
-<gx:coord>35.208419989512265 32.10358748529527</gx:coord>
-<when>2018-12-10T18:34:25Z</when>
-<gx:coord>35.20853289390868 32.10321179411875</gx:coord>
-<when>2018-12-10T18:35:31Z</when>
-<gx:coord>35.20895628539545 32.10272148529498</gx:coord>
-<when>2018-12-10T18:36:45Z</when>
-<gx:coord>35.20967605092378 32.10242220588295</gx:coord>
-<when>2018-12-10T18:37:14Z</when>
-<gx:coord>35.20992302929161 32.1025941323537</gx:coord>
+<styleUrl>#multiTrack</styleUrl><gx:Track>
+<when>2018-12-10T18:45:25Z</when>
+<gx:coord>35.20651472782594 32.10369573529527</gx:coord>
+<when>2018-12-10T18:46:38Z</when>
+<gx:coord>35.20679698881617 32.10431976470688</gx:coord>
+<when>2018-12-10T18:47:10Z</when>
+<gx:coord>35.20714981505411 32.10436433823627</gx:coord>
+<when>2018-12-10T18:47:46Z</when>
+<gx:coord>35.20753792391605 32.104447117648</gx:coord>
+<when>2018-12-10T18:48:32Z</when>
+<gx:coord>35.20735445427219 32.10484191176543</gx:coord>
+<when>2018-12-10T18:49:28Z</when>
+<gx:coord>35.20686755406374 32.10515392647111</gx:coord>
+<when>2018-12-10T18:50:19Z</when>
+<gx:coord>35.206317145132836 32.105109352941724</gx:coord>
+<when>2018-12-10T18:51:17Z</when>
+<gx:coord>35.20596431889527 32.10466998529495</gx:coord>
+<when>2018-12-10T18:51:57Z</when>
+<gx:coord>35.20617601463779 32.104345235295106</gx:coord>
 </gx:Track>
 </Placemark>
 </Folder><Folder>
 <name>pac 2</name>
 <Placemark><name>pac 2</name>
-<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-10T18:27:21Z</when>
-<gx:coord>35.20625363641006 32.10358748529527</gx:coord>
-<when>2018-12-10T18:28:21Z</when>
-<gx:coord>35.206782875766656 32.1039186029423</gx:coord>
-<when>2018-12-10T18:28:35Z</when>
-<gx:coord>35.206938119311324 32.1039631764717</gx:coord>
-<when>2018-12-10T18:29:11Z</when>
-<gx:coord>35.20716392810363 32.104236985295145</gx:coord>
-<when>2018-12-10T18:29:49Z</when>
-<gx:coord>35.20724860640076 32.10458083823617</gx:coord>
-<when>2018-12-10T18:30:36Z</when>
-<gx:coord>35.207241549876 32.105020205882965</gx:coord>
-<when>2018-12-10T18:31:29Z</when>
-<gx:coord>35.20673348009336 32.10526217647103</gx:coord>
-<when>2018-12-10T18:32:08Z</when>
-<gx:coord>35.20634537123185 32.10510298529467</gx:coord>
-<when>2018-12-10T18:33:16Z</when>
-<gx:coord>35.20577379272704 32.104714558824334</gx:coord>
-<when>2018-12-10T18:34:15Z</when>
-<gx:coord>35.205985488469516 32.104205147059865</gx:coord>
-</gx:Track>
-</Placemark>
-</Folder><Folder>
-<name>pac 3</name>
-<Placemark><name>pac 3</name>
-<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-10T18:27:21Z</when>
-<gx:coord>35.20436954430293 32.10396954411876</gx:coord>
-<when>2018-12-10T18:28:06Z</when>
-<gx:coord>35.204037887640155 32.104275191177486</gx:coord>
-<when>2018-12-10T18:28:28Z</when>
-<gx:coord>35.203797965799026 32.10431976470688</gx:coord>
-<when>2018-12-10T18:29:23Z</when>
-<gx:coord>35.20348042218581 32.10388676470701</gx:coord>
-<when>2018-12-10T18:29:58Z</when>
-<gx:coord>35.20339574388896 32.10356201470704</gx:coord>
-<when>2018-12-10T18:31:32Z</when>
-<gx:coord>35.20428486600604 32.1031544852952</gx:coord>
-<when>2018-12-10T18:31:51Z</when>
-<gx:coord>35.20441188345137 32.103300941177594</gx:coord>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-10T18:45:25Z</when>
+<gx:coord>35.20413667898651 32.103326411765835</gx:coord>
+<when>2018-12-10T18:45:59Z</when>
+<gx:coord>35.20395320934328 32.10360658823645</gx:coord>
+<when>2018-12-10T18:46:38Z</when>
+<gx:coord>35.20365683530426 32.10386766176584</gx:coord>
+<when>2018-12-10T18:47:45Z</when>
+<gx:coord>35.20438365735241 32.10382945588349</gx:coord>
+<when>2018-12-10T18:48:23Z</when>
+<gx:coord>35.20450361827301 32.104173308824585</gx:coord>
+<when>2018-12-10T18:49:36Z</when>
+<gx:coord>35.204256639907086 32.10481007353015</gx:coord>
+<when>2018-12-10T18:50:27Z</when>
+<gx:coord>35.20389675714537 32.10516666176522</gx:coord>
+<when>2018-12-10T18:51:10Z</when>
+<gx:coord>35.20342396998791 32.1052239705887</gx:coord>
+<when>2018-12-10T18:52:17Z</when>
+<gx:coord>35.20327578296842 32.1046190441185</gx:coord>
 </gx:Track>
 </Placemark>
 </Folder></Document>
