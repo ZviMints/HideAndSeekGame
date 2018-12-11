@@ -40,13 +40,11 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	private Game game; // This Game Database
 	public Algo algo; // Algorithm of the current game
 	private Map map; // Map of current game 
-	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png");
-	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png");
-	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png");
-	private String newPacman ="PacmanFromMouse #";
-	private String newFruit ="FruitFromMouse #";
-
-
+	private Image FruitImage = Toolkit.getDefaultToolkit().getImage("./img/Fruit.png"); // Fruit image
+	private Image PacmanImage = Toolkit.getDefaultToolkit().getImage("./img/Pacman.png"); //  Pacman image
+	private Image Finished = Toolkit.getDefaultToolkit().getImage("./img/Finished.png"); // Hat Image for finishing pacman
+	private String newPacman ="PacmanFromMouse #"; // Set ID for Pacman
+	private String newFruit ="FruitFromMouse #"; // Set ID for Fruit
 
 	/* * * * * * * * * * * * * * * * * *   Constructor * * * * * * * * * * * * * * * */
 	public DotsAndLines(Game game, Map map)
@@ -71,7 +69,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void paintComponent(Graphics g)
 	{        
 		super.paintComponent(g); // Reprint
-		g.drawImage(this.map.getBgImage() , 0, 0,map.getWidth(),map.getHeight(), this);
+		g.drawImage(this.map.getBgImage() , 0, 0, map.getWidth(),map.getHeight(), this);
 		g.drawImage(this.map.getBgImageHover() , 0, 0,map.getWidth(),map.getHeight(), this);
 
 		// ** Print all Fruits that load from .CSV file ** //
@@ -104,7 +102,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			int x = (int) p_pixels.x();
 			int y = (int) p_pixels.y();
 			g.setColor(pacman.getInfo().color);
-			g.fillOval(x-13, y-5, 30, 30);
+			g.fillOval(x-13, y-5,30,30);
 			g.drawImage(PacmanImage, x-25, y-25, this);
 		}
 		// ** Print all the Hats the Finish the Algo ** //
@@ -128,7 +126,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void Solve() {
 		threads.clear(); // Remove the Hats
 		FinishedAlgo = false;
-		if(algo == null)
+		if(algo == null) // Singleton Pattern
 			algo =  new Algo(this.game);
 		else
 			algo.setGame(this.game);
@@ -200,7 +198,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	/**
 	 * Check if Fruit is already Exists in the Fruit List
 	 * @param f is the input Fruit
-	 * @return true iff Fruitslist contains list
+	 * @return true iff FruitsList contains list
 	 */
 	public boolean HasF(Fruit f)
 	{

@@ -23,9 +23,8 @@ public class Map {
 	// p10     p11 //
 	private Point3D p00;
 	private Point3D p01;
-	private Point3D p10; // NOTE! 
-	private Point3D p11;
-
+	private Point3D p10; // NOTE! we do not need 4 Points, 2 Points is enough,
+	private Point3D p11; // we left 4 points to next version
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	public Map(String ImagePath, Point3D p00, Point3D p01, Point3D p10, Point3D p11, int d, int e) {
 		this.bgImage = Toolkit.getDefaultToolkit().getImage(ImagePath);
@@ -38,7 +37,7 @@ public class Map {
 	}
 	/* * * * * * * * * * * * * * * * * * Setters and Getters * * * * * * * * * * * * * * * */
 	public int getHeight() { return height;}
-	public void setHeight(int e) { this.height = e; }
+	public void setHeight(int e) { this.height = e;}
 	public int getWidth() { return width; }
 	public void setWidth(int d) { this.width = d;}
 	public Image getBgImage() { return bgImage; }

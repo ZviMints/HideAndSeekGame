@@ -2,10 +2,9 @@
  * This Class Converting Object into KML file.
  * The class can convery Layer,Project or Element into a KML.
  */
-package File_format;
+package Path2KML;
 import java.io.File;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +12,7 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.Date;
 
 import Game.Game;
 import Geom.Point3D;
@@ -20,7 +20,7 @@ import Pacman.Pacman;
 import Path.Path;
 import ShortestPathAlgo.Algo;
 
-public class Object2KML {
+public class Game2KML {
 	private Algo algo;
 	private Game game;
 	private String KML_BODY;
@@ -34,12 +34,12 @@ public class Object2KML {
 	 * @param path is the path to *put* the KML file
 	 * @throws ParseException 
 	 */
-	public Object2KML(Game game,Algo algo) throws ParseException
+	public Game2KML(Game game,Algo algo) throws ParseException
 	{
 		this.algo = algo;
 		this.game = game;
 		MakeHead();
-		ConvertPath(algo,game);
+		ConvertPath(this.algo,this.game);
 		MakeTail();
 		try {
 			MakeFile(game);
@@ -162,7 +162,7 @@ public class Object2KML {
 	public void MakeFile(Game game) throws Exception
 	{
 		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());
-		String SavePath = game.NameFile.replaceAll(game.NameFile, "./data/"+TimeSave+".kml");
+		String SavePath = "./data/"+TimeSave+".kml";
 		PrintWriter pw = new PrintWriter(new File(SavePath));
 		StringBuilder sb = new StringBuilder();	
 		sb.append(KML_HEAD + KML_BODY + KML_TAIL);
@@ -177,8 +177,9 @@ public class Object2KML {
 	}
 	public String Time(String time , int second) throws ParseException {
 		String myTime = time;
+		System.out.println(myTime);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		java.util.Date d = df.parse(myTime); 
+		Date d = df.parse(myTime); 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(d);
 		cal.add(Calendar.SECOND, second);

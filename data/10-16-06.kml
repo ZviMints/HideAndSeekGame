@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+<Style id="red"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="yellow"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="green"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
+</Icon></IconStyle></Style><Style id="track_n">
+      <IconStyle>
+        <scale>.5</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+
+    </Style>
+    <!-- Highlighted track style -->
+    <Style id="track_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="track">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#track_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#track_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <!-- Normal multiTrack style -->
+    <Style id="multiTrack_n">
+      <IconStyle>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>6</width>
+      </LineStyle>
+
+    </Style>
+    <!-- Highlighted multiTrack style -->
+    <Style id="multiTrack_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="multiTrack">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#multiTrack_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#multiTrack_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <!-- Normal waypoint style -->
+    <Style id="waypoint_n">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <!-- Highlighted waypoint style -->
+    <Style id="waypoint_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="waypoint">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#waypoint_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#waypoint_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>6</width>
+      </LineStyle>
+    </Style>null<Folder>
+<name>0</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20465744702669 32.10439790112854 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20498167762847 32.10458044257611 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20532578336277 32.1045381517865 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205329109047206 32.104290912632415 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205329225782144 32.10404203321535 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205315533630355 32.10374459638799 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20531513377577 32.10348358320849 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20532876098433 32.10322256443594 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20598227631707 32.10336910057311 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20617577437058 32.103195833360395 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20647588670785 32.103189523523355 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20672286722967 32.10319512937712 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20686213351959 32.10339401528497 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20703169687591 32.10364886565326 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20705694653152 32.103848068185215 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207078371155035 32.104066567649966 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20704503816722 32.10434581241808 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20692049453091 32.10464371280193 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20681047129329 32.1047664281918 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206677559229114 32.10487657110678 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2064477267614 32.10487678055213 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20617251343115 32.10488263456499 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20607473780851 32.104708868286615 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20602271841498 32.104472860470416 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206013985307585 32.10418771019184 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205986456840925 32.1039327358463 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20598552294579 32.10367783317275 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20702895630284 32.10289781687574 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207203701329796 32.10296697353094 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20742146550466 32.102970603279935 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20753926328118 32.10281445807081 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20755126146161 32.102676239002136 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20747494145771 32.10261286546553 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20704722230306 32.10270155259852 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20505724738539 32.10226792176877 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20490475306489 32.10245791866744 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20478357388929 32.10266305545437 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20399234086033 32.10439337169992 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204041487558015 32.10451427474033 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205262611553955 32.10482563430702 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206230619964344 32.10535900181939 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20676520536955 32.10536973983595 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20735795049736 32.10536994953793 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>0</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-11T10:15:54Z</when>
+<gx:coord>35.20439071 32.10422729 0.0</gx:coord>
+<when>2018-12-11T10:16:25Z</when>
+<gx:coord>35.20465744702669 32.10439790112854 0.0</gx:coord>
+<when>2018-12-11T10:17:01Z</when>
+<gx:coord>35.20498167762847 32.10458044257611 0.0</gx:coord>
+<when>2018-12-11T10:17:33Z</when>
+<gx:coord>35.20532578336277 32.1045381517865 0.0</gx:coord>
+<when>2018-12-11T10:18:00Z</when>
+<gx:coord>35.205329109047206 32.104290912632415 0.0</gx:coord>
+<when>2018-12-11T10:18:27Z</when>
+<gx:coord>35.205329225782144 32.10404203321535 0.0</gx:coord>
+<when>2018-12-11T10:19:00Z</when>
+<gx:coord>35.205315533630355 32.10374459638799 0.0</gx:coord>
+<when>2018-12-11T10:19:29Z</when>
+<gx:coord>35.20531513377577 32.10348358320849 0.0</gx:coord>
+<when>2018-12-11T10:19:58Z</when>
+<gx:coord>35.20532876098433 32.10322256443594 0.0</gx:coord>
+<when>2018-12-11T10:21:01Z</when>
+<gx:coord>35.20598227631707 32.10336910057311 0.0</gx:coord>
+<when>2018-12-11T10:21:27Z</when>
+<gx:coord>35.20617577437058 32.103195833360395 0.0</gx:coord>
+<when>2018-12-11T10:21:55Z</when>
+<gx:coord>35.20647588670785 32.103189523523355 0.0</gx:coord>
+<when>2018-12-11T10:22:18Z</when>
+<gx:coord>35.20672286722967 32.10319512937712 0.0</gx:coord>
+<when>2018-12-11T10:22:43Z</when>
+<gx:coord>35.20686213351959 32.10339401528497 0.0</gx:coord>
+<when>2018-12-11T10:23:15Z</when>
+<gx:coord>35.20703169687591 32.10364886565326 0.0</gx:coord>
+<when>2018-12-11T10:23:37Z</when>
+<gx:coord>35.20705694653152 32.103848068185215 0.0</gx:coord>
+<when>2018-12-11T10:24:01Z</when>
+<gx:coord>35.207078371155035 32.104066567649966 0.0</gx:coord>
+<when>2018-12-11T10:24:32Z</when>
+<gx:coord>35.20704503816722 32.10434581241808 0.0</gx:coord>
+<when>2018-12-11T10:25:07Z</when>
+<gx:coord>35.20692049453091 32.10464371280193 0.0</gx:coord>
+<when>2018-12-11T10:25:24Z</when>
+<gx:coord>35.20681047129329 32.1047664281918 0.0</gx:coord>
+<when>2018-12-11T10:25:41Z</when>
+<gx:coord>35.206677559229114 32.10487657110678 0.0</gx:coord>
+<when>2018-12-11T10:26:02Z</when>
+<gx:coord>35.2064477267614 32.10487678055213 0.0</gx:coord>
+<when>2018-12-11T10:26:27Z</when>
+<gx:coord>35.20617251343115 32.10488263456499 0.0</gx:coord>
+<when>2018-12-11T10:26:48Z</when>
+<gx:coord>35.20607473780851 32.104708868286615 0.0</gx:coord>
+<when>2018-12-11T10:27:14Z</when>
+<gx:coord>35.20602271841498 32.104472860470416 0.0</gx:coord>
+<when>2018-12-11T10:27:45Z</when>
+<gx:coord>35.206013985307585 32.10418771019184 0.0</gx:coord>
+<when>2018-12-11T10:28:13Z</when>
+<gx:coord>35.205986456840925 32.1039327358463 0.0</gx:coord>
+<when>2018-12-11T10:28:41Z</when>
+<gx:coord>35.20598552294579 32.10367783317275 0.0</gx:coord>
+<when>2018-12-11T10:30:52Z</when>
+<gx:coord>35.20702895630284 32.10289781687574 0.0</gx:coord>
+<when>2018-12-11T10:31:10Z</when>
+<gx:coord>35.207203701329796 32.10296697353094 0.0</gx:coord>
+<when>2018-12-11T10:31:30Z</when>
+<gx:coord>35.20742146550466 32.102970603279935 0.0</gx:coord>
+<when>2018-12-11T10:31:50Z</when>
+<gx:coord>35.20753926328118 32.10281445807081 0.0</gx:coord>
+<when>2018-12-11T10:32:05Z</when>
+<gx:coord>35.20755126146161 32.102676239002136 0.0</gx:coord>
+<when>2018-12-11T10:32:15Z</when>
+<gx:coord>35.20747494145771 32.10261286546553 0.0</gx:coord>
+<when>2018-12-11T10:32:56Z</when>
+<gx:coord>35.20704722230306 32.10270155259852 0.0</gx:coord>
+<when>2018-12-11T10:36:09Z</when>
+<gx:coord>35.20505724738539 32.10226792176877 0.0</gx:coord>
+<when>2018-12-11T10:36:34Z</when>
+<gx:coord>35.20490475306489 32.10245791866744 0.0</gx:coord>
+<when>2018-12-11T10:36:59Z</when>
+<gx:coord>35.20478357388929 32.10266305545437 0.0</gx:coord>
+<when>2018-12-11T10:40:25Z</when>
+<gx:coord>35.20399234086033 32.10439337169992 0.0</gx:coord>
+<when>2018-12-11T10:40:39Z</when>
+<gx:coord>35.204041487558015 32.10451427474033 0.0</gx:coord>
+<when>2018-12-11T10:42:39Z</when>
+<gx:coord>35.205262611553955 32.10482563430702 0.0</gx:coord>
+<when>2018-12-11T10:44:27Z</when>
+<gx:coord>35.206230619964344 32.10535900181939 0.0</gx:coord>
+<when>2018-12-11T10:45:17Z</when>
+<gx:coord>35.20676520536955 32.10536973983595 0.0</gx:coord>
+<when>2018-12-11T10:46:12Z</when>
+<gx:coord>35.20735795049736 32.10536994953793 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #1</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209246933379816 32.10235218226378 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209157309553156 32.102340821025635 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20896683723127 32.10232230544626 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208684632118434 32.10231546747436 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208494110302986 32.10232097352329 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20849738510032 32.10245189880208 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208523993282284 32.10257950388716 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20854975510707 32.10262869930898 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208645837570224 32.10272121782877 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2087783008674 32.10280164109928 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20889780784624 32.102862922889635 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20884054724749 32.10297467044117 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209009174545486 32.102976721036825 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20859995249993 32.10299459753539 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20842348053564 32.102977851327985 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20861851410655 32.10321229895355 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20877870986764 32.10332321863375 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20894262360314 32.10349790009537 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209023867712496 32.1037330488979 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209033542115264 32.10396942218483 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208972712777786 32.10420029276892 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208895669050804 32.10443108616699 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20877744499861 32.10463802498989 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20859049954763 32.10476788754902 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208450742757904 32.104824348731704 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20814804530434 32.10488680214712 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20771786647892 32.104859248844534 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20768157611435 32.104733764937635 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20758429188646 32.10453303946562 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20756678319377 32.10428482720708 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20759332281389 32.10406019851791 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207648813232275 32.10381727946202 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20777386453266 32.1035557654855 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20789093896006 32.103438955734035 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20806477517077 32.10336336706765 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208241091792786 32.10329036917064 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2080028668132 32.103014459276004 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20799699995606 32.102882636832 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20799662420503 32.10274303319269 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20799660166939 32.102621633215946 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20800969414104 32.10250626195064 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208004086984225 32.10239096559459 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207997199272604 32.10228776887705 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20799670468588 32.102245282778824 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20720195936111 32.10252422055046 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207054564122856 32.102516103515725 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207044474169685 32.102336333069445 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207044000510635 32.10219672317892 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20464070142055 32.10288608343784 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20449506040557 32.10308702099318 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204291030054335 32.10332941234077 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204162054791645 32.10358262937548 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204028763475925 32.103794741698565 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.203921299615715 32.10406645873376 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.203965368462605 32.10426583742489 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20424441783011 32.10469040702747 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20443230978257 32.10483739253649 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20465090386571 32.10500092444156 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20490401097907 32.10514113411713 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20546727498693 32.10528863101339 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205932712691634 32.105362250778285 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #1</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-11T10:15:54Z</when>
+<gx:coord>35.209718390072545 32.102041768633676 0.0</gx:coord>
+<when>2018-12-11T10:16:50Z</when>
+<gx:coord>35.209246933379816 32.10235218226378 0.0</gx:coord>
+<when>2018-12-11T10:16:58Z</when>
+<gx:coord>35.209157309553156 32.102340821025635 0.0</gx:coord>
+<when>2018-12-11T10:17:16Z</when>
+<gx:coord>35.20896683723127 32.10232230544626 0.0</gx:coord>
+<when>2018-12-11T10:17:42Z</when>
+<gx:coord>35.208684632118434 32.10231546747436 0.0</gx:coord>
+<when>2018-12-11T10:17:59Z</when>
+<gx:coord>35.208494110302986 32.10232097352329 0.0</gx:coord>
+<when>2018-12-11T10:18:13Z</when>
+<gx:coord>35.20849738510032 32.10245189880208 0.0</gx:coord>
+<when>2018-12-11T10:18:27Z</when>
+<gx:coord>35.208523993282284 32.10257950388716 0.0</gx:coord>
+<when>2018-12-11T10:18:32Z</when>
+<gx:coord>35.20854975510707 32.10262869930898 0.0</gx:coord>
+<when>2018-12-11T10:18:45Z</when>
+<gx:coord>35.208645837570224 32.10272121782877 0.0</gx:coord>
+<when>2018-12-11T10:19:00Z</when>
+<gx:coord>35.2087783008674 32.10280164109928 0.0</gx:coord>
+<when>2018-12-11T10:19:13Z</when>
+<gx:coord>35.20889780784624 32.102862922889635 0.0</gx:coord>
+<when>2018-12-11T10:19:26Z</when>
+<gx:coord>35.20884054724749 32.10297467044117 0.0</gx:coord>
+<when>2018-12-11T10:19:41Z</when>
+<gx:coord>35.209009174545486 32.102976721036825 0.0</gx:coord>
+<when>2018-12-11T10:20:19Z</when>
+<gx:coord>35.20859995249993 32.10299459753539 0.0</gx:coord>
+<when>2018-12-11T10:20:35Z</when>
+<gx:coord>35.20842348053564 32.102977851327985 0.0</gx:coord>
+<when>2018-12-11T10:21:06Z</when>
+<gx:coord>35.20861851410655 32.10321229895355 0.0</gx:coord>
+<when>2018-12-11T10:21:25Z</when>
+<gx:coord>35.20877870986764 32.10332321863375 0.0</gx:coord>
+<when>2018-12-11T10:21:49Z</when>
+<gx:coord>35.20894262360314 32.10349790009537 0.0</gx:coord>
+<when>2018-12-11T10:22:16Z</when>
+<gx:coord>35.209023867712496 32.1037330488979 0.0</gx:coord>
+<when>2018-12-11T10:22:42Z</when>
+<gx:coord>35.209033542115264 32.10396942218483 0.0</gx:coord>
+<when>2018-12-11T10:23:08Z</when>
+<gx:coord>35.208972712777786 32.10420029276892 0.0</gx:coord>
+<when>2018-12-11T10:23:34Z</when>
+<gx:coord>35.208895669050804 32.10443108616699 0.0</gx:coord>
+<when>2018-12-11T10:23:59Z</when>
+<gx:coord>35.20877744499861 32.10463802498989 0.0</gx:coord>
+<when>2018-12-11T10:24:21Z</when>
+<gx:coord>35.20859049954763 32.10476788754902 0.0</gx:coord>
+<when>2018-12-11T10:24:35Z</when>
+<gx:coord>35.208450742757904 32.104824348731704 0.0</gx:coord>
+<when>2018-12-11T10:25:04Z</when>
+<gx:coord>35.20814804530434 32.10488680214712 0.0</gx:coord>
+<when>2018-12-11T10:25:44Z</when>
+<gx:coord>35.20771786647892 32.104859248844534 0.0</gx:coord>
+<when>2018-12-11T10:25:58Z</when>
+<gx:coord>35.20768157611435 32.104733764937635 0.0</gx:coord>
+<when>2018-12-11T10:26:22Z</when>
+<gx:coord>35.20758429188646 32.10453303946562 0.0</gx:coord>
+<when>2018-12-11T10:26:49Z</when>
+<gx:coord>35.20756678319377 32.10428482720708 0.0</gx:coord>
+<when>2018-12-11T10:27:14Z</when>
+<gx:coord>35.20759332281389 32.10406019851791 0.0</gx:coord>
+<when>2018-12-11T10:27:41Z</when>
+<gx:coord>35.207648813232275 32.10381727946202 0.0</gx:coord>
+<when>2018-12-11T10:28:12Z</when>
+<gx:coord>35.20777386453266 32.1035557654855 0.0</gx:coord>
+<when>2018-12-11T10:28:29Z</when>
+<gx:coord>35.20789093896006 32.103438955734035 0.0</gx:coord>
+<when>2018-12-11T10:28:47Z</when>
+<gx:coord>35.20806477517077 32.10336336706765 0.0</gx:coord>
+<when>2018-12-11T10:29:05Z</when>
+<gx:coord>35.208241091792786 32.10329036917064 0.0</gx:coord>
+<when>2018-12-11T10:29:43Z</when>
+<gx:coord>35.2080028668132 32.103014459276004 0.0</gx:coord>
+<when>2018-12-11T10:29:57Z</when>
+<gx:coord>35.20799699995606 32.102882636832 0.0</gx:coord>
+<when>2018-12-11T10:30:12Z</when>
+<gx:coord>35.20799662420503 32.10274303319269 0.0</gx:coord>
+<when>2018-12-11T10:30:25Z</when>
+<gx:coord>35.20799660166939 32.102621633215946 0.0</gx:coord>
+<when>2018-12-11T10:30:37Z</when>
+<gx:coord>35.20800969414104 32.10250626195064 0.0</gx:coord>
+<when>2018-12-11T10:30:49Z</when>
+<gx:coord>35.208004086984225 32.10239096559459 0.0</gx:coord>
+<when>2018-12-11T10:31:00Z</when>
+<gx:coord>35.207997199272604 32.10228776887705 0.0</gx:coord>
+<when>2018-12-11T10:31:04Z</when>
+<gx:coord>35.20799670468588 32.102245282778824 0.0</gx:coord>
+<when>2018-12-11T10:32:25Z</when>
+<gx:coord>35.20720195936111 32.10252422055046 0.0</gx:coord>
+<when>2018-12-11T10:32:38Z</when>
+<gx:coord>35.207054564122856 32.102516103515725 0.0</gx:coord>
+<when>2018-12-11T10:32:58Z</when>
+<gx:coord>35.207044474169685 32.102336333069445 0.0</gx:coord>
+<when>2018-12-11T10:33:13Z</when>
+<gx:coord>35.207044000510635 32.10219672317892 0.0</gx:coord>
+<when>2018-12-11T10:37:12Z</when>
+<gx:coord>35.20464070142055 32.10288608343784 0.0</gx:coord>
+<when>2018-12-11T10:37:38Z</when>
+<gx:coord>35.20449506040557 32.10308702099318 0.0</gx:coord>
+<when>2018-12-11T10:38:11Z</when>
+<gx:coord>35.204291030054335 32.10332941234077 0.0</gx:coord>
+<when>2018-12-11T10:38:41Z</when>
+<gx:coord>35.204162054791645 32.10358262937548 0.0</gx:coord>
+<when>2018-12-11T10:39:07Z</when>
+<gx:coord>35.204028763475925 32.103794741698565 0.0</gx:coord>
+<when>2018-12-11T10:39:38Z</when>
+<gx:coord>35.203921299615715 32.10406645873376 0.0</gx:coord>
+<when>2018-12-11T10:40:00Z</when>
+<gx:coord>35.203965368462605 32.10426583742489 0.0</gx:coord>
+<when>2018-12-11T10:40:54Z</when>
+<gx:coord>35.20424441783011 32.10469040702747 0.0</gx:coord>
+<when>2018-12-11T10:41:18Z</when>
+<gx:coord>35.20443230978257 32.10483739253649 0.0</gx:coord>
+<when>2018-12-11T10:41:45Z</when>
+<gx:coord>35.20465090386571 32.10500092444156 0.0</gx:coord>
+<when>2018-12-11T10:42:13Z</when>
+<gx:coord>35.20490401097907 32.10514113411713 0.0</gx:coord>
+<when>2018-12-11T10:43:08Z</when>
+<gx:coord>35.20546727498693 32.10528863101339 0.0</gx:coord>
+<when>2018-12-11T10:43:52Z</when>
+<gx:coord>35.205932712691634 32.105362250778285 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #2</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20931968853823 32.1051285081358 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209933585174426 32.1051160171808 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21030061429537 32.105074628320885 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210498245494996 32.105102234150046 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21066163063855 32.10502922718947 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210893470458814 32.10499046529285 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21107742844704 32.10493139893351 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211282959205434 32.1048240103423 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211452539733216 32.10472748496192 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21160265886279 32.10457803733756 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21180134502482 32.10431853005919 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21199922556761 32.104040330650115 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.212112637663914 32.10385903661734 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.212192088214636 32.103641835675035 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.212147270775255 32.103363798750834 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2121933581118 32.10314589575931 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21209297569451 32.10290950747506 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211944880392274 32.10257060955655 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21185340326358 32.10237688576426 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211279682904696 32.10269872627944 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21110231433978 32.10256401374708 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21093364601576 32.10246010947315 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2107380242984 32.10247812802347 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21048402520296 32.10246157990738 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21020879647833 32.102484298137185 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209946907925854 32.102578766896876 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209766991272026 32.10278747732398 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209740591987405 32.10301645937306 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21008177821764 32.10302514048195 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21024165090666 32.10282645136572 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210547949764084 32.10274876009666 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210823058964614 32.10281064228055 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21107969810436 32.10301918479621 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21150757072089 32.10291854685184 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21154456798011 32.10314397246789 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21158014546372 32.10341709105087 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21156090840765 32.103641660370656 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21147136934117 32.103903003231245 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21132803012151 32.10401480832007 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21109781106158 32.10404966775745 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21081569047237 32.104062893395145 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210385253433046 32.10408115100799 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21005355060438 32.104052173056886 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209887888079884 32.103900040588734 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20980041846209 32.1037377212346 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209762329130754 32.10352597061219 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20974731397056 32.10333181398248 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210175078212664 32.103554856791575 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21096387367851 32.10361342722529 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20869646156236 32.105146525116055 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208119662646816 32.10529472798863 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20758349692496 32.10541009764649 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #2</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-11T10:15:54Z</when>
+<gx:coord>35.20901273759371 32.105146055901145 0.0</gx:coord>
+<when>2018-12-11T10:16:22Z</when>
+<gx:coord>35.20931968853823 32.1051285081358 0.0</gx:coord>
+<when>2018-12-11T10:17:19Z</when>
+<gx:coord>35.209933585174426 32.1051160171808 0.0</gx:coord>
+<when>2018-12-11T10:17:53Z</when>
+<gx:coord>35.21030061429537 32.105074628320885 0.0</gx:coord>
+<when>2018-12-11T10:18:11Z</when>
+<gx:coord>35.210498245494996 32.105102234150046 0.0</gx:coord>
+<when>2018-12-11T10:18:28Z</when>
+<gx:coord>35.21066163063855 32.10502922718947 0.0</gx:coord>
+<when>2018-12-11T10:18:50Z</when>
+<gx:coord>35.210893470458814 32.10499046529285 0.0</gx:coord>
+<when>2018-12-11T10:19:08Z</when>
+<gx:coord>35.21107742844704 32.10493139893351 0.0</gx:coord>
+<when>2018-12-11T10:19:30Z</when>
+<gx:coord>35.211282959205434 32.1048240103423 0.0</gx:coord>
+<when>2018-12-11T10:19:49Z</when>
+<gx:coord>35.211452539733216 32.10472748496192 0.0</gx:coord>
+<when>2018-12-11T10:20:10Z</when>
+<gx:coord>35.21160265886279 32.10457803733756 0.0</gx:coord>
+<when>2018-12-11T10:20:44Z</when>
+<gx:coord>35.21180134502482 32.10431853005919 0.0</gx:coord>
+<when>2018-12-11T10:21:20Z</when>
+<gx:coord>35.21199922556761 32.104040330650115 0.0</gx:coord>
+<when>2018-12-11T10:21:42Z</when>
+<gx:coord>35.212112637663914 32.10385903661734 0.0</gx:coord>
+<when>2018-12-11T10:22:07Z</when>
+<gx:coord>35.212192088214636 32.103641835675035 0.0</gx:coord>
+<when>2018-12-11T10:22:38Z</when>
+<gx:coord>35.212147270775255 32.103363798750834 0.0</gx:coord>
+<when>2018-12-11T10:23:02Z</when>
+<gx:coord>35.2121933581118 32.10314589575931 0.0</gx:coord>
+<when>2018-12-11T10:23:29Z</when>
+<gx:coord>35.21209297569451 32.10290950747506 0.0</gx:coord>
+<when>2018-12-11T10:24:09Z</when>
+<gx:coord>35.211944880392274 32.10257060955655 0.0</gx:coord>
+<when>2018-12-11T10:24:32Z</when>
+<gx:coord>35.21185340326358 32.10237688576426 0.0</gx:coord>
+<when>2018-12-11T10:25:36Z</when>
+<gx:coord>35.211279682904696 32.10269872627944 0.0</gx:coord>
+<when>2018-12-11T10:25:58Z</when>
+<gx:coord>35.21110231433978 32.10256401374708 0.0</gx:coord>
+<when>2018-12-11T10:26:17Z</when>
+<gx:coord>35.21093364601576 32.10246010947315 0.0</gx:coord>
+<when>2018-12-11T10:26:35Z</when>
+<gx:coord>35.2107380242984 32.10247812802347 0.0</gx:coord>
+<when>2018-12-11T10:26:58Z</when>
+<gx:coord>35.21048402520296 32.10246157990738 0.0</gx:coord>
+<when>2018-12-11T10:27:24Z</when>
+<gx:coord>35.21020879647833 32.102484298137185 0.0</gx:coord>
+<when>2018-12-11T10:27:50Z</when>
+<gx:coord>35.209946907925854 32.102578766896876 0.0</gx:coord>
+<when>2018-12-11T10:28:18Z</when>
+<gx:coord>35.209766991272026 32.10278747732398 0.0</gx:coord>
+<when>2018-12-11T10:28:43Z</when>
+<gx:coord>35.209740591987405 32.10301645937306 0.0</gx:coord>
+<when>2018-12-11T10:29:15Z</when>
+<gx:coord>35.21008177821764 32.10302514048195 0.0</gx:coord>
+<when>2018-12-11T10:29:41Z</when>
+<gx:coord>35.21024165090666 32.10282645136572 0.0</gx:coord>
+<when>2018-12-11T10:30:11Z</when>
+<gx:coord>35.210547949764084 32.10274876009666 0.0</gx:coord>
+<when>2018-12-11T10:30:37Z</when>
+<gx:coord>35.210823058964614 32.10281064228055 0.0</gx:coord>
+<when>2018-12-11T10:31:10Z</when>
+<gx:coord>35.21107969810436 32.10301918479621 0.0</gx:coord>
+<when>2018-12-11T10:31:51Z</when>
+<gx:coord>35.21150757072089 32.10291854685184 0.0</gx:coord>
+<when>2018-12-11T10:32:16Z</when>
+<gx:coord>35.21154456798011 32.10314397246789 0.0</gx:coord>
+<when>2018-12-11T10:32:46Z</when>
+<gx:coord>35.21158014546372 32.10341709105087 0.0</gx:coord>
+<when>2018-12-11T10:33:11Z</when>
+<gx:coord>35.21156090840765 32.103641660370656 0.0</gx:coord>
+<when>2018-12-11T10:33:41Z</when>
+<gx:coord>35.21147136934117 32.103903003231245 0.0</gx:coord>
+<when>2018-12-11T10:33:59Z</when>
+<gx:coord>35.21132803012151 32.10401480832007 0.0</gx:coord>
+<when>2018-12-11T10:34:21Z</when>
+<gx:coord>35.21109781106158 32.10404966775745 0.0</gx:coord>
+<when>2018-12-11T10:34:47Z</when>
+<gx:coord>35.21081569047237 32.104062893395145 0.0</gx:coord>
+<when>2018-12-11T10:35:27Z</when>
+<gx:coord>35.210385253433046 32.10408115100799 0.0</gx:coord>
+<when>2018-12-11T10:35:58Z</when>
+<gx:coord>35.21005355060438 32.104052173056886 0.0</gx:coord>
+<when>2018-12-11T10:36:21Z</when>
+<gx:coord>35.209887888079884 32.103900040588734 0.0</gx:coord>
+<when>2018-12-11T10:36:40Z</when>
+<gx:coord>35.20980041846209 32.1037377212346 0.0</gx:coord>
+<when>2018-12-11T10:37:03Z</when>
+<gx:coord>35.209762329130754 32.10352597061219 0.0</gx:coord>
+<when>2018-12-11T10:37:24Z</when>
+<gx:coord>35.20974731397056 32.10333181398248 0.0</gx:coord>
+<when>2018-12-11T10:38:11Z</when>
+<gx:coord>35.210175078212664 32.103554856791575 0.0</gx:coord>
+<when>2018-12-11T10:39:25Z</when>
+<gx:coord>35.21096387367851 32.10361342722529 0.0</gx:coord>
+<when>2018-12-11T10:43:58Z</when>
+<gx:coord>35.20869646156236 32.105146525116055 0.0</gx:coord>
+<when>2018-12-11T10:44:54Z</when>
+<gx:coord>35.208119662646816 32.10529472798863 0.0</gx:coord>
+<when>2018-12-11T10:45:46Z</when>
+<gx:coord>35.20758349692496 32.10541009764649 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder></Document>
+</kml>

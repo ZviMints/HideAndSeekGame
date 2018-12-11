@@ -38,7 +38,7 @@ public class PacmanThread extends Thread{
 				if(path.time >= 0)
 				{
 					try {
-						Thread.sleep((long) (path.time * 1));
+						Thread.sleep((long) (path.time * 5));
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

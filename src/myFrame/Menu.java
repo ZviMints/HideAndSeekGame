@@ -21,8 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import File_format.Object2KML;
 import Game.Game;
+import Path2KML.Game2KML;
 
 
 public class Menu extends JPanel{
@@ -35,7 +35,7 @@ public class Menu extends JPanel{
 	private static JTextField TotalTF;
 	private static String fileName;
 	private static JLabel Info;
-	private static Object2KML kml;
+	private static Game2KML kml;
 
 	public MyFrame MainFrame;
 	public DotsAndLines panel;
@@ -149,8 +149,8 @@ public class Menu extends JPanel{
 				if(!panel.Solutions.isEmpty())
 				{
 					try {
-						kml = new Object2KML(MyFrame.game, panel.algo);
-						JOptionPane.showMessageDialog(null, "Success! file on path: "+ kml.TimeSave);
+						kml = new Game2KML(MyFrame.game, panel.algo);
+						JOptionPane.showMessageDialog(null, "Success! Saved on path: "+kml.TimeSave ); //Or put Path here, not time
 					} catch (ParseException e1) {
 						e1.printStackTrace();
 					}
@@ -160,7 +160,6 @@ public class Menu extends JPanel{
 	
 			}
 		});
-
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
