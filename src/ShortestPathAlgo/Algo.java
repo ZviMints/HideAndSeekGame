@@ -49,7 +49,7 @@ public class Algo {
 	}
 	/* * * * * * * * * * * * * *  Run new Algorithm * * * * * * * * * * * * * * * */
 	public void setGame(Game game) {
-		StartGameTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		StartGameTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
 		solution.clear();
 		FruitsList.clear();
 		PacmansList.clear();

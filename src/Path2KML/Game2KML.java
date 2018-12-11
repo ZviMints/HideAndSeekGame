@@ -38,7 +38,7 @@ public class Game2KML {
 		this.algo = algo;
 		this.game = game;
 		MakeHead();
-		ConvertPath(this.algo,this.game);
+		ConvertPath(algo,game);
 		MakeTail();
 		try {
 			MakeFile(game);
@@ -53,9 +53,9 @@ public class Game2KML {
 	 * @throws ParseException 
 	 */
 	private void ConvertPath(Algo algo,Game game) throws ParseException {
-		String time = algo.StartGameTime;
-		for(Pacman p : game.getPacmanList()) {
-			KML_BODY += CreateFolder(p.getInfo().getID(), p.getInfo().getTime(),algo.getSolution(),time);
+		String AlgoStartTime = algo.StartGameTime; // השעה שהאלגוריתם התחיל
+		for(Pacman pacman : game.getPacmanList()) { // ריצה על כל הפקמנים 
+			KML_BODY += CreateFolder(pacman.getInfo().getID(),algo.getSolution(),AlgoStartTime);//בניית גוף ע"י שליחת שם הפקמן,פתרון האלגוריתם,וזמן התחלת האלגוריתם
 		}
 	}
 	/* * * * * * * * * * * * * * * Make Head,Body,Tail * * * * * * * * * * * * * * * */
@@ -79,78 +79,65 @@ public class Game2KML {
 	private void MakeTail() {
 		KML_TAIL = "</Document>\n</kml>";
 	}
-	/* * * * * * * * * * * * * * * * * * CSV To KML Convert * * * * * * * * * * * * * * * */
+	/* * * * * * * * * * * * * * * * * * KML Convert * * * * * * * * * * * * * * * */
 	/**
-	 * This Method is Responsible to convert From CSV Line to KML line by format
-	 * @param MAC is the input MAC from csv file
-	 * @param SSID is the input SSID from csv file
-	 * @param AuthMode is the input AuthMode from csv file
-	 * @param FirstSeen is the input FirstSeen from csv file
-	 * @param Frequency is the input Frequency from csv file
-	 * @param RSSI is the input RSSI from csv file
-	 * @param point is the input 3 coordinates ( lat, lon , alt ) from csv file
-	 * @param list 
-	 * @param time 
-	 * @return
+	 * פונקציה שמקבלת שם שם של פקמן ורשימה של מסלולים וזמן התחלת של האלגורתים ומחזירה את המסלול בפורמט 
 	 * @throws ParseException 
 	 */
-	public String CreateFolder(String Name, double d, List<Path> list, String time) throws ParseException
+	public String CreateFolder(String Name, List<Path> list, String AlgoStartTime) throws ParseException
 	{
 		String body = "<Folder>" + "\n" 
-				+"<name>"+ Name +"</name>" + "\n"
-				+fruit(Name, list)
+				+"<name>"+ Name +"</name>" + "\n" //שם הפקמן
+				+fruit(Name, list) // הצגת הפירות על המפה
 				+"<Placemark>"
-				+ "<name>"+ Name +"</name>" + "\n"
+				+ "<name>"+ Name +"</name>" + "\n" 
 				+ "<styleUrl>#multiTrack</styleUrl>"
 				+ "<gx:Track>"
-				+ GetWhenFromPacman(Name,list,time)
+				+ GetWhenFromPacman(Name,list,AlgoStartTime) // הצגה של המסלול ע"י זמן ומסלול שהפקמן עובר
 				+ "</gx:Track>" + "\n"
 				+ "</Placemark>" + "\n"
 				+"</Folder>";
 		return body;
 	}
-	private String GetWhenFromPacman(String Name, List<Path> list, String time) throws ParseException {
-		String ans ="";
-		String NewTime = time;
-		for (Path p :list) {
-			if(p.ID==Name) {
-				NewTime = Time(NewTime,(int)p.time);
-				String time1=NewTime.replaceAll("\\s","T");
-				time1+="Z";
-				if(!ans.contains(p.y0 +" "+p.x0)){
-					String s = time.replaceAll("\\s","T");
-					s+="Z";
-					ans+="<when>"+s+"</when>"+ "\n"
-							+"<gx:coord>"+p.y0 +" "+p.x0 +" "+p.z0+"</gx:coord>"+ "\n";
+	/**
+	 * הפונקציה מקבלת שם של פקמן עוברת על המסלול ובונה עבור הפקמן את המסלול והזמן שהוא עבר  
+	 * @return
+	 * @throws ParseException 
+	 */
+	private String GetWhenFromPacman(String Name, List<Path> list, String AlgoStartTime) throws ParseException {
+		String ans =""; // בניית מחרוזת שמאכסנת את כל הקוד של המסלול והזמן
+		for (Path path :list) { // עובר על כל המסלול 
+			if(path.ID.equals(Name)) { //בדיקה אם הפקמן נמצא בתא הנוכחי ברשימה 
+				if(!ans.contains(path.y0 +" "+path.x0)){//עבור המיקום ההתחלתי של הפקמן
+					ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n" //הוספת הזמן והנקודת עבור הפורמט
+							+"<gx:coord>"+path.y0 +" "+path.x0 +" "+path.z0+"</gx:coord>"+ "\n";
 				}
-				if(!ans.contains(p.y1 +" "+p.x1)) {
-					ans+="<when>"+time1+"</when>"+ "\n"
-							+"<gx:coord>"+p.y1 +" "+p.x1+" "+p.z0+"</gx:coord>"+ "\n";
-					
-				
-				}
-				
+				AlgoStartTime = Time(AlgoStartTime,(int)path.time);//הוספת הזמן שלקח לפקמן להגיע לפרי לזמן הנוכחי של האלגוריתם
+				ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n" 
+						+"<gx:coord>"+path.y1 +" "+path.x1+" "+path.z0+"</gx:coord>"+ "\n";
 			}
 		}
 		return ans;
 	}
+	/**
+	 * פונקציה שמקבלת של של פקמן רשימה של מסלול האלגוריתם ומחזירה את מיקום הפירות במפה  
+	 * @return
+	 * @throws ParseException 
+	 */
 	public String fruit(String Name , List<Path> list) {
-		String fruit="";
-		for (Path p :list) {
-			if(p.ID==Name) {
-				if(!fruit.contains(p.y1 +" "+p.x1)) {
-					fruit+="<Placemark>\n" 
-							+"<styleUrl>#red</styleUrl>\n"  
-							+"<Point>\n"  
-							+"<coordinates>"+p.y1 +" "+p.x1+" "+p.z0+"</coordinates>\n" 
-							+"</Point>\n" 
-							+"</Placemark>\n";
-				}
-				
+		String fruit=""; //מחזורת בשביל להכניס את כל הפרמטרים כל הפירות
+		for (Path path :list) { //ריצה על המסלול בכדי לקחת את מיקום הפירות
+			if(path.ID.equals(Name)){ //בדיקה אם פקמן מסויים נמצא ברשימה
+				fruit+="<Placemark>\n" 
+						+"<styleUrl>#red</styleUrl>\n"  
+						+"<Point>\n"  
+						+"<coordinates>"+path.y1 +" "+path.x1+" "+path.z0+"</coordinates>\n" //הוספת המיקום של הפרי 
+						+"</Point>\n" 
+						+"</Placemark>\n";
 			}
+
 		}
 		return fruit;
-		
 	}
 	/* * * * * * * * * * * * * * * * * * File Writer * * * * * * * * * * * * * * * */
 	/**
@@ -160,8 +147,8 @@ public class Game2KML {
 	 */
 	public void MakeFile(Game game) throws Exception
 	{
-		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());
-		String SavePath = "./data/"+TimeSave+".kml";
+		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());// זמן של שמירת המשחק 
+		String SavePath = "./data/"+TimeSave+".kml";//קריאה לקובץ בשם של הזמן
 		PrintWriter pw = new PrintWriter(new File(SavePath));
 		StringBuilder sb = new StringBuilder();	
 		sb.append(KML_HEAD + KML_BODY + KML_TAIL);
@@ -174,17 +161,45 @@ public class Game2KML {
 	{
 		return KML_HEAD + KML_BODY + KML_TAIL;
 	}
-	public String Time(String time , int second) throws ParseException {
-		String myTime = time;
-		System.out.println(myTime);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date d = df.parse(myTime); 
+	/**
+	 * פונקציה שמקבלת זמן מסויים באלגוריתם ושניות שלקח לפקמן ללכת ומוסיפה את הזמן של הפקמן לזמן של האלגוריתם 
+	 * @throws Exception
+	 */
+	public String Time(String AlgoTime , int second) throws ParseException {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//פורמט של הזמן 
+		Date d = df.parse(AlgoTime);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(d);
 		cal.add(Calendar.SECOND, second);
 		String newTime = df.format(cal.getTime());
 		return newTime;
 	}
+	/**
+	 * פונקציה שמקבלת זמן וממירה אותו לפורמט אחר 
+	 * @throws Exception
+	 */
+	public String TimeFormatKml(String time) {
+		//מחליפה את המחרוזת כך שהיא תתאים ל-KML
+		time=time.replaceAll("\\s","T");
+		time+="Z";
+		return time;
+	}
+	
+//	public static String getUTFromString(String time)
+//	{
+//		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+2")); // Israel Time Zone
+//		try {
+//			unixTime = dateFormat.parse(time).getTime();
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(unixTime);
+//		unixTime = unixTime / 1000;
+//		return unixTime;
+//		
+//	}
+	
 	String Style="<Style id=\"track_n\">\n" + 
 			"      <IconStyle>\n" + 
 			"        <scale>.5</scale>\n" + 

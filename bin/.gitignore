@@ -1,8 +1,12 @@
-/Pacman/
-/myFrame/
-/Map/
+/Coords/
 /File_format/
-/Path2KML/
+/Fruit/
+/Game/
 /Geom/
-/Testing/
+/Map/
+/Pacman/
+/Path/
+/Path2KML/
 /ShortestPathAlgo/
+/Testing/
+/myFrame/
