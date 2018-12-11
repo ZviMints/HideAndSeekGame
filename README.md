@@ -4,8 +4,8 @@
 <table style="height: 206px;" width="599">
 <tbody>
 <tr>
-<td style="width: 290.667px;"><img src="./img/100Plz.jpg" alt="" width="25%" height="25%" /></td>
-<td style="width: 292.667px;"><img src="./img/AfterRunning.jpg" alt="" width="25%" height="25%" /></td>
+<td style="width: 290.667px;"><img src="./img/100Plz.jpeg" alt=""/></td>
+<td style="width: 292.667px;"><img src="./img/AfterRunning.jpeg"/></td>
 </tr>
 </tbody>
 </table>
@@ -14,7 +14,7 @@
 <p>&lt;img src="./ClassDiagram.jpg"&gt;</p>
 <p>&lt;br&gt;</p>
 <h1>Class Hierarchy:</h1>
-<p><img src="./Hierarchy.jpg" /></p>
+<p><img src="./Hierarchy.jpeg" /></p>
 <h1>Packages:</h1>
 <p>שים פה תמונה של packages So Lets start!</p>
 <h1>Coords</h1>
@@ -40,4 +40,4 @@
 <h1>Path2KML</h1>
 <p>&nbsp;This package is responsible to convert from a game that has been runned&nbsp;by the algorithm and make a valid .KML file that show the path's of each Pacman</p>
 <p><strong>Example:</strong></p>
-<p><img src="./img/KML.jpg" alt="" /></p>
+<p><img src="./img/KML.jpeg" alt="" /></p>
