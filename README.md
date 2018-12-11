@@ -4,8 +4,8 @@
 <table style="height: 206px;" width="599">
 <tbody>
 <tr>
-<td style="width: 290.667px;"><img src="./img/100Plz.jpeg" alt=""/></td>
-<td style="width: 292.667px;"><img src="./img/AfterRunning.jpeg"/></td>
+<td style="width: 290.667px;"><img src="./img/100Plz.jpeg" alt="" /></td>
+<td style="width: 292.667px;"><img src="./img/AfterRunning.jpeg" /></td>
 </tr>
 </tbody>
 </table>
@@ -40,4 +40,11 @@
 <h1>Path2KML</h1>
 <p>&nbsp;This package is responsible to convert from a game that has been runned&nbsp;by the algorithm and make a valid .KML file that show the path's of each Pacman</p>
 <p><strong>Example:</strong></p>
-<p><img src="./img/KML.jpeg" alt="" /></p>
+<table style="height: 206px;" width="599">
+<tbody>
+<tr>
+<td style="width: 290.667px;"><img src="./img/KML.jpeg" alt="" /></td>
+<td style="width: 292.667px;"><img src="./img/KML_before.jpeg" /></td>
+</tr>
+</tbody>
+</table>
