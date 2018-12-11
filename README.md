@@ -69,9 +69,9 @@
 <p><span style="text-decoration: underline;"><strong>GreedyAlgorithm(Game game)</strong></span></p>
 <p>1. Init all pacmans time to 0</p>
 <p>2. While fruit list is not empty</p>
-<p>3.&nbsp; &nbsp; &nbsp; &nbsp;for each Pacman find the closest fruit to him by time, enter the value to the&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; array</p>
+<p>3.&nbsp; &nbsp; &nbsp; &nbsp;for each Pacman find the closest fruit to him by time, enter the value to the array</p>
 <p>4.&nbsp; &nbsp; &nbsp; &nbsp;find the minimum time in the array</p>
-<p>5.&nbsp; &nbsp; &nbsp; &nbsp; move Pacman to (Fruit - Pacman radius) point, update all the fields and add&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;path the solutions</p>
+<p>5.&nbsp; &nbsp; &nbsp; &nbsp; move Pacman to (Fruit - Pacman radius) point, update all the fields and addpath the solutions</p>
 <p>6.&nbsp; &nbsp; &nbsp; &nbsp; remove Fruit from the fruit list</p>
 <h1>Junit Testing:</h1>
 <ol>
