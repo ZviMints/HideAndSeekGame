@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import Game.Game;
 
-class GISTest {
+class GameTest {
 
 	@Test
 	void testFruitSet() {
