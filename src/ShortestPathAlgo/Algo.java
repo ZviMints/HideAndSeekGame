@@ -106,46 +106,57 @@ public class Algo {
 	private void MakePathAndTransfer(Pacman Pacman, Point3D Fruit_Point3D) {
 		// Initialize Coords
 		MyCoords coords = new MyCoords();
-		
+
 		// Initialize current Pacman Point3D
 		Point3D Pacman_Point3D = (Point3D)Pacman.getGeom();
-		
+
 		// Initialize relevant information about Pacman
 		double speed = Double.parseDouble(Pacman.getInfo().getSpeed());
 		double radius = Double.parseDouble(Pacman.getInfo().getRadius());
-		double distance = coords.distance3d(Pacman_Point3D, Fruit_Point3D);
-		
+
 		//info[0,1,2] = [azimuth,elevation,distance]
 		double[] info = coords.azimuth_elevation_dist(Pacman_Point3D, Fruit_Point3D); 
-		
+
 		//Initialize Vector
-		double x = Math.cos(Math.toRadians(info[0])) * (info[2] - radius);
-		double y = Math.sin(Math.toRadians(info[0])) * (info[2] - radius);
-		double z = Math.sin(Math.toRadians(info[1]))
-				
-				* (info[2] - radius);
-		if(Double.isNaN(z)) z = 0 ;
-		
-		Point3D vec = new Point3D(x,y,z);
+		Point3D vec;
+		double time;
+		if(info[2] <= radius)
+		{
+			vec = new Point3D(0,0,0);
+			time = 0;
+		}
+		else
+		{
+			double x = Math.cos(Math.toRadians(info[0])) * (info[2] - radius);
+			double y = Math.sin(Math.toRadians(info[0])) * (info[2] - radius);
+			double z = Math.sin(Math.toRadians(info[1]))
+
+					* (info[2] - radius);
+			if(Double.isNaN(z)) z = 0 ;
+			time = (info[2] - radius ) / speed;
+			vec = new Point3D(x,y,z);
+
+		}
+
+		// Set time to the Pacman, ( time that the path is taking)
+		Pacman.getInfo().setTime(Pacman.getInfo().getTime() + time);
+
 		//Initialize destination point
 		Point3D dist = coords.add(Pacman_Point3D, vec);
 
 		/// Make Path From Pacman ---> destination //
 		Path path = new Path(Pacman.getInfo().getID(), // Pacman ID
-				            (Pacman_Point3D).x(), // From Where Lat
-				            (Pacman_Point3D).y(), // From Where Lon
-				            (Pacman_Point3D).z(), // From Where Alt
-				            dist.x(),   // To Where Lat
-				            dist.y(),   // To Where Lon
-				            dist.z(),   // To Where Alt
-				             Pacman.getInfo().color, // Pacman Color ( for the path color )
-				             (info[2] - radius ) / speed,
-				              vec // The Vector
-				              );
-		
-		// Set time to the Pacman, ( time that the path is taking)
-		Pacman.getInfo().setTime(Pacman.getInfo().getTime() + ( info[2] - radius ) / speed);
-		
+				(Pacman_Point3D).x(), // From Where Lat
+				(Pacman_Point3D).y(), // From Where Lon
+				(Pacman_Point3D).z(), // From Where Alt
+				dist.x(),   // To Where Lat
+				dist.y(),   // To Where Lon
+				dist.z(),   // To Where Alt
+				Pacman.getInfo().color, // Pacman Color ( for the path color )
+				time,
+				vec // The Vector
+				);
+
 		/// Translate Pacman to  ---> destination //
 		Pacman.translate(vec);	
 		/// Addes Path to Solutions List //
@@ -189,9 +200,12 @@ public class Algo {
 		double max = Double.MIN_VALUE ;
 		for(int i = 0; i <PacmansList.size(); i++)
 		{
-			if( max < PacmansList.get(i).getInfo().getTime()) max =  PacmansList.get(i).getInfo().getTime();
+			if( max < PacmansList.get(i).getInfo().getTime())
+				max =  PacmansList.get(i).getInfo().getTime();
 		}
-		return max;
+		if(max == Double.MIN_VALUE) return 0;
+		else
+			return max;
 	}
 	/* * * * * * * * * * * * * *  FindIndexOfMinTime * * * * * * * * * * * * * * * */	
 	/**
