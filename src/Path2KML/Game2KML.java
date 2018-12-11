@@ -1,6 +1,5 @@
 /**
- * This Class Converting Object into KML file.
- * The class can convery Layer,Project or Element into a KML.
+ * This Class Converting Game into KML file.
  */
 package Path2KML;
 import java.io.File;
