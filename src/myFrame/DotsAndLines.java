@@ -154,7 +154,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		// ** Left Mouse Click - Add Fruit ** //
 		if(e.getButton() == MouseEvent.BUTTON1 
-				&& FinishedAlgo
+				&& Solutions.isEmpty()
 				&& !PacmansList.isEmpty()) // Left Click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));	
@@ -174,7 +174,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			clearH();
 		}
 		// ** Right Mouse Click - Add Pacman ** //
-		else if(e.getButton() == MouseEvent.BUTTON3 && FinishedAlgo) // Right click
+		else if(e.getButton() == MouseEvent.BUTTON3 && Solutions.isEmpty()) // Right click
 		{
 			Point3D p = map.getCordFromPixel(new Point3D(e.getX(),e.getY(),0));
 			Pacman pacman = new Pacman(newPacman + PacmansList.size(), "1", "1", p);

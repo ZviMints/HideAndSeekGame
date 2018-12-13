@@ -1,0 +1,1386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+<Style id="red"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="yellow"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>
+</Icon></IconStyle></Style>
+<Style id="green"><IconStyle><Icon>
+<href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
+</Icon></IconStyle></Style><Style id="track_n">
+      <IconStyle>
+        <scale>.5</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+       </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+
+    </Style>
+    <!-- Highlighted track style -->
+    <Style id="track_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="track">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#track_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#track_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <!-- Normal multiTrack style -->
+    <Style id="multiTrack_n">
+      <IconStyle>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-0.png</href>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>6</width>
+      </LineStyle>
+
+    </Style>
+    <!-- Highlighted multiTrack style -->
+    <Style id="multiTrack_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+        </Icon>
+      </IconStyle>
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>8</width>
+      </LineStyle>
+    </Style>
+    <StyleMap id="multiTrack">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#multiTrack_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#multiTrack_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <!-- Normal waypoint style -->
+    <Style id="waypoint_n">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <!-- Highlighted waypoint style -->
+    <Style id="waypoint_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="waypoint">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#waypoint_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#waypoint_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>99ffac59</color>
+        <width>6</width>
+      </LineStyle>
+    </Style>null<Folder>
+<name>0</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20528339616671 32.104828315205154 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20533467700644 32.10454574881756 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20601025702517 32.104465274220345 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2060679330392 32.104691958677996 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20615781404959 32.10487455948308 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206426493701514 32.10487670551084 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>0</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2052833977906 32.10482831521972 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20528339616671 32.104828315205154 0.0</gx:coord>
+<when>2018-12-13T15:38:07Z</when>
+<gx:coord>35.20533467700644 32.10454574881756 0.0</gx:coord>
+<when>2018-12-13T15:39:11Z</when>
+<gx:coord>35.20601025702517 32.104465274220345 0.0</gx:coord>
+<when>2018-12-13T15:39:36Z</when>
+<gx:coord>35.2060679330392 32.104691958677996 0.0</gx:coord>
+<when>2018-12-13T15:39:57Z</when>
+<gx:coord>35.20615781404959 32.10487455948308 0.0</gx:coord>
+<when>2018-12-13T15:40:22Z</when>
+<gx:coord>35.206426493701514 32.10487670551084 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #1</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208575233057346 32.10495241614972 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208448324403406 32.10483485684214 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20857294789452 32.104777862553746 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20876444125023 32.104651643053536 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20814742351361 32.10488526194439 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2077178696018 32.104859212943346 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20768157694374 32.1047337647655 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20766544404065 32.105022099168856 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #1</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.208575233057346 32.10495241614972 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.208575233057346 32.10495241614972 0.0</gx:coord>
+<when>2018-12-13T15:37:53Z</when>
+<gx:coord>35.208448324403406 32.10483485684214 0.0</gx:coord>
+<when>2018-12-13T15:38:06Z</when>
+<gx:coord>35.20857294789452 32.104777862553746 0.0</gx:coord>
+<when>2018-12-13T15:38:28Z</when>
+<gx:coord>35.20876444125023 32.104651643053536 0.0</gx:coord>
+<when>2018-12-13T15:39:31Z</when>
+<gx:coord>35.20814742351361 32.10488526194439 0.0</gx:coord>
+<when>2018-12-13T15:40:11Z</when>
+<gx:coord>35.2077178696018 32.104859212943346 0.0</gx:coord>
+<when>2018-12-13T15:40:25Z</when>
+<gx:coord>35.20768157694374 32.1047337647655 0.0</gx:coord>
+<when>2018-12-13T15:40:57Z</when>
+<gx:coord>35.20766544404065 32.105022099168856 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #2</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20468708791629 32.105484925466115 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #2</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20468708791629 32.105484925466115 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20468708791629 32.105484925466115 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #3</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20485828882158 32.104931457185614 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20498725090968 32.10459397626325 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204674615312584 32.10440847999868 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #3</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20489172713383 32.10477087888275 0.0</gx:coord>
+<when>2018-12-13T15:37:54Z</when>
+<gx:coord>35.20485828882158 32.104931457185614 0.0</gx:coord>
+<when>2018-12-13T15:38:33Z</when>
+<gx:coord>35.20498725090968 32.10459397626325 0.0</gx:coord>
+<when>2018-12-13T15:39:08Z</when>
+<gx:coord>35.204674615312584 32.10440847999868 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #4</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205068140252415 32.1041233959638 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20531940202993 32.10403644153325 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20532887012926 32.10427293195198 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20600323095436 32.10418016348991 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #4</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.205068140252415 32.1041233959638 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.205068140252415 32.1041233959638 0.0</gx:coord>
+<when>2018-12-13T15:38:01Z</when>
+<gx:coord>35.20531940202993 32.10403644153325 0.0</gx:coord>
+<when>2018-12-13T15:38:27Z</when>
+<gx:coord>35.20532887012926 32.10427293195198 0.0</gx:coord>
+<when>2018-12-13T15:39:31Z</when>
+<gx:coord>35.20600323095436 32.10418016348991 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #5</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20482116188639 32.10358483540488 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205304854055726 32.10347688230206 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20531476333541 32.103726621860346 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205975459294045 32.10392083366358 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #5</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20482116188639 32.10358483540488 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20482116188639 32.10358483540488 0.0</gx:coord>
+<when>2018-12-13T15:38:23Z</when>
+<gx:coord>35.205304854055726 32.10347688230206 0.0</gx:coord>
+<when>2018-12-13T15:38:50Z</when>
+<gx:coord>35.20531476333541 32.103726621860346 0.0</gx:coord>
+<when>2018-12-13T15:39:55Z</when>
+<gx:coord>35.205975459294045 32.10392083366358 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #6</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.204418939976115 32.10317335093277 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #6</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.204418939976115 32.10317335093277 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.204418939976115 32.10317335093277 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #7</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20506108372767 32.10287684006307 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.205323292287304 32.103206124869835 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20798602707461 32.10300801514389 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2079958939231 32.102882623304595 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #7</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20506108372767 32.10287684006307 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20506108372767 32.10287684006307 0.0</gx:coord>
+<when>2018-12-13T15:38:20Z</when>
+<gx:coord>35.205323292287304 32.103206124869835 0.0</gx:coord>
+<when>2018-12-13T15:42:31Z</when>
+<gx:coord>35.20798602707461 32.10300801514389 0.0</gx:coord>
+<when>2018-12-13T15:42:44Z</when>
+<gx:coord>35.2079958939231 32.102882623304595 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #8</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20602077109327 32.10268320031139 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206180286013684 32.10318062150209 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20599933827924 32.103364492432135 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2059858989462 32.103659853458275 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #8</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20602077109327 32.10268320031139 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20602077109327 32.10268320031139 0.0</gx:coord>
+<when>2018-12-13T15:38:33Z</when>
+<gx:coord>35.206180286013684 32.10318062150209 0.0</gx:coord>
+<when>2018-12-13T15:38:59Z</when>
+<gx:coord>35.20599933827924 32.103364492432135 0.0</gx:coord>
+<when>2018-12-13T15:39:31Z</when>
+<gx:coord>35.2059858989462 32.103659853458275 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #9</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206627632222016 32.102792122671715 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207026623055576 32.102705913425645 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20703641300242 32.10288287664373 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20720416253128 32.1029662299402 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20742146639646 32.10297056830874 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20753926244329 32.10281445761721 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20755126140844 32.10267623899882 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20747494145553 32.102612865467414 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20720215247029 32.102530674138244 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20798606102741 32.102611555177425 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20800880131311 32.10250615668015 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20800402283561 32.102390967668626 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207997194143225 32.10228776912165 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20799670378943 32.102245282786285 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #9</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.206627632222016 32.102792122671715 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.206627632222016 32.102792122671715 0.0</gx:coord>
+<when>2018-12-13T15:38:14Z</when>
+<gx:coord>35.207026623055576 32.102705913425645 0.0</gx:coord>
+<when>2018-12-13T15:38:33Z</when>
+<gx:coord>35.20703641300242 32.10288287664373 0.0</gx:coord>
+<when>2018-12-13T15:38:51Z</when>
+<gx:coord>35.20720416253128 32.1029662299402 0.0</gx:coord>
+<when>2018-12-13T15:39:11Z</when>
+<gx:coord>35.20742146639646 32.10297056830874 0.0</gx:coord>
+<when>2018-12-13T15:39:31Z</when>
+<gx:coord>35.20753926244329 32.10281445761721 0.0</gx:coord>
+<when>2018-12-13T15:39:46Z</when>
+<gx:coord>35.20755126140844 32.10267623899882 0.0</gx:coord>
+<when>2018-12-13T15:39:56Z</when>
+<gx:coord>35.20747494145553 32.102612865467414 0.0</gx:coord>
+<when>2018-12-13T15:40:23Z</when>
+<gx:coord>35.20720215247029 32.102530674138244 0.0</gx:coord>
+<when>2018-12-13T15:41:37Z</when>
+<gx:coord>35.20798606102741 32.102611555177425 0.0</gx:coord>
+<when>2018-12-13T15:41:48Z</when>
+<gx:coord>35.20800880131311 32.10250615668015 0.0</gx:coord>
+<when>2018-12-13T15:42:00Z</when>
+<gx:coord>35.20800402283561 32.102390967668626 0.0</gx:coord>
+<when>2018-12-13T15:42:11Z</when>
+<gx:coord>35.207997194143225 32.10228776912165 0.0</gx:coord>
+<when>2018-12-13T15:42:15Z</when>
+<gx:coord>35.20799670378943 32.102245282786285 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #10</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207135702004585 32.10327622205081 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206876842325656 32.10339740049384 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206738949297176 32.10320307800534 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.206497094587526 32.10318987846601 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2070379619984 32.10252293462378 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207043693850615 32.10233634017318 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20704395328913 32.10219672320491 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20798775953304 32.10272906041754 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #10</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.207135702004585 32.10327622205081 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.207135702004585 32.10327622205081 0.0</gx:coord>
+<when>2018-12-13T15:38:03Z</when>
+<gx:coord>35.206876842325656 32.10339740049384 0.0</gx:coord>
+<when>2018-12-13T15:38:28Z</when>
+<gx:coord>35.206738949297176 32.10320307800534 0.0</gx:coord>
+<when>2018-12-13T15:38:50Z</when>
+<gx:coord>35.206497094587526 32.10318987846601 0.0</gx:coord>
+<when>2018-12-13T15:40:19Z</when>
+<gx:coord>35.2070379619984 32.10252293462378 0.0</gx:coord>
+<when>2018-12-13T15:40:39Z</when>
+<gx:coord>35.207043693850615 32.10233634017318 0.0</gx:coord>
+<when>2018-12-13T15:40:54Z</when>
+<gx:coord>35.20704395328913 32.10219672320491 0.0</gx:coord>
+<when>2018-12-13T15:42:40Z</when>
+<gx:coord>35.20798775953304 32.10272906041754 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #11</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2072980020741 32.10344565683344 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207044591261635 32.10365049189763 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20705749347558 32.10384803051854 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2070783927055 32.104066566152326 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2070450388241 32.10434581247437 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20692049454764 32.10464371280695 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20681047129403 32.10476642819228 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20667755922915 32.10487657110681 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #11</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2072980020741 32.10344565683344 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2072980020741 32.10344565683344 0.0</gx:coord>
+<when>2018-12-13T15:38:08Z</when>
+<gx:coord>35.207044591261635 32.10365049189763 0.0</gx:coord>
+<when>2018-12-13T15:38:29Z</when>
+<gx:coord>35.20705749347558 32.10384803051854 0.0</gx:coord>
+<when>2018-12-13T15:38:53Z</when>
+<gx:coord>35.2070783927055 32.104066566152326 0.0</gx:coord>
+<when>2018-12-13T15:39:24Z</when>
+<gx:coord>35.2070450388241 32.10434581247437 0.0</gx:coord>
+<when>2018-12-13T15:39:59Z</when>
+<gx:coord>35.20692049454764 32.10464371280695 0.0</gx:coord>
+<when>2018-12-13T15:40:16Z</when>
+<gx:coord>35.20681047129403 32.10476642819228 0.0</gx:coord>
+<when>2018-12-13T15:40:33Z</when>
+<gx:coord>35.20667755922915 32.10487657110681 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #12</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20825063291769 32.10381478260984 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20807752850724 32.103367805373836 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20790759022158 32.10342860127054 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.207785058711835 32.10354082776817 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20765498183413 32.10380017299369 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20759650683161 32.10404243909006 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2075673126749 32.104266910875936 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20824523914901 32.10329416758675 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #12</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20825063291769 32.10381478260984 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20825063291769 32.10381478260984 0.0</gx:coord>
+<when>2018-12-13T15:38:28Z</when>
+<gx:coord>35.20807752850724 32.103367805373836 0.0</gx:coord>
+<when>2018-12-13T15:38:45Z</when>
+<gx:coord>35.20790759022158 32.10342860127054 0.0</gx:coord>
+<when>2018-12-13T15:39:01Z</when>
+<gx:coord>35.207785058711835 32.10354082776817 0.0</gx:coord>
+<when>2018-12-13T15:39:32Z</when>
+<gx:coord>35.20765498183413 32.10380017299369 0.0</gx:coord>
+<when>2018-12-13T15:39:59Z</when>
+<gx:coord>35.20759650683161 32.10404243909006 0.0</gx:coord>
+<when>2018-12-13T15:40:24Z</when>
+<gx:coord>35.2075673126749 32.104266910875936 0.0</gx:coord>
+<when>2018-12-13T15:42:29Z</when>
+<gx:coord>35.20824523914901 32.10329416758675 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #13</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208817938853045 32.103914977926095 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20902387910329 32.103975464079774 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20902673572935 32.103750672695114 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20895197020208 32.10351362849886 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20879333674254 32.10333608110191 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20863286060373 32.10322533050814 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208591027844356 32.1030039401956 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208423379396855 32.10297843956692 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20864634146805 32.10273507499924 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.208560673801195 32.10264395488542 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20853081720059 32.10259630366506 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20849976924447 32.102469695246164 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20848448158648 32.10233023469381 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20866344972387 32.10231604804048 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20894567588282 32.10232109069043 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20913625487723 32.10233852459453 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20922818427714 32.10235575696709 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #13</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20884338099894 32.103923704970065 0.0</gx:coord>
+<when>2018-12-13T15:37:38Z</when>
+<gx:coord>35.208817938853045 32.103914977926095 0.0</gx:coord>
+<when>2018-12-13T15:37:58Z</when>
+<gx:coord>35.20902387910329 32.103975464079774 0.0</gx:coord>
+<when>2018-12-13T15:38:22Z</when>
+<gx:coord>35.20902673572935 32.103750672695114 0.0</gx:coord>
+<when>2018-12-13T15:38:49Z</when>
+<gx:coord>35.20895197020208 32.10351362849886 0.0</gx:coord>
+<when>2018-12-13T15:39:13Z</when>
+<gx:coord>35.20879333674254 32.10333608110191 0.0</gx:coord>
+<when>2018-12-13T15:39:32Z</when>
+<gx:coord>35.20863286060373 32.10322533050814 0.0</gx:coord>
+<when>2018-12-13T15:39:56Z</when>
+<gx:coord>35.208591027844356 32.1030039401956 0.0</gx:coord>
+<when>2018-12-13T15:40:12Z</when>
+<gx:coord>35.208423379396855 32.10297843956692 0.0</gx:coord>
+<when>2018-12-13T15:40:46Z</when>
+<gx:coord>35.20864634146805 32.10273507499924 0.0</gx:coord>
+<when>2018-12-13T15:40:58Z</when>
+<gx:coord>35.208560673801195 32.10264395488542 0.0</gx:coord>
+<when>2018-12-13T15:41:03Z</when>
+<gx:coord>35.20853081720059 32.10259630366506 0.0</gx:coord>
+<when>2018-12-13T15:41:17Z</when>
+<gx:coord>35.20849976924447 32.102469695246164 0.0</gx:coord>
+<when>2018-12-13T15:41:32Z</when>
+<gx:coord>35.20848448158648 32.10233023469381 0.0</gx:coord>
+<when>2018-12-13T15:41:48Z</when>
+<gx:coord>35.20866344972387 32.10231604804048 0.0</gx:coord>
+<when>2018-12-13T15:42:14Z</when>
+<gx:coord>35.20894567588282 32.10232109069043 0.0</gx:coord>
+<when>2018-12-13T15:42:32Z</when>
+<gx:coord>35.20913625487723 32.10233852459453 0.0</gx:coord>
+<when>2018-12-13T15:42:40Z</when>
+<gx:coord>35.20922818427714 32.10235575696709 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #14</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209389736266864 32.10414442512834 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20898084526906 32.10420746047574 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20889602653726 32.10443117758439 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20759084019377 32.104523974659095 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #14</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20940084645694 32.10414760093274 0.0</gx:coord>
+<when>2018-12-13T15:37:37Z</when>
+<gx:coord>35.209389736266864 32.10414442512834 0.0</gx:coord>
+<when>2018-12-13T15:38:16Z</when>
+<gx:coord>35.20898084526906 32.10420746047574 0.0</gx:coord>
+<when>2018-12-13T15:38:42Z</when>
+<gx:coord>35.20889602653726 32.10443117758439 0.0</gx:coord>
+<when>2018-12-13T15:40:45Z</when>
+<gx:coord>35.20759084019377 32.104523974659095 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #15</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20984540751885 32.10446226552889 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20975983863662 32.104563866843634 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209514886968684 32.10473490280615 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20956831899486 32.10498592437077 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209022170525564 32.102985614235635 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20891365742058 32.10287450926693 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2088418109102 32.10297522304475 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20878975597073 32.1028155487572 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #15</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20984540751885 32.10446226552889 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.20984540751885 32.10446226552889 0.0</gx:coord>
+<when>2018-12-13T15:37:49Z</when>
+<gx:coord>35.20975983863662 32.104563866843634 0.0</gx:coord>
+<when>2018-12-13T15:38:18Z</when>
+<gx:coord>35.209514886968684 32.10473490280615 0.0</gx:coord>
+<when>2018-12-13T15:38:46Z</when>
+<gx:coord>35.20956831899486 32.10498592437077 0.0</gx:coord>
+<when>2018-12-13T15:42:34Z</when>
+<gx:coord>35.209022170525564 32.102985614235635 0.0</gx:coord>
+<when>2018-12-13T15:42:50Z</when>
+<gx:coord>35.20891365742058 32.10287450926693 0.0</gx:coord>
+<when>2018-12-13T15:43:03Z</when>
+<gx:coord>35.2088418109102 32.10297522304475 0.0</gx:coord>
+<when>2018-12-13T15:43:21Z</when>
+<gx:coord>35.20878975597073 32.1028155487572 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #16</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21027941573855 32.10457118788927 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21060403782506 32.10453602169959 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21037882307047 32.104089869356024 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21005351010827 32.104052460212145 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20988788013621 32.103900046788986 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209800418013984 32.103737721407846 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20976232911188 32.103525970614626 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21008721445108 32.103033262206786 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #16</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2102829120564 32.10457118788908 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21027941573855 32.10457118788927 0.0</gx:coord>
+<when>2018-12-13T15:38:06Z</when>
+<gx:coord>35.21060403782506 32.10453602169959 0.0</gx:coord>
+<when>2018-12-13T15:38:59Z</when>
+<gx:coord>35.21037882307047 32.104089869356024 0.0</gx:coord>
+<when>2018-12-13T15:39:29Z</when>
+<gx:coord>35.21005351010827 32.104052460212145 0.0</gx:coord>
+<when>2018-12-13T15:39:52Z</when>
+<gx:coord>35.20988788013621 32.103900046788986 0.0</gx:coord>
+<when>2018-12-13T15:40:11Z</when>
+<gx:coord>35.209800418013984 32.103737721407846 0.0</gx:coord>
+<when>2018-12-13T15:40:34Z</when>
+<gx:coord>35.20976232911188 32.103525970614626 0.0</gx:coord>
+<when>2018-12-13T15:41:36Z</when>
+<gx:coord>35.21008721445108 32.103033262206786 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #17</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21131316467894 32.10415970341721 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21131976331166 32.10402988489175 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211097914720355 32.10405027989953 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21081569189385 32.10406291566746 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2101918498231 32.103565734747534 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20975554495978 32.103327710400364 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.209740035013255 32.10303439420981 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20975995552562 32.10280370925472 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.20993118340983 32.10258973431361 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #17</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21131316467894 32.10415970341721 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21131316467894 32.10415970341721 0.0</gx:coord>
+<when>2018-12-13T15:37:50Z</when>
+<gx:coord>35.21131976331166 32.10402988489175 0.0</gx:coord>
+<when>2018-12-13T15:38:11Z</when>
+<gx:coord>35.211097914720355 32.10405027989953 0.0</gx:coord>
+<when>2018-12-13T15:38:37Z</when>
+<gx:coord>35.21081569189385 32.10406291566746 0.0</gx:coord>
+<when>2018-12-13T15:39:57Z</when>
+<gx:coord>35.2101918498231 32.103565734747534 0.0</gx:coord>
+<when>2018-12-13T15:40:45Z</when>
+<gx:coord>35.20975554495978 32.103327710400364 0.0</gx:coord>
+<when>2018-12-13T15:41:17Z</when>
+<gx:coord>35.209740035013255 32.10303439420981 0.0</gx:coord>
+<when>2018-12-13T15:41:42Z</when>
+<gx:coord>35.20975995552562 32.10280370925472 0.0</gx:coord>
+<when>2018-12-13T15:42:10Z</when>
+<gx:coord>35.20993118340983 32.10258973431361 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #18</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21144018212575 32.10416575465944 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21146741547356 32.10392059367068 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210983008707764 32.10361953128278 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21108579829335 32.10303430538429 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210840696432314 32.10281941790609 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210568271860964 32.10274881150926 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21025790881391 32.10281676977009 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.210199829834956 32.1024940605192 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #18</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21144018212575 32.10416575465944 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21144018212575 32.10416575465944 0.0</gx:coord>
+<when>2018-12-13T15:38:03Z</when>
+<gx:coord>35.21146741547356 32.10392059367068 0.0</gx:coord>
+<when>2018-12-13T15:38:59Z</when>
+<gx:coord>35.210983008707764 32.10361953128278 0.0</gx:coord>
+<when>2018-12-13T15:40:04Z</when>
+<gx:coord>35.21108579829335 32.10303430538429 0.0</gx:coord>
+<when>2018-12-13T15:40:37Z</when>
+<gx:coord>35.210840696432314 32.10281941790609 0.0</gx:coord>
+<when>2018-12-13T15:41:03Z</when>
+<gx:coord>35.210568271860964 32.10274881150926 0.0</gx:coord>
+<when>2018-12-13T15:41:33Z</when>
+<gx:coord>35.21025790881391 32.10281676977009 0.0</gx:coord>
+<when>2018-12-13T15:42:09Z</when>
+<gx:coord>35.210199829834956 32.1024940605192 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #19</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21165187787053 32.10435939441092 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2116173219842 32.104786111730185 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21122398092638 32.10462947591423 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2107056020471 32.10521751795445 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #19</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21165187787053 32.10435939441092 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.21165187787053 32.10435939441092 0.0</gx:coord>
+<when>2018-12-13T15:38:23Z</when>
+<gx:coord>35.2116173219842 32.104786111730185 0.0</gx:coord>
+<when>2018-12-13T15:39:03Z</when>
+<gx:coord>35.21122398092638 32.10462947591423 0.0</gx:coord>
+<when>2018-12-13T15:40:24Z</when>
+<gx:coord>35.2107056020471 32.10521751795445 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder><Folder>
+<name>PacmanFromMouse #20</name>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.2119411953886 32.1034880155291 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21159171360399 32.10342782241905 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21156140539984 32.10364170089316 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211546312692015 32.10316187002734 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.211518838428184 32.10292509009274 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21127813723905 32.10271021401521 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21110199998275 32.10256429809257 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21093363299193 32.10246012461002 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21073802438887 32.10247812872863 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark>
+<styleUrl>#red</styleUrl>
+<Point>
+<coordinates>35.21048402520043 32.10246157993519 0.0</coordinates>
+</Point>
+</Placemark>
+<Placemark><name>PacmanFromMouse #20</name>
+<styleUrl>#multiTrack</styleUrl><gx:Track><when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2119411953886 32.1034880155291 0.0</gx:coord>
+<when>2018-12-13T15:37:36Z</when>
+<gx:coord>35.2119411953886 32.1034880155291 0.0</gx:coord>
+<when>2018-12-13T15:38:09Z</when>
+<gx:coord>35.21159171360399 32.10342782241905 0.0</gx:coord>
+<when>2018-12-13T15:38:32Z</when>
+<gx:coord>35.21156140539984 32.10364170089316 0.0</gx:coord>
+<when>2018-12-13T15:39:25Z</when>
+<gx:coord>35.211546312692015 32.10316187002734 0.0</gx:coord>
+<when>2018-12-13T15:39:51Z</when>
+<gx:coord>35.211518838428184 32.10292509009274 0.0</gx:coord>
+<when>2018-12-13T15:40:23Z</when>
+<gx:coord>35.21127813723905 32.10271021401521 0.0</gx:coord>
+<when>2018-12-13T15:40:46Z</when>
+<gx:coord>35.21110199998275 32.10256429809257 0.0</gx:coord>
+<when>2018-12-13T15:41:05Z</when>
+<gx:coord>35.21093363299193 32.10246012461002 0.0</gx:coord>
+<when>2018-12-13T15:41:23Z</when>
+<gx:coord>35.21073802438887 32.10247812872863 0.0</gx:coord>
+<when>2018-12-13T15:41:46Z</when>
+<gx:coord>35.21048402520043 32.10246157993519 0.0</gx:coord>
+</gx:Track>
+</Placemark>
+</Folder></Document>
+</kml>

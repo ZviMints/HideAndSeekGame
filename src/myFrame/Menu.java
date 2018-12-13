@@ -32,7 +32,7 @@ public class Menu extends JPanel{
 	private static JLabel ClearH;
 	private static JLabel Clear;
 	private static JLabel Load;
-	private static JLabel Save;
+	private static JLabel SaveKML;
 	private static JLabel SaveCSV;
 	private static JTextField TotalTF;
 	private static String fileName;
@@ -62,7 +62,7 @@ public class Menu extends JPanel{
 		Clear.setVisible(true);
 		ClearH.setVisible(true);
 		Load.setVisible(true);
-		Save.setVisible(true);		
+		SaveKML.setVisible(true);		
 		SaveCSV.setVisible(true);
 		Info.setVisible(true);
 		InProgress.setVisible(false);
@@ -80,7 +80,7 @@ public class Menu extends JPanel{
 		ClearH.setVisible(false);
 		Clear.setVisible(false);
 		Load.setVisible(false);
-		Save.setVisible(false);
+		SaveKML.setVisible(false);
 		SaveCSV.setVisible(false);
 		Info.setVisible(false);
 		TotalTF.setVisible(true);
@@ -146,14 +146,14 @@ public class Menu extends JPanel{
 
 
 		//Save kml file JButton
-		Save = new JLabel(new ImageIcon("./img/Save.png"));
-		Save.setVisible(true);
-		Save.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
-		this.add(Save);
-		Save.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
+		SaveKML = new JLabel(new ImageIcon("./img/SaveKML.png"));
+		SaveKML.setVisible(true);
+		SaveKML.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
+		this.add(SaveKML);
+		SaveKML.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
 				if(!panel.Solutions.isEmpty())
-				{
+				{	
 					JFileChooser fileChooser = new JFileChooser();
 					if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
 						fileNameKML = fileChooser.getSelectedFile().getAbsolutePath();
@@ -176,13 +176,13 @@ public class Menu extends JPanel{
 			}
 		});
 		//Save csv file JButton
-		SaveCSV = new JLabel(new ImageIcon("./img/Save.png"));
+		SaveCSV = new JLabel(new ImageIcon("./img/SaveCSV.png"));
 		SaveCSV.setVisible(true);
 		SaveCSV.setBounds(0, 76 + 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
 		this.add(SaveCSV);
 		SaveCSV.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
 			public void mouseClicked(MouseEvent e)  {
-				if(!MyFrame.game.getFruitList().isEmpty() && !MyFrame.game.getPacmanList().isEmpty())
+				if(!MyFrame.game.getFruitList().isEmpty() || !MyFrame.game.getPacmanList().isEmpty())
 				{
 					JFileChooser fileChooser = new JFileChooser();
 					if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -199,7 +199,7 @@ public class Menu extends JPanel{
 					}
 				}
 				else
-					JOptionPane.showMessageDialog(null, "Error! Add pacman and fruit");
+					JOptionPane.showMessageDialog(null, "Error! Cant Save Empty File");
 
 			}
 		});
