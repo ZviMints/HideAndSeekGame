@@ -22,7 +22,6 @@ public class Game2KML {
 	private String KML_BODY; // kml-תוכן של ה 
 	private String KML_HEAD; // kml-שורת ההתחלה של ה 
 	private String KML_TAIL; // kml-שורת הסוף של ה 
-	public String TimeSave; // זמן שמירת הקובץ
 	public String SavePath; // שם הקובץ בזמן השמירה
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
@@ -30,11 +29,11 @@ public class Game2KML {
 	 * Constructor of the KML file. make Header, ConvertPath and make Tail.
 	 * @throws ParseException 
 	 */
-	public Game2KML(Game game,Algo algo) 
+	public Game2KML(Game game,Algo algo ,String fileNameKML) 
 	{
 		this.algo = algo; //קבלת האלגוריתם הנוכחי
 		this.game = game; //קבלת המשחק הנוכחי 
-		this.SavePath = null;
+		this.SavePath = fileNameKML;
 		MakeHead(); // בניית תוכן ראשי של הקובץ
 		try {
 			ConvertPath(algo,game); // בניית תוכן המסלול של הפקמן ויצירת נקודות של הפירות
@@ -184,8 +183,7 @@ public class Game2KML {
 	 */
 	public void MakeFile() throws Exception
 	{
-		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());// זמן של שמירת המשחק 
-		SavePath = "./data/"+TimeSave+".kml";//קריאה לקובץ בשם של הזמן
+		SavePath +=".kml";//קריאה לקובץ בשם של הזמן
 		PrintWriter pw = new PrintWriter(new File(SavePath));
 		StringBuilder sb = new StringBuilder();	
 		sb.append(KML_HEAD + KML_BODY + KML_TAIL);

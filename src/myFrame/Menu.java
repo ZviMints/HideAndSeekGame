@@ -39,9 +39,10 @@ public class Menu extends JPanel{
 	private static JLabel Info;
 	private static Game2KML kml;
 	private static GameToCSV csv;
-	
 	public MyFrame MainFrame;
 	public DotsAndLines panel;
+	public String fileNameCSV;
+	public String fileNameKML;
 
 	public static JTextField InProgress;
 	public static  JTextField ScoreTextField; 
@@ -62,6 +63,7 @@ public class Menu extends JPanel{
 		ClearH.setVisible(true);
 		Load.setVisible(true);
 		Save.setVisible(true);		
+		SaveCSV.setVisible(true);
 		Info.setVisible(true);
 		InProgress.setVisible(false);
 		TotalTF.setVisible(false);
@@ -79,6 +81,7 @@ public class Menu extends JPanel{
 		Clear.setVisible(false);
 		Load.setVisible(false);
 		Save.setVisible(false);
+		SaveCSV.setVisible(false);
 		Info.setVisible(false);
 		TotalTF.setVisible(true);
 		InProgress.setVisible(true);				
@@ -151,45 +154,56 @@ public class Menu extends JPanel{
 			public void mouseClicked(MouseEvent e)  {
 				if(!panel.Solutions.isEmpty())
 				{
-					try {
-						kml = new Game2KML(MyFrame.game, panel.algo);
-						kml.MakeFile();
-						JOptionPane.showMessageDialog(null, "Success! Saved on path: "+kml.SavePath ); 
-					} catch (ParseException e1) {
-						e1.printStackTrace();
-					} catch (Exception e1) {
-						e1.printStackTrace();
+					JFileChooser fileChooser = new JFileChooser();
+					if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+						fileNameKML = fileChooser.getSelectedFile().getAbsolutePath();
+					}
+					if(fileNameKML!=null) {
+						try {
+							kml = new Game2KML(MyFrame.game, panel.algo,fileNameKML);
+							kml.MakeFile();
+							JOptionPane.showMessageDialog(null, "Success! Saved on path: "+kml.SavePath ); 
+						} catch (ParseException e1) {
+							e1.printStackTrace();
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
 					}
 				}
 				else
 					JOptionPane.showMessageDialog(null, "Error! Start Game First");
-	
+
 			}
 		});
-		
 		//Save csv file JButton
-				SaveCSV = new JLabel(new ImageIcon("./img/Save.png"));
-				SaveCSV.setVisible(true);
-				SaveCSV.setBounds(0, 76 + 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
-				this.add(SaveCSV);
-				SaveCSV.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
-					public void mouseClicked(MouseEvent e)  {
-						if(!MyFrame.game.getFruitList().isEmpty() && !MyFrame.game.getPacmanList().isEmpty())
-						{
-							try {
-								csv = new GameToCSV(MainFrame.game);
-								csv.MakeCSV();
-								JOptionPane.showMessageDialog(null, "Success! Saved on path: "+csv.SaveCSV ); 
-							} catch (Exception e1) {
-								e1.printStackTrace();
-							}
-						}
-						else
-							JOptionPane.showMessageDialog(null, "Error! Add pacman and fruit");
-			
+		SaveCSV = new JLabel(new ImageIcon("./img/Save.png"));
+		SaveCSV.setVisible(true);
+		SaveCSV.setBounds(0, 76 + 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
+		this.add(SaveCSV);
+		SaveCSV.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
+			public void mouseClicked(MouseEvent e)  {
+				if(!MyFrame.game.getFruitList().isEmpty() && !MyFrame.game.getPacmanList().isEmpty())
+				{
+					JFileChooser fileChooser = new JFileChooser();
+					if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+						fileNameCSV = fileChooser.getSelectedFile().getAbsolutePath();
 					}
-				});
-				
+					if(fileNameCSV!=null) {
+						try {
+							csv = new GameToCSV(MainFrame.game , fileNameCSV);
+							csv.MakeCSV();
+							JOptionPane.showMessageDialog(null, "Success! Saved on path: "+csv.SaveCSV ); 
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
+				else
+					JOptionPane.showMessageDialog(null, "Error! Add pacman and fruit");
+
+			}
+		});
+
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
@@ -204,14 +218,13 @@ public class Menu extends JPanel{
 				{
 					fileName = chooser.getSelectedFile().getAbsolutePath();
 					if(fileName.contains(".csv")) 
-					{	
+					{
 						MyFrame.game = new Game(fileName);
 						MainFrame.mainSplittedPane.invalidate();
 						MainFrame.mainSplittedPane.setVisible(false);
 						MainFrame.mainSplittedPane.removeAll();
 						MainFrame.panel = new DotsAndLines(MyFrame.game,MainFrame.map);
 						MainFrame.StartPanel();
-
 					}
 					else {
 						JOptionPane.showMessageDialog(null, "This File is not .CSV file");

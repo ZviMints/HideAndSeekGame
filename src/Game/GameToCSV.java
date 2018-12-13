@@ -13,13 +13,13 @@ import Pacman.Pacman;
 
 public class GameToCSV {
 	private Game game;
-	public String TimeSave; // זמן שמירת הקובץ
 	public String SaveCSV; // שם הקובץ
 
 
-	public GameToCSV(Game game) {
+	public GameToCSV(Game game , String fileNameCSV) {
 		this.game=game; // שמירת המשחק הנוכחי
-	}
+		this.SaveCSV = fileNameCSV;
+}
 	/**
 	 * בניית השורה הראשונה של הנתונים בקובץ
 	 * @throws ParseException 
@@ -94,8 +94,7 @@ public class GameToCSV {
 
 
 	public void MakeCSV() throws FileNotFoundException {
-		TimeSave = new SimpleDateFormat("HH-mm-ss").format(Calendar.getInstance().getTime());// זמן של שמירת המשחק 
-		SaveCSV = "./data/"+TimeSave+".csv";// קריאה לקובץ השם של אותה שעה
+		SaveCSV +=".csv";// קריאה לקובץ השם של אותה שעה
 		PrintWriter pw = new PrintWriter(new File(SaveCSV));
 		StringBuilder csv = new StringBuilder();
 		csv.append(SetHeaderCSV()); // הוספת שורה ראונה של הטבלה
