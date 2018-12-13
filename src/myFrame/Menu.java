@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import Game.Game;
+import Game.GameToCSV;
 import Path2KML.Game2KML;
 
 
@@ -32,11 +33,13 @@ public class Menu extends JPanel{
 	private static JLabel Clear;
 	private static JLabel Load;
 	private static JLabel Save;
+	private static JLabel SaveCSV;
 	private static JTextField TotalTF;
 	private static String fileName;
 	private static JLabel Info;
 	private static Game2KML kml;
-
+	private static GameToCSV csv;
+	
 	public MyFrame MainFrame;
 	public DotsAndLines panel;
 
@@ -139,7 +142,7 @@ public class Menu extends JPanel{
 		this.add(InProgress);
 
 
-		//Save JButton
+		//Save kml file JButton
 		Save = new JLabel(new ImageIcon("./img/Save.png"));
 		Save.setVisible(true);
 		Save.setBounds(0, 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
@@ -163,6 +166,30 @@ public class Menu extends JPanel{
 	
 			}
 		});
+		
+		//Save csv file JButton
+				SaveCSV = new JLabel(new ImageIcon("./img/Save.png"));
+				SaveCSV.setVisible(true);
+				SaveCSV.setBounds(0, 76 + 20 + 20 + 56 + 56 +56 + 56 + 20 + 20 + 20, 188, 56);
+				this.add(SaveCSV);
+				SaveCSV.addMouseListener(new MouseAdapter() { 		// ************** On Click Load
+					public void mouseClicked(MouseEvent e)  {
+						if(!MyFrame.game.getFruitList().isEmpty() && !MyFrame.game.getPacmanList().isEmpty())
+						{
+							try {
+								csv = new GameToCSV(MainFrame.game);
+								csv.MakeCSV();
+								JOptionPane.showMessageDialog(null, "Success! Saved on path: "+csv.SaveCSV ); 
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Error! Add pacman and fruit");
+			
+					}
+				});
+				
 		//Load JButton
 		Load = new JLabel(new ImageIcon("./img/Load.png"));
 		Load.setVisible(true);
@@ -216,7 +243,7 @@ public class Menu extends JPanel{
 		Info = new JLabel(new ImageIcon("./img/Info.png"));
 		Info.setVisible(true);
 		this.add(Info);
-		Info.setBounds(0, 20 + 20 + 56 + 56 + 20 + 56 +56 + 56 + 20 + 20 + 20, 245, 178);
+		Info.setBounds(0, 60 + 20 + 20 + 56 + 56 + 20 + 56 +56 + 56 + 20 + 20 + 20, 245, 178);
 
 		//Score TextField
 		final ImageIcon Score_Image = new ImageIcon("./img/Time.png");

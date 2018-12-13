@@ -45,8 +45,8 @@ public class Pacman implements GIS_Pacman{
 	}
 	/* * * * * * * * * * * * * * * * * * Override * * * * * * * * * * * * * * * */
 	@Override
-	public Geom_element getGeom() {
-		return geo;
+	public Point3D getGeom() {
+		return (Point3D) geo;
 	}
 
 	@Override
