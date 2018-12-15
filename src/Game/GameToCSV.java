@@ -13,22 +13,23 @@ import Pacman.Pacman;
 
 public class GameToCSV {
 	private Game game;
-	public String SaveCSV; // שם הקובץ
+	public String SaveCSV; // The name of the CSV file
 
 
 	public GameToCSV(Game game , String fileNameCSV) {
-		this.game=game; // שמירת המשחק הנוכחי
-		this.SaveCSV = fileNameCSV;
-}
+		this.game=game; // The current game
+		this.SaveCSV = fileNameCSV; // The file name entered by the user
+	}
+
 	/**
-	 * בניית השורה הראשונה של הנתונים בקובץ
-	 * @throws ParseException 
+	 * This method builds the head of the CSV file
 	 */
+
 	public StringBuilder SetHeaderCSV() { 
 		StringBuilder header = new StringBuilder(); 
-		header.append("Type"); // סוג הנתון פקמן או פירות
+		header.append("Type"); 
 		header.append(",");
-		header.append("ID"); // מספר סידורי
+		header.append("ID");
 		header.append(",");
 		header.append("Lat"); 
 		header.append(",");
@@ -43,17 +44,18 @@ public class GameToCSV {
 
 		return header;
 	}
+
 	/**
-	 * הוספת כל הפקמנים של אותו משחק לקובץ
-	 * @throws ParseException 
+	 * This method adds the Pacman to a CSV file
 	 */
+
 	public StringBuilder SetPacmanCSV() {
 		StringBuilder pac = new StringBuilder();
 		for(Pacman pacman : game.getPacmanList()) {
-			Point3D p = new Point3D(pacman.getGeom());
+			Point3D p = new Point3D(pacman.getGeom()); // Point of pacman
 			pac.append("P");
 			pac.append(",");
-			pac.append(pacman.getInfo().getID());
+			pac.append(pacman.getInfo().getID()); // Number of pacman
 			pac.append(",");
 			pac.append(p.x());
 			pac.append(",");
@@ -61,25 +63,26 @@ public class GameToCSV {
 			pac.append(",");
 			pac.append(p.z());
 			pac.append(",");
-			pac.append(pacman.getInfo().getSpeed());
+			pac.append(pacman.getInfo().getSpeed()); // Speed of pacman
 			pac.append(",");
-			pac.append(pacman.getInfo().getRadius());
+			pac.append(pacman.getInfo().getRadius()); // Radius of pacman
 			pac.append('\n');
 
 		}
 		return pac;
 	}
+	
 	/**
-	 * הוספת כל הפירות של אותו משחק לקובץ
-	 * @throws ParseException 
+	 * This method adds the Fruit to a CSV file
 	 */
+	
 	public StringBuilder SetFruitCSV() {
 		StringBuilder fru = new StringBuilder();
 		for(Fruit fruit : game.getFruitList()) {
-			Point3D p = new Point3D((Point3D) fruit.getGeom());
+			Point3D p = new Point3D((Point3D) fruit.getGeom()); // Point of fruit
 			fru.append("F");
 			fru.append(",");
-			fru.append(fruit.getInfo().getID());
+			fru.append(fruit.getInfo().getID()); // Number of fruit
 			fru.append(",");
 			fru.append(p.x());
 			fru.append(",");
@@ -91,19 +94,22 @@ public class GameToCSV {
 		}
 		return fru;
 	}
-
+	
+	/**
+	 * This method responsible to Make the CSV file
+	 */
 
 	public void MakeCSV() throws FileNotFoundException {
-		SaveCSV +=".csv";// קריאה לקובץ השם של אותה שעה
+		SaveCSV +=".csv";// // Add a CSV extension to the file
 		PrintWriter pw = new PrintWriter(new File(SaveCSV));
 		StringBuilder csv = new StringBuilder();
-		csv.append(SetHeaderCSV()); // הוספת שורה ראונה של הטבלה
-		csv.append(SetPacmanCSV()); //הוספת פקמנים לקובץ
-		csv.append(SetFruitCSV()); // הוספת פירות לקובץ
+		csv.append(SetHeaderCSV()); // Add the table header
+		csv.append(SetPacmanCSV()); // Add pacman to the table
+		csv.append(SetFruitCSV()); // Add fruit to the table
 		pw.write(csv.toString());
 		pw.close();
 	}
-	
+
 }
 
 

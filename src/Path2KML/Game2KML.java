@@ -17,30 +17,29 @@ import Path.Path;
 import ShortestPathAlgo.Algo;
 
 public class Game2KML {
-	private Algo algo; // האלגריתם על המשחק
-	private Game game; // המשחק הנוכחי
-	private String KML_BODY; // kml-תוכן של ה 
-	private String KML_HEAD; // kml-שורת ההתחלה של ה 
-	private String KML_TAIL; // kml-שורת הסוף של ה 
-	public String SavePath; // שם הקובץ בזמן השמירה
+	private Algo algo; // The algorithm of the game
+	private Game game; // The current game
+	private String KML_BODY; 
+	private String KML_HEAD; 
+	private String KML_TAIL; 
+	public String SavePath; // The name of the KML file
 
 	/* * * * * * * * * * * * * * * * * * Constructor * * * * * * * * * * * * * * * */
 	/**
 	 * Constructor of the KML file. make Header, ConvertPath and make Tail.
-	 * @throws ParseException 
 	 */
 	public Game2KML(Game game,Algo algo ,String fileNameKML) 
 	{
-		this.algo = algo; //קבלת האלגוריתם הנוכחי
-		this.game = game; //קבלת המשחק הנוכחי 
+		this.algo = algo; // The algorithm of the game
+		this.game = game; // The current game 
 		this.SavePath = fileNameKML;
-		MakeHead(); // בניית תוכן ראשי של הקובץ
+		MakeHead(); // Build a KML file header
 		try {
-			ConvertPath(algo,game); // בניית תוכן המסלול של הפקמן ויצירת נקודות של הפירות
+			ConvertPath(algo,game); // Build Path and fruit in a KML file
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		} 
-		MakeTail(); // בניית תוכן סופי של הקובץ
+		MakeTail(); // KML file extension
 	}
 	/* * * * * * * * * * * * * * * * * * Convert * * * * * * * * * * * * * * * */
 	/**
@@ -48,15 +47,14 @@ public class Game2KML {
 	 * @throws ParseException 
 	 */
 	private void ConvertPath(Algo algo,Game game) throws ParseException {
-		String AlgoStartTime = getUTC(algo.StartGameTime); // השעה שהאלגוריתם התחיל
-		for(Pacman pacman : game.getPacmanList()) { // ריצה על כל הפקמנים 
-			KML_BODY += CreateFolder(pacman.getInfo().getID(),algo.getSolution(),AlgoStartTime);//בניית גוף ע"י שליחת שם הפקמן,פתרון האלגוריתם,וזמן התחלת האלגוריתם
+		String AlgoStartTime = getUTC(algo.StartGameTime); // The start time of the algorithm in the UTC format
+		for(Pacman pacman : game.getPacmanList()) { //  Loop of the Pacman 
+			KML_BODY += CreateFolder(pacman.getInfo().getID(),algo.getSolution(),AlgoStartTime);
 		}
 	}
 	/* * * * * * * * * * * * * * * Make Head,Body,Tail * * * * * * * * * * * * * * * */
 	/**
-	 * פונקציה שבונה את התחלת הקובץ 
-	 * @throws ParseException 
+	 * This method builds the head of the KML file
 	 */
 	private void MakeHead() {
 		KML_HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" 
@@ -78,56 +76,59 @@ public class Game2KML {
 	
 	/* * * * * * * * * * * * * * * * * * KML Convert * * * * * * * * * * * * * * * */
 	/**
-	 * פונקציה שמקבלת שם שם של פקמן ורשימה של מסלולים וזמן התחלת של האלגורתים ומחזירה את המסלול בקובץ 
+	 * This Method is receives a name of Pacman lists the Path and start time of the alignments and returns the Path in KML format.
+	 * @param Name is the Name of Pacman from the game
+	 * @param list is the Path of this Fackman
+	 * @param AlgoStartTime is the start time for running the algorithm.
+	 * @return Path in KML format
 	 * @throws ParseException 
 	 */
 	public String CreateFolder(String Name, List<Path> list, String AlgoStartTime) throws ParseException
 	{
 		String body = "<Folder>" + "\n" 
-				+"<name>"+ Name +"</name>" + "\n" //שם הפקמן
-				+PointFruit(Name, list) // הצגת הפירות על המפה
+				+"<name>"+ Name +"</name>" + "\n" // Name pacman
+				+PointFruit(Name, list) // Fruit location on the map
 				+"<Placemark>"
 				+ "<name>"+ Name +"</name>" + "\n" 
 				+ "<styleUrl>#multiTrack</styleUrl>"
 				+ "<gx:Track>"
-				+ GetWhenFromPacman(Name,list,AlgoStartTime) // הצגה של המסלול ע"י זמן ומסלול שהפקמן עובר
+				+ GetWhenFromPacman(Name,list,AlgoStartTime) // Path format with time and Path of Pacman
 				+ "</gx:Track>" + "\n"
 				+ "</Placemark>" + "\n"
 				+"</Folder>";
 		return body;
 	}
 	/**
-	 * הפונקציה מקבלת שם של פקמן עוברת על המסלול ובונה עבור הפקמן את המסלול והזמן שהוא עבר  
-	 * @return
+	 * A method that builds a path for Pacman in KML
 	 * @throws ParseException 
 	 */
 	private String GetWhenFromPacman(String Name, List<Path> list, String AlgoStartTime) throws ParseException {
-		String ans =""; // בניית מחרוזת שמאכסנת את כל הקוד של המסלול והזמן
-		for (Path path :list) { // עובר על כל המסלול 
-			if(path.ID.equals(Name)) { //בדיקה אם הפקמן נמצא בתא הנוכחי ברשימה 
-				if(!ans.contains(path.y0 +" "+path.x0)){//עבור המיקום ההתחלתי של הפקמן
-					ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n" //הוספת הזמן והנקודת עבור הפורמט
+		String ans ="";
+		for (Path path :list) { // Loop of the Path
+			if(path.ID.equals(Name)) { // If Pacman is in Path 
+				if(!ans.contains(path.y0 +" "+path.x0)){ // Start point of the Pacman
+					ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n" // Point and time in KML format
 							+"<gx:coord>"+path.y0 +" "+path.x0 +" "+path.z0+"</gx:coord>"+ "\n";
 				}
-				AlgoStartTime = Time(AlgoStartTime,(int)path.time);//הוספת הזמן שלקח לפקמן להגיע לפרי לזמן הנוכחי של האלגוריתם
-				ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n" 
+				AlgoStartTime = Time(AlgoStartTime,(int)path.time); // the time after moving the pecman
+				ans+="<when>"+TimeFormatKml(AlgoStartTime)+"</when>"+ "\n"  // Point and time in KML format
 						+"<gx:coord>"+path.y1 +" "+path.x1+" "+path.z0+"</gx:coord>"+ "\n";
 			}
 		}
 		return ans;
 	}
 	/**
-	 * פונקציה שמקבלת של של פקמן רשימה של מסלול האלגוריתם ומחזירה את מיקום הפירות במפה  
-	 * @return
+	 * This method places the fruit on the map 
+	 * @return Fruit list in KML format
 	 */
 	public String PointFruit(String Name , List<Path> list) {
-		String fruit=""; //מחזורת בשביל להכניס את כל הפרמטרים כל הפירות
-		for (Path path :list) { //ריצה על המסלול בכדי לקחת את מיקום הפירות
-			if(path.ID.equals(Name)){ //בדיקה אם פקמן מסויים נמצא ברשימה
+		String fruit=""; 
+		for (Path path :list) { // Loop of the Path
+			if(path.ID.equals(Name)){ // If Pacman is in Path 
 				fruit+="<Placemark>\n" 
 						+"<styleUrl>#red</styleUrl>\n"  
 						+"<Point>\n"  
-						+"<coordinates>"+path.y1 +" "+path.x1+" "+path.z0+"</coordinates>\n" //הוספת המיקום של הפרי 
+						+"<coordinates>"+path.y1 +" "+path.x1+" "+path.z0+"</coordinates>\n" //The place of the fruit
 						+"</Point>\n" 
 						+"</Placemark>\n";
 			}
@@ -140,11 +141,11 @@ public class Game2KML {
 	}
 	/* * * * * * * * * * * * * * * * * * Time Format* * * * * * * * * * * * * * * */
 	/**
-	 * פונקציה שמקבלת זמן מסויים באלגוריתם ושניות שלקח לפקמן ללכת ומוסיפה את הזמן של הפקמן לזמן של האלגוריתם 
+	 * This method takes time and seconds and adds seconds to time
 	 * @throws Exception
 	 */
 	public String Time(String AlgoTime , int second) throws ParseException {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//פורמט של הזמן 
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date d = df.parse(AlgoTime);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(d);
@@ -153,16 +154,15 @@ public class Game2KML {
 		return newTime;
 	}
 	/**
-	 * פונקציה שמקבלת זמן וממירה אותו לפורמט אחר 
+	 * A method that converts time into KML format 
 	 */
-	public String TimeFormatKml(String time) {
-		//KML-מחליפה את המחרוזת כך שהיא תתאים ל
-		time=time.replaceAll("\\s","T");
-		time+="Z";
+	public String TimeFormatKml(String time) {	
+		time = time.replaceAll("\\s","T");
+		time += "Z";
 		return time;
 	}
 	/**
-	 * UTC-פונקציה שמקבלת זמן וממירה אותו ל
+	 * A method that converts time to UTC
 	 * @throws ParseException
 	 */
 	public static String getUTC(String AlgoStartTime) throws ParseException
@@ -178,12 +178,11 @@ public class Game2KML {
 	/* * * * * * * * * * * * * * * * * * File Writer * * * * * * * * * * * * * * * */
 	/**
 	 * This method responsible to Make the KML file
-	 * @param startGameTime 
 	 * @throws Exception
 	 */
 	public void MakeFile() throws Exception
 	{
-		SavePath +=".kml";//קריאה לקובץ בשם של הזמן
+		SavePath += ".kml"; // Add a KML extension to the file
 		PrintWriter pw = new PrintWriter(new File(SavePath));
 		StringBuilder sb = new StringBuilder();	
 		sb.append(KML_HEAD + KML_BODY + KML_TAIL);
