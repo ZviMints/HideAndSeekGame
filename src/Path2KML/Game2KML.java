@@ -9,9 +9,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
+
+import Fruit.Fruit;
+
 import java.util.Date;
 
 import Game.Game;
+import Geom.Point3D;
 import Pacman.Pacman;
 import Path.Path;
 import ShortestPathAlgo.Algo;
@@ -122,19 +126,18 @@ public class Game2KML {
 	 * @return Fruit list in KML format
 	 */
 	public String PointFruit(String Name , List<Path> list) {
-		String fruit=""; 
-		for (Path path :list) { // Loop of the Path
-			if(path.ID.equals(Name)){ // If Pacman is in Path 
-				fruit+="<Placemark>\n" 
+		String ans=""; 
+		for (Fruit fruit : game.getFruitList()) { // Loop of the fruit 
+			Point3D p = new Point3D((Point3D) fruit.getGeom()); // Point of fruit
+				ans += "<Placemark>\n" 
 						+"<styleUrl>#red</styleUrl>\n"  
 						+"<Point>\n"  
-						+"<coordinates>"+path.y1 +" "+path.x1+" "+path.z0+"</coordinates>\n" //The place of the fruit
+						+"<coordinates>"+p.y() +" "+p.x()+" "+p.z()+"</coordinates>\n" //The place of the fruit
 						+"</Point>\n" 
 						+"</Placemark>\n";
-			}
 
 		}
-		return fruit;
+		return ans;
 	}
 	private void MakeTail() {
 		KML_TAIL = "</Document>\n</kml>";
