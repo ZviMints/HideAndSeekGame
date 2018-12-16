@@ -4,8 +4,8 @@
 <table style="height: 206px;" width="599">
 <tbody>
 <tr>
-<td style="width: 290.667px;"><img src="./img/100Plz.jpeg" alt="" /></td>
-<td style="width: 292.667px;"><img src="./img/AfterRunning.jpeg" /></td>
+<td style="width: 290.667px;"><img src="./img/100Plz.png" alt="" /></td>
+<td style="width: 292.667px;"><img src="./img/AfterRunning.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -18,7 +18,7 @@
 <p><img src="./img/Packages.jpg" alt="" /></p>
 <p>&nbsp;So let's start!</p>
 <h1>MyFrame:</h1>
-<p><img src="./img/AboutMyFrame.jpg" alt="" /></p>
+<p><img src="./img/AboutMyFrame.png" alt="" /></p>
 <p>MyFrame package&nbsp;is divided into 2 classes</p>
 <p>the first "<strong>Menu</strong>" class is the Menu class that represents the GUI of the side Menu in the right side, the second "<strong>DotsandLines</strong>" class is the Game Panel that represents the Game in the left side.</p>
 <h1>Coords:</h1>
