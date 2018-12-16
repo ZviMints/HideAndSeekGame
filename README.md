@@ -48,6 +48,11 @@
 <p>Each path has relevant information about a path between 2 Points in R^3.</p>
 <p>Each path has the <strong>coordinates</strong>&nbsp;of source port and destination&nbsp;port.</p>
 <p>In addition, the path contains the <strong>vector</strong> and the <strong>time</strong> that the path is taking to a Pacman, we can know which Pacman take which path by the <strong>ID</strong> that the path is saving, each path have a <strong>color</strong> that set up by Pacman color.</p>
+<h1>Game:</h1>
+<ul>
+<li><strong>Game:&nbsp;</strong>This class represent Game which include Fruits List and Pacmans List, this class can init Pacmans and Fruits from Matrix.</li>
+<li><strong>GameToCSV:&nbsp;</strong>This Class Converting Game into CSV file.</li>
+</ul>
 <h1>Path2KML:</h1>
 <ul>
 <li><strong>Game2KML:&nbsp;</strong>This Class Converting Game into KML file.</li>
