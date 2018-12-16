@@ -73,6 +73,7 @@
 <p>4.&nbsp; &nbsp; &nbsp; &nbsp;find the minimum time in the array as a function of (current pacman time + time to next fruit)</p>
 <p>5.&nbsp; &nbsp; &nbsp; &nbsp; move Pacman to (Fruit - Pacman radius) point, update all the fields and add path to the solutions</p>
 <p>6.&nbsp; &nbsp; &nbsp; &nbsp; remove Fruit from the fruit list</p>
+<p><strong>Complexity:</strong> O(|F| * |P| * |F| )</p>
 <h1>Junit Testing:</h1>
 <ol>
 <li>GameTest: Testing the Game Package.</li>
