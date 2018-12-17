@@ -103,7 +103,7 @@ public class MyFrame extends JFrame {
 	 * This method make message to the user when the game is over
 	 */
 	public static void Popup() {
-		JOptionPane.showMessageDialog(null, " Total time: " +Menu.ScoreTextField.getText() , " Finished", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, " Total time: " +Menu.ScoreTextField.getText() +" (In Seconds)", " Finished", JOptionPane.PLAIN_MESSAGE);
 	}
 	/* * * * * * * * * * * * * * Main * * * * * * * * * * * * * * * */   
 	public static void main(String[] args) {
