@@ -8,7 +8,11 @@ import java.util.List;
 import Path.Path;
 import myFrame.DotsAndLines;
 import myFrame.Menu;
-
+// NOTE!!!!: WE CAN MAKE IT IN ONE THREAD, BY SLEEP FOR MILLISECOND AND THEN MOVE EACH PACMAN TO ANOTHER
+// POINT, BUT IF PACMAN PATH TAKE 1 DAY, AND WE WILL REFRESH EACH MILLI SECOND ITS TAKE A LOT OF RESOURCES
+// EACH METHOD ( 1 THREAD OR A THREAD FOR EACH PACMAN ) HAVE CONS AND PROS, WE DECIDED TO DO WITH THREAD FOR
+// EACH PACMAN SUCH THAT EACH PACMAN WILL SLEEP FOR THE TIME HE NEED TO GO, FOR EXAMPLE HE WILL SLEEP FOR ONE DAY
+// INSTEAD OF REFRESH EACH MILLISECOND
 public class PacmanThread extends Thread{
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	DotsAndLines canvas; // the Game Panel
@@ -30,28 +34,31 @@ public class PacmanThread extends Thread{
 
 	@Override
 	public void run() {	
+		double totalrun = 0;
 		for(int i=0; i<lines.size(); i++)
 		{
 			Path path = lines.get(i);
 			if(path.ID.equals(pacman.getInfo().getID()))
 			{
+				totalrun += path.time;
 				if(path.time >= 0)
 				{
 					try {
-						Thread.sleep((long) (path.time * 5));
+						Thread.sleep((long) (path.time * 25)); // Change to 1000 if you want real-time run
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					canvas.AddSolution(path);
 					pacman.translate(path.vec);
 					canvas.repaint();
+					Menu.UpdateScoreTime(totalrun); // Its Synchronized
+
 				}
 			}
 		}
 		if(lastest_thread) // if its the last thread alive
 		{
 		Menu.VisableAllButtons();
-		Menu.UpdateScoreTime(max_time);
 		Menu.InProgress.setText("0");
 		canvas.finished.clear();
 		canvas.FinishedAlgo = true;
@@ -60,7 +67,6 @@ public class PacmanThread extends Thread{
 		else // its not, will update InProgress and Update Time
 		{
 			Menu.UpdateFinished();
-			Menu.UpdateScoreTime(Math.abs(max_time));
 		}
 	}
 }
