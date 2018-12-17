@@ -48,6 +48,8 @@ public class PacmanThread extends Thread{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					
+					canvas.RemoveFruit(path.fruit);
 					canvas.AddSolution(path);
 					pacman.translate(path.vec);
 					canvas.repaint();

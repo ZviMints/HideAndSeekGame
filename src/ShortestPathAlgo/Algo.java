@@ -88,8 +88,7 @@ public class Algo {
 			/// Now we have the Index [Saved as Min_Time_Index] of our GREEDY choice //
 			Pacman Pacman = PacmansList.get(Min_Time_Index);
 			Fruit Fruit = arrF[Min_Time_Index];
-			Point3D Fruit_Point3D = (Point3D)Fruit.getGeom();
-			MakePathAndTransfer(Pacman,Fruit_Point3D);
+			MakePathAndTransfer(Pacman,Fruit);
 
 
 			/// Remove the Fruit that has been eaten from the List //
@@ -103,7 +102,9 @@ public class Algo {
 	 * @param Pacman is the current Pacman
 	 * @param Fruit_Point3D is the current Point of Fruit
 	 */
-	private void MakePathAndTransfer(Pacman Pacman, Point3D Fruit_Point3D) {
+	private void MakePathAndTransfer(Pacman Pacman, Fruit fruit) {
+		//Init Fruit Point
+		Point3D Fruit_Point3D = (Point3D)fruit.getGeom();
 		// Initialize Coords
 		MyCoords coords = new MyCoords();
 
@@ -154,7 +155,8 @@ public class Algo {
 				dist.z(),   // To Where Alt
 				Pacman.getInfo().color, // Pacman Color ( for the path color )
 				time,
-				vec // The Vector
+				vec, // The Vector
+				fruit
 				);
 
 		/// Translate Pacman to  ---> destination //

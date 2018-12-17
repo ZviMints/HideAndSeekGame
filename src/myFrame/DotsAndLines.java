@@ -35,7 +35,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 	public Vector<Path> Solutions = new Vector<Path>(); // Must be Synchronized
 	public List<PacmanThread> threads = new ArrayList<PacmanThread>(); // List of all Pacman Threads
 	public volatile boolean FinishedAlgo = true;
-	private List<Fruit> FruitsList; // All the Fruits
+	public List<Fruit> FruitsList; // All the Fruits
 	private List<Pacman> PacmansList;	 // All the Pacmans
 	private Game game; // This Game Database
 	public Algo algo; // Algorithm of the current game
@@ -73,8 +73,9 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		g.drawImage(this.map.getBgImageHover() , 0, 0,map.getWidth(),map.getHeight(), this);
 
 		// ** Print all Fruits that load from .CSV file ** //
-		for(Fruit fruit : FruitsList)
+		for(int i=0 ; i <FruitsList.size() ; i++)
 		{
+			Fruit fruit = FruitsList.get(i);
 			Point3D p = (Point3D) fruit.getGeom();
 			Point3D p_pixels = map.getPixelFromCord(p);
 			int x = (int) p_pixels.x();
@@ -130,17 +131,30 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			algo =  new Algo(this.game);
 		else
 			algo.setGame(this.game);
-		
+
 		List<Path> lines = algo.getSolution();
 		double max_time = algo.getGreedyAlgoTime();
+		
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
 
 		for(Thread thread : threads)
 			thread.start();
-		
-	}
 
+	}
+	/* * * * * * * * * * * * * * * * * *  Remove Fruit * * * * * * * * * * * * * * * */
+	/**
+	 * Remove Fruit from Fruit List
+	 * @param fruit is the input Fruit
+	 */
+	public synchronized void RemoveFruit(Fruit fruit) {
+		for(int i=0 ; i <FruitsList.size() ; i++)
+		{
+			Fruit temp = FruitsList.get(i);
+			if(temp.getInfo().getID().equals(fruit.getInfo().getID())) 
+				FruitsList.remove(temp);
+		}
+	}
 	/* * * * * * * * * * * * * * * * * *  Clear * * * * * * * * * * * * * * * */
 	/**
 	 * Clear the Solutions, Remove all the Path's.

@@ -21,8 +21,9 @@ public class Path {
 	public String ID; // ID of the Pacman
 	public double time; // time to get from (x0,y0) to (x1,y1)
 	public Point3D vec; // Vector from p0 to p1
+	public Fruit fruit; // In Order to Remove From GUI
 	/* * * * * * * * * * * * * *  Constructor * * * * * * * * * * * * * * * */
-	public Path(String ID,double x0, double y0, double z0, double x1, double y1, double z1, Color color, double time, Point3D vec)
+	public Path(String ID,double x0, double y0, double z0, double x1, double y1, double z1, Color color, double time, Point3D vec, Fruit fruit)
 	{
 		this.ID = ID;
 		this.x0 = x0;
@@ -34,6 +35,7 @@ public class Path {
 		this.color = color;
 		this.time = time;
 		this.vec = vec;
+		this.fruit = fruit;
 	}
 	/* * * * * * * * * * * * * *  toString * * * * * * * * * * * * * * * */
 	public String toString()
