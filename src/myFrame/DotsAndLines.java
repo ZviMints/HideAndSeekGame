@@ -76,11 +76,14 @@ public class DotsAndLines extends JPanel implements MouseListener{
 		for(int i=0 ; i <FruitsList.size() ; i++)
 		{
 			Fruit fruit = FruitsList.get(i);
-			Point3D p = (Point3D) fruit.getGeom();
-			Point3D p_pixels = map.getPixelFromCord(p);
-			int x = (int) p_pixels.x();
-			int y = (int) p_pixels.y();
-			g.drawImage(FruitImage, x-25, y-25, this);
+			if(!fruit.getInfo().Dead()) // If Fruit is Alive we need to Print it
+			{
+				Point3D p = (Point3D) fruit.getGeom();
+				Point3D p_pixels = map.getPixelFromCord(p);
+				int x = (int) p_pixels.x();
+				int y = (int) p_pixels.y();
+				g.drawImage(FruitImage, x-25, y-25, this);
+			}
 		}
 		// ** Print all the Path ( Solutions ) ** //
 		for(int i = 0;i<Solutions.size();i++)
@@ -134,7 +137,7 @@ public class DotsAndLines extends JPanel implements MouseListener{
 
 		List<Path> lines = algo.getSolution();
 		double max_time = algo.getGreedyAlgoTime();
-		
+
 		for(Pacman pac : PacmansList)
 			threads.add(new PacmanThread(this,pac,lines,max_time));	
 
@@ -241,6 +244,16 @@ public class DotsAndLines extends JPanel implements MouseListener{
 			if(f_point.equals(current_point)) return true;
 		}
 		return false;	
+	}
+	/**
+	 * This Method all fruits to Visible
+	 */
+	public void SetVisibleAllFruits()
+	{
+		for(Fruit fruit : FruitsList)
+		{
+			fruit.getInfo().MakeAlive();
+		}
 	}
 	/* * * * * * * * * * * * * * * * * * Not Used * * * * * * * * * * * * * * * */
 	@Override public void mouseClicked(MouseEvent e) { }

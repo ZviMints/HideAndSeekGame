@@ -8,11 +8,14 @@ import java.util.List;
 import Path.Path;
 import myFrame.DotsAndLines;
 import myFrame.Menu;
+import myFrame.MyFrame;
+// ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! //
 // NOTE!!!!: WE CAN MAKE IT IN ONE THREAD, BY SLEEP FOR MILLISECOND AND THEN MOVE EACH PACMAN TO ANOTHER
 // POINT, BUT IF PACMAN PATH TAKE 1 DAY, AND WE WILL REFRESH EACH MILLI SECOND ITS TAKE A LOT OF RESOURCES
 // EACH METHOD ( 1 THREAD OR A THREAD FOR EACH PACMAN ) HAVE CONS AND PROS, WE DECIDED TO DO WITH THREAD FOR
 // EACH PACMAN SUCH THAT EACH PACMAN WILL SLEEP FOR THE TIME HE NEED TO GO, FOR EXAMPLE HE WILL SLEEP FOR ONE DAY
 // INSTEAD OF REFRESH EACH MILLISECOND
+//! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! //
 public class PacmanThread extends Thread{
 	/* * * * * * * * * * * * * *  Initialization Variables * * * * * * * * * * * * * * * */
 	DotsAndLines canvas; // the Game Panel
@@ -44,12 +47,14 @@ public class PacmanThread extends Thread{
 				if(path.time >= 0)
 				{
 					try {
-						Thread.sleep((long) (path.time * 25)); // Change to 1000 if you want real-time run
+						// ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! //
+						Thread.sleep((long) (path.time * 7)); // Change to 1000 if you want real-time run
+						// ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! //
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 					
-					canvas.RemoveFruit(path.fruit);
+					path.fruit.getInfo().Eaten(); // We ate a Fruit!!! Whoooo!!
 					canvas.AddSolution(path);
 					pacman.translate(path.vec);
 					canvas.repaint();
@@ -64,6 +69,8 @@ public class PacmanThread extends Thread{
 		Menu.InProgress.setText("0");
 		canvas.finished.clear();
 		canvas.FinishedAlgo = true;
+		MyFrame.Popup(); // Make Popup for finishing game :)
+		canvas.SetVisibleAllFruits();
 		canvas.repaint(); // Will make Hat the the last pacman
 		}
 		else // its not, will update InProgress and Update Time

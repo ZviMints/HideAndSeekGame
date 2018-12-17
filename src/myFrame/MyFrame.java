@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
@@ -97,7 +98,13 @@ public class MyFrame extends JFrame {
 			}
 		});
 	}
-
+	/* * * * * * * * * * * * * * Make Popup * * * * * * * * * * * * * * * */   
+	/**
+	 * This method make message to the user when the game is over
+	 */
+	public static void Popup() {
+		JOptionPane.showMessageDialog(null, " Total time: " +Menu.ScoreTextField.getText() , " Finished", JOptionPane.PLAIN_MESSAGE);
+	}
 	/* * * * * * * * * * * * * * Main * * * * * * * * * * * * * * * */   
 	public static void main(String[] args) {
 		MyFrame Game = new MyFrame();
