@@ -74,7 +74,8 @@ public class Game2KML {
 				+"<Style id=\"green\"><IconStyle><Icon>\n" 
 				+ "<href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>\n" 
 				+"</Icon></IconStyle></Style>"
-				+Style;
+				+Style
+				+ PointFruit();
 
 	}
 	
@@ -91,11 +92,10 @@ public class Game2KML {
 	{
 		String body = "<Folder>" + "\n" 
 				+"<name>"+ Name +"</name>" + "\n" // Name pacman
-				+PointFruit(Name, list) // Fruit location on the map
 				+"<Placemark>"
 				+ "<name>"+ Name +"</name>" + "\n" 
-				+ "<styleUrl>#multiTrack</styleUrl>"
-				+ "<gx:Track>"
+				+ "<styleUrl>#multiTrack</styleUrl>" + "\n" 
+				+ "<gx:Track>" + "\n" 
 				+ GetWhenFromPacman(Name,list,AlgoStartTime) // Path format with time and Path of Pacman
 				+ "</gx:Track>" + "\n"
 				+ "</Placemark>" + "\n"
@@ -125,7 +125,7 @@ public class Game2KML {
 	 * This method places the fruit on the map 
 	 * @return Fruit list in KML format
 	 */
-	public String PointFruit(String Name , List<Path> list) {
+	public String PointFruit() {
 		String ans=""; 
 		for (Fruit fruit : game.getFruitList()) { // Loop of the fruit 
 			Point3D p = new Point3D((Point3D) fruit.getGeom()); // Point of fruit
