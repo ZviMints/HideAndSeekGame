@@ -1,5 +1,5 @@
 <h1><span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">OOP Ex3</span></span></h1>
-<p>Created during a computer communication course during the second year at Ariel University in the Department of Computer Science, 2018 <br /> <strong>Project site:</strong>&nbsp;<a href="https://zvimints.github.io/OOP_3/.">https://zvimints.github.io/OOP_3/.</a><br /> <strong>Made by: </strong><a href="https://github.com/ZviMints">Zvi Mints</a> and <a href="https://github.com/orabu103">Or Abuhazira</a></p>
+<p>Created during a computer OOP course during the second year at Ariel University in the Department of Computer Science, 2018 <br /> <strong>Project site:</strong>&nbsp;<a href="https://zvimints.github.io/OOP_3/.">https://zvimints.github.io/OOP_3/.</a><br /> <strong>Made by: </strong><a href="https://github.com/ZviMints">Zvi Mints</a> and <a href="https://github.com/orabu103">Or Abuhazira</a></p>
 <h1>About The Project:</h1>
 <table style="height: 206px;" width="599">
 <tbody>
